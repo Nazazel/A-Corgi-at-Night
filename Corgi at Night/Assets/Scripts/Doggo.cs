@@ -19,6 +19,10 @@ public class Doggo : MonoBehaviour {
 	void Start () {
 		GameObject.DontDestroyOnLoad (GameObject.Find("Corgo"));
 		rb = gameObject.GetComponent<Rigidbody2D> ();
+		speed = 2.0f;
+		runSpeed = 4.0f;
+		crouchSpeed = 1.0f;
+		jumpHeight = 2.0f;
 		canMove = true;
 		crouching = false;
 		running = false;
@@ -28,43 +32,59 @@ public class Doggo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (canMove) {
-			if (Input.GetKey (KeyCode.Space) && !crouching) {
+			
+			if (Input.GetKey (KeyCode.Space) && !crouching && !jumping) {
 				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
+				jumping = true;
 			}
+
 			if (Input.GetKey (KeyCode.DownArrow) && !Input.GetKey (KeyCode.LeftShift)) {
 				crouching = true;
-			} else if (Input.GetKey (KeyCode.LeftShift) && !Input.GetKey (KeyCode.DownArrow)) {
-				running = true;
+			} else {
+				crouching = false;
 			}
+
+			if (Input.GetKey (KeyCode.LeftShift) && !Input.GetKey (KeyCode.DownArrow)) {
+				running = true;
+			} else {
+				running = false;
+			}
+
 			if (Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
 				if ((rb.velocity.x > 0.0f) && (rb.velocity.y != 0.0f)) {
-					rb.velocity = new Vector2 (0.0f, 0.0f);
+					rb.velocity = new Vector2 (0.0f, rb.velocity.y);
 				}
 
 				if (running) {
-					rb.velocity = new Vector2 (-1.0f * runSpeed, 0.0f);
+					rb.velocity = new Vector2 (-1.0f * runSpeed, rb.velocity.y);
 				} else if (crouching) {
-					rb.velocity = new Vector2 (-1.0f * crouchSpeed, 0.0f);
-				}
-				if (!running && !crouching) {
-					rb.velocity = new Vector2 (-1.0f * speed, 0.0f);
+					rb.velocity = new Vector2 (-1.0f * crouchSpeed, rb.velocity.y);
+				} else if (!running && !crouching) {
+					rb.velocity = new Vector2 (-1.0f * speed, rb.velocity.y);
 				}
 			} else if (Input.GetKey (KeyCode.RightArrow) && !Input.GetKey (KeyCode.LeftArrow)) {
 				if ((rb.velocity.x < 0.0f) && (rb.velocity.y != 0.0f)) {
-					rb.velocity = new Vector2 (0.0f, 0.0f);
+					rb.velocity = new Vector2 (0.0f, rb.velocity.y);
 
 				}
 
 				if (running) {
-					rb.velocity = new Vector2 (runSpeed, 0.0f);
+					rb.velocity = new Vector2 (runSpeed, rb.velocity.y);
 				} else if (crouching) {
-					rb.velocity = new Vector2 (crouchSpeed, 0.0f);
+					rb.velocity = new Vector2 (crouchSpeed, rb.velocity.y);
 				} else if (!running && !crouching) {
-					rb.velocity = new Vector2 (speed, 0.0f);
+					rb.velocity = new Vector2 (speed, rb.velocity.y);
 				}
-			} else {
-				rb.velocity = new Vector2 (0.0f, 0.0f);
+			} else if (!jumping) {
+				rb.velocity = new Vector2 (0.0f, rb.velocity.y);
 			}
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D coll)
+	{
+		if (coll.gameObject.CompareTag ("Floor") && jumping == true) {
+			jumping = false;
 		}
 	}
 }
