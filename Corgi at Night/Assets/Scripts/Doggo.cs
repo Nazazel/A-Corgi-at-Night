@@ -15,10 +15,16 @@ public class Doggo : MonoBehaviour {
 	private bool crouching;
 	private bool jumping;
 
+	//Sprites
+	private SpriteRenderer sr;
+	private Animator pa;
+
 	// Use this for initialization
 	void Start () {
 		GameObject.DontDestroyOnLoad (GameObject.Find("Corgo"));
 		rb = gameObject.GetComponent<Rigidbody2D> ();
+		sr = gameObject.GetComponent<SpriteRenderer> ();
+		pa = gameObject.GetComponent<Animator> ();
 		speed = 2.0f;
 		runSpeed = 4.0f;
 		crouchSpeed = 1.0f;
@@ -51,6 +57,7 @@ public class Doggo : MonoBehaviour {
 			}
 
 			if (Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
+				sr.flipX = true;
 				if ((rb.velocity.x > 0.0f) && (rb.velocity.y != 0.0f)) {
 					rb.velocity = new Vector2 (0.0f, rb.velocity.y);
 				}
@@ -60,9 +67,13 @@ public class Doggo : MonoBehaviour {
 				} else if (crouching) {
 					rb.velocity = new Vector2 (-1.0f * crouchSpeed, rb.velocity.y);
 				} else if (!running && !crouching) {
+					if (!jumping) {
+						pa.Play("Walk");
+					}
 					rb.velocity = new Vector2 (-1.0f * speed, rb.velocity.y);
 				}
 			} else if (Input.GetKey (KeyCode.RightArrow) && !Input.GetKey (KeyCode.LeftArrow)) {
+				sr.flipX = false;
 				if ((rb.velocity.x < 0.0f) && (rb.velocity.y != 0.0f)) {
 					rb.velocity = new Vector2 (0.0f, rb.velocity.y);
 
@@ -73,9 +84,13 @@ public class Doggo : MonoBehaviour {
 				} else if (crouching) {
 					rb.velocity = new Vector2 (crouchSpeed, rb.velocity.y);
 				} else if (!running && !crouching) {
+					if (!jumping) {
+						pa.Play("Walk");
+					}
 					rb.velocity = new Vector2 (speed, rb.velocity.y);
 				}
 			} else if (!jumping) {
+				pa.Play("Stand");
 				rb.velocity = new Vector2 (0.0f, rb.velocity.y);
 			}
 		}
