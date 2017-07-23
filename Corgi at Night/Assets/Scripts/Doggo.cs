@@ -63,6 +63,7 @@ public class Doggo : MonoBehaviour {
 				}
 
 				if (running) {
+					pa.Play("Run");
 					rb.velocity = new Vector2 (-1.0f * runSpeed, rb.velocity.y);
 				} else if (crouching) {
 					rb.velocity = new Vector2 (-1.0f * crouchSpeed, rb.velocity.y);
@@ -80,6 +81,7 @@ public class Doggo : MonoBehaviour {
 				}
 
 				if (running) {
+					pa.Play("Run");
 					rb.velocity = new Vector2 (runSpeed, rb.velocity.y);
 				} else if (crouching) {
 					rb.velocity = new Vector2 (crouchSpeed, rb.velocity.y);
