@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Doggo : MonoBehaviour {
+
+	//General
+	private bool dead;
+	private GameObject attackBox;
+	private Vector3 spawnpoint;
 	
 	//Movement
 	private bool canMove;
@@ -22,6 +27,7 @@ public class Doggo : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameObject.DontDestroyOnLoad (GameObject.Find("Corgo"));
+		attackBox = GameObject.Find ("AttackBox");
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 		sr = gameObject.GetComponent<SpriteRenderer> ();
 		pa = gameObject.GetComponent<Animator> ();
@@ -33,11 +39,12 @@ public class Doggo : MonoBehaviour {
 		crouching = false;
 		running = false;
 		jumping = false;
+		dead = false;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		if (canMove) {
+		if (canMove && !dead) {
 			
 			if (Input.GetKey (KeyCode.Space) && !crouching && !jumping) {
 				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
@@ -58,6 +65,7 @@ public class Doggo : MonoBehaviour {
 
 			if (Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
 				sr.flipX = true;
+				attackBox.transform.localPosition = new Vector3 (0.0f, 0.007f, attackBox.transform.position.z);
 				if ((rb.velocity.x > 0.0f) && (rb.velocity.y != 0.0f)) {
 					rb.velocity = new Vector2 (0.0f, rb.velocity.y);
 				}
@@ -75,6 +83,7 @@ public class Doggo : MonoBehaviour {
 				}
 			} else if (Input.GetKey (KeyCode.RightArrow) && !Input.GetKey (KeyCode.LeftArrow)) {
 				sr.flipX = false;
+				attackBox.transform.localPosition = new Vector3 (0.984f, 0.007f, attackBox.transform.position.z);
 				if ((rb.velocity.x < 0.0f) && (rb.velocity.y != 0.0f)) {
 					rb.velocity = new Vector2 (0.0f, rb.velocity.y);
 
@@ -103,7 +112,32 @@ public class Doggo : MonoBehaviour {
 		if (coll.gameObject.CompareTag ("Floor") && jumping == true) {
 			jumping = false;
 		}
+		else if (coll.gameObject.CompareTag ("Death")) {
+			dead = true;
+			StartCoroutine("Death");
+		}
 	}
+
+	void OnTriggerEnter2D(Collider2D coll)
+	{
+		if (coll.gameObject.CompareTag ("Checkpoint")) {
+			spawnpoint = new Vector3 (coll.gameObject.transform.position.x, coll.gameObject.transform.position.y, coll.gameObject.transform.position.z);
+			Destroy (coll.gameObject);
+		}
+	}
+		
+
+	public IEnumerator Death()
+	{
+		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+		yield return new WaitForSeconds (3.0f);
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+		gameObject.transform.position = spawnpoint;
+		dead = false;
+	}
+
+
 }
 
 
