@@ -122,6 +122,7 @@ public class Doggo : MonoBehaviour {
 	{
 		if (coll.gameObject.CompareTag ("Checkpoint")) {
 			spawnpoint = new Vector3 (coll.gameObject.transform.position.x, coll.gameObject.transform.position.y, coll.gameObject.transform.position.z);
+			Debug.Log (coll.gameObject.name);
 			Destroy (coll.gameObject);
 		}
 	}
