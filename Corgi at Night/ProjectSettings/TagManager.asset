@@ -8,6 +8,8 @@ TagManager:
   - NinjaCat
   - Death
   - Checkpoint
+  - DogCatcherJR
+  - DogCatcher
   layers:
   - Default
   - TransparentFX

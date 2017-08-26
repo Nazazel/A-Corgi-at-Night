@@ -6,6 +6,8 @@ public class Doggo : MonoBehaviour {
 
 	//General
 	private bool dead;
+	public bool hidden;
+	public bool hideable;
 	private GameObject attackBox;
 	private Vector3 spawnpoint;
 	
@@ -40,14 +42,29 @@ public class Doggo : MonoBehaviour {
 		running = false;
 		jumping = false;
 		dead = false;
+		hidden = false;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (canMove && !dead) {
+		if (!dead) {
+			if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && !hidden && hideable) {
+				Debug.Log ("Hidden");
+				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+				gameObject.GetComponent<BoxCollider2D> ().enabled = !gameObject.GetComponent<BoxCollider2D> ().enabled;
+				hidden = true;
+			}
+			else if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && hidden) {
+				Debug.Log ("!");
+				gameObject.GetComponent<BoxCollider2D> ().enabled = !gameObject.GetComponent<BoxCollider2D> ().enabled;
+				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+				hidden = false;
+			}
+		}
+		if (canMove && !dead && !hidden) {
 			
 			if (Input.GetKey (KeyCode.Space) && !crouching && !jumping) {
-				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
+				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight*1.5f);
 				jumping = true;
 			}
 
@@ -112,7 +129,15 @@ public class Doggo : MonoBehaviour {
 		if (coll.gameObject.CompareTag ("Floor") && jumping == true) {
 			jumping = false;
 		}
-		else if (coll.gameObject.CompareTag ("Death")) {
+		else if (coll.gameObject.CompareTag ("Death") && !dead) {
+			dead = true;
+			StartCoroutine("Death");
+		}
+		else if (coll.gameObject.CompareTag ("NinjaCat") && !dead) {
+			dead = true;
+			StartCoroutine("Death");
+		}
+		else if (coll.gameObject.CompareTag ("DogCatcherJR") && !dead) {
 			dead = true;
 			StartCoroutine("Death");
 		}
@@ -131,14 +156,23 @@ public class Doggo : MonoBehaviour {
 	public IEnumerator Death()
 	{
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
-		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 		yield return new WaitForSeconds (3.0f);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 		gameObject.transform.position = spawnpoint;
 		dead = false;
 	}
 
+	public void StompBoop()
+	{
+		rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
+	}
 
+	public void Caught()
+	{
+		dead = true;
+		StartCoroutine("Death");
+	}
 }
 
 
