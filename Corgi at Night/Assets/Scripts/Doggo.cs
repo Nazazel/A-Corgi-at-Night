@@ -9,7 +9,7 @@ public class Doggo : MonoBehaviour {
 	public bool hidden;
 	public bool hideable;
 	private GameObject attackBox;
-	private Vector3 spawnpoint;
+	public Vector3 spawnpoint;
 	
 	//Movement
 	private bool canMove;
@@ -142,16 +142,6 @@ public class Doggo : MonoBehaviour {
 			StartCoroutine("Death");
 		}
 	}
-
-	void OnTriggerEnter2D(Collider2D coll)
-	{
-		if (coll.gameObject.CompareTag ("Checkpoint")) {
-			spawnpoint = new Vector3 (coll.gameObject.transform.position.x, coll.gameObject.transform.position.y, coll.gameObject.transform.position.z);
-			Debug.Log (coll.gameObject.name);
-			Destroy (coll.gameObject);
-		}
-	}
-		
 
 	public IEnumerator Death()
 	{

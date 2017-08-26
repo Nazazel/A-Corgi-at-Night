@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 0
+  hideable: 0
 --- !u!61 &194708261
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -783,7 +784,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 419833604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.001, y: -0.554, z: 0}
+  m_LocalPosition: {x: 4.001, y: -0.581, z: 0}
   m_LocalScale: {x: 0.37928963, y: 0.37928963, z: 0.37928963}
   m_Children:
   - {fileID: 1069582536}
@@ -1752,9 +1753,10 @@ GameObject:
   - component: {fileID: 1136764271}
   - component: {fileID: 1136764270}
   - component: {fileID: 1136764269}
+  - component: {fileID: 1136764273}
   m_Layer: 0
   m_Name: Capsule (1)
-  m_TagString: Untagged
+  m_TagString: HidingSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1821,11 +1823,22 @@ Transform:
   m_GameObject: {fileID: 1136764268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.006, y: -0.829, z: 0}
-  m_LocalScale: {x: 0.15921116, y: 0.15921116, z: 0.15921116}
+  m_LocalScale: {x: 0.45972216, y: 0.15921116, z: 0.15921116}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1136764273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1136764268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad38438c7492dd44b3d0ef4c34a85ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1191947782
 GameObject:
   m_ObjectHideFlags: 0

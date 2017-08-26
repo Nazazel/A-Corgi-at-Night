@@ -27,13 +27,13 @@ public class PatrolCatcher : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (gameObject.transform.position.x <= originPos - patrolArea) {
+		if ((gameObject.transform.position.x <= originPos - patrolArea) && right == false) {
 			//Debug.Log ("Turn Right");
 			right = true;
 			gameObject.transform.Rotate (Vector3.up, 180.0f);
 			DC.velocity = new Vector2 (0.5f, DC.velocity.y);
 		} 
-		else if (gameObject.transform.position.x >= originPos + patrolArea) {
+		else if ((gameObject.transform.position.x >= originPos + patrolArea) && right == true) {
 			//Debug.Log ("Turn Left");
 			right = false;
 			gameObject.transform.Rotate (Vector3.up, 180.0f);

@@ -10,6 +10,7 @@ TagManager:
   - Checkpoint
   - DogCatcherJR
   - DogCatcher
+  - HidingSpot
   layers:
   - Default
   - TransparentFX
