@@ -6,6 +6,7 @@ public class NinjaCatto : MonoBehaviour {
 
 	private Rigidbody2D NinCat;
 	private GameObject player;
+	private float speed;
 
 	private float jumpHeight;
 	private bool jumping;
@@ -24,12 +25,18 @@ public class NinjaCatto : MonoBehaviour {
 			NinCat.velocity = new Vector2 (NinCat.velocity.x, jumpHeight*1.5f);
 			jumping = true;
 		}
-		if ((player.transform.position.x < gameObject.transform.position.x)) {
-			NinCat.velocity = new Vector2 (-1.0f, NinCat.velocity.y);
+		if ((player.transform.position.x < gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false) {
+			speed = -1.0f;
+			NinCat.velocity = new Vector2 (speed, NinCat.velocity.y);
 		} 
-		else if ((player.transform.position.x > gameObject.transform.position.x)) {
-			NinCat.velocity = new Vector2 (1.0f, NinCat.velocity.y);
+		else if ((player.transform.position.x > gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false) {
+			speed = 1.0f;
+			NinCat.velocity = new Vector2 (speed, NinCat.velocity.y);
 		} 
+		else {
+			NinCat.velocity = new Vector2 (speed, NinCat.velocity.y);
+		}
+
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
@@ -37,5 +44,9 @@ public class NinjaCatto : MonoBehaviour {
 		if (coll.gameObject.CompareTag ("Floor") && jumping == true) {
 			jumping = false;
 		}
+		else if (coll.gameObject.CompareTag ("DogCatcherJR") && jumping == true) {
+			jumping = false;
+		}
+
 	}
 }

@@ -6,6 +6,7 @@ public class GoombaDCJ : MonoBehaviour {
 
 	private Rigidbody2D DCJ;
 	private GameObject player;
+	private float speed;
 
 	// Use this for initialization
 	void Start () {
@@ -15,10 +16,16 @@ public class GoombaDCJ : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if ((player.transform.position.x < gameObject.transform.position.x)) {
-			DCJ.velocity = new Vector2 (-0.75f, DCJ.velocity.y);
-		} else if ((player.transform.position.x > gameObject.transform.position.x)) {
-			DCJ.velocity = new Vector2 (0.75f, DCJ.velocity.y);
+		if ((player.transform.position.x < gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false) {
+			speed = -0.75f;
+			DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
 		} 
+		else if ((player.transform.position.x > gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false) {
+			speed = 0.75f;
+			DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
+		} 
+		else {
+			DCJ.velocity = new Vector2 (-speed, DCJ.velocity.y);
+		}
 	}
 }

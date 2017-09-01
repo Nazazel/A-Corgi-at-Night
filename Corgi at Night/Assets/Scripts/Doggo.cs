@@ -5,7 +5,7 @@ using UnityEngine;
 public class Doggo : MonoBehaviour {
 
 	//General
-	private bool dead;
+	public bool dead;
 	public bool hidden;
 	public bool hideable;
 	private GameObject attackBox;
