@@ -9,6 +9,7 @@ public class PatrolCatcher : MonoBehaviour {
 	private Rigidbody2D DC;
 	private GameObject player;
 	private bool right;
+	public Vector3 initSpawn;
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,7 @@ public class PatrolCatcher : MonoBehaviour {
 		DC = gameObject.GetComponent<Rigidbody2D> ();
 		originPos = gameObject.transform.position.x;
 		patrolArea = 2.0f;
+		initSpawn = gameObject.transform.position;
 		if ((player.transform.position.x < gameObject.transform.position.x)) {
 			right = false;
 		} 
@@ -27,6 +29,9 @@ public class PatrolCatcher : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (player.GetComponent<Doggo> ().dead == true) {
+			gameObject.transform.position = initSpawn;
+		}
 		if ((gameObject.transform.position.x <= originPos - patrolArea) && right == false) {
 			//Debug.Log ("Turn Right");
 			right = true;

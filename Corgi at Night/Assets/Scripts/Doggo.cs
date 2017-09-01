@@ -10,6 +10,9 @@ public class Doggo : MonoBehaviour {
 	public bool hideable;
 	private GameObject attackBox;
 	public Vector3 spawnpoint;
+
+	//Camera
+	public GameObject mainCam;
 	
 	//Movement
 	private bool canMove;
@@ -21,6 +24,7 @@ public class Doggo : MonoBehaviour {
 	private bool running;
 	private bool crouching;
 	private bool jumping;
+	private bool right;
 
 	//Sprites
 	private SpriteRenderer sr;
@@ -29,6 +33,7 @@ public class Doggo : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameObject.DontDestroyOnLoad (GameObject.Find("Corgo"));
+		mainCam = GameObject.Find ("Main Camera");
 		attackBox = GameObject.Find ("AttackBox");
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 		sr = gameObject.GetComponent<SpriteRenderer> ();
@@ -43,6 +48,7 @@ public class Doggo : MonoBehaviour {
 		jumping = false;
 		dead = false;
 		hidden = false;
+		right = true;
 	}
 
 	// Update is called once per frame
@@ -81,8 +87,12 @@ public class Doggo : MonoBehaviour {
 			}
 
 			if (Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
-				sr.flipX = true;
 				attackBox.transform.localPosition = new Vector3 (0.0f, 0.007f, attackBox.transform.position.z);
+				if (gameObject.transform.rotation.y == 0) {
+					mainCam.transform.localPosition = new Vector3 (0.0f, 0.26f, 10.0f);
+					mainCam.transform.Rotate (Vector3.up, 180.0f);
+					gameObject.transform.Rotate (Vector3.up, 180.0f);
+				}
 				if ((rb.velocity.x > 0.0f) && (rb.velocity.y != 0.0f)) {
 					rb.velocity = new Vector2 (0.0f, rb.velocity.y);
 				}
@@ -99,8 +109,12 @@ public class Doggo : MonoBehaviour {
 					rb.velocity = new Vector2 (-1.0f * speed, rb.velocity.y);
 				}
 			} else if (Input.GetKey (KeyCode.RightArrow) && !Input.GetKey (KeyCode.LeftArrow)) {
-				sr.flipX = false;
 				attackBox.transform.localPosition = new Vector3 (0.984f, 0.007f, attackBox.transform.position.z);
+				if (gameObject.transform.rotation.y != 0) {
+					mainCam.transform.localPosition = new Vector3 (0.0f, 0.26f, -10.0f);
+					mainCam.transform.Rotate (Vector3.up, 180.0f);
+					gameObject.transform.Rotate (Vector3.up, 180.0f);
+				}
 				if ((rb.velocity.x < 0.0f) && (rb.velocity.y != 0.0f)) {
 					rb.velocity = new Vector2 (0.0f, rb.velocity.y);
 
