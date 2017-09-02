@@ -10,6 +10,7 @@ public class PatrolCatcher : MonoBehaviour {
 	private GameObject player;
 	private bool right;
 	public Vector3 initSpawn;
+	private bool waittime;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,7 @@ public class PatrolCatcher : MonoBehaviour {
 		originPos = gameObject.transform.position.x;
 		patrolArea = 2.0f;
 		initSpawn = gameObject.transform.position;
+		waittime = false;
 		if ((player.transform.position.x < gameObject.transform.position.x)) {
 			right = false;
 		} 
@@ -30,7 +32,10 @@ public class PatrolCatcher : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (player.GetComponent<Doggo> ().dead == true) {
-			gameObject.transform.position = initSpawn;
+			if (waittime == false) {
+				waittime = true;
+				StartCoroutine ("Death");
+			}
 		}
 		if ((gameObject.transform.position.x <= originPos - patrolArea) && right == false) {
 			//Debug.Log ("Turn Right");
@@ -54,5 +59,15 @@ public class PatrolCatcher : MonoBehaviour {
 				DC.velocity = new Vector2 (-0.5f, DC.velocity.y);
 			}
 		}
+	}
+
+	public IEnumerator Death()
+	{
+		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+		yield return new WaitForSeconds (3.0f);
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+		gameObject.transform.position = initSpawn;
+		waittime = false;
 	}
 }
