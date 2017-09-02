@@ -25,25 +25,25 @@ public class NinjaCatto : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (player.GetComponent<Doggo> ().dead == true) {
-			if (waittime == false) {
-				waittime = true;
-				StartCoroutine ("Death");
+		if (player.GetComponent<Doggo> ().hidden == false) {
+			if (player.GetComponent<Doggo> ().dead == true) {
+				if (waittime == false) {
+					waittime = true;
+					StartCoroutine ("Death");
+				}
 			}
+			if (!jumping && player.GetComponent<Doggo> ().dead == false) {
+				NinCat.velocity = new Vector2 (NinCat.velocity.x, jumpHeight * 1.5f);
+				jumping = true;
+			}
+			if ((player.transform.position.x < gameObject.transform.position.x)) {
+				speed = -1.0f;
+				NinCat.velocity = new Vector2 (speed, NinCat.velocity.y);
+			} else if ((player.transform.position.x > gameObject.transform.position.x)) {
+				speed = 1.0f;
+				NinCat.velocity = new Vector2 (speed, NinCat.velocity.y);
+			} 
 		}
-		if (!jumping && player.GetComponent<Doggo> ().dead == false) {
-			NinCat.velocity = new Vector2 (NinCat.velocity.x, jumpHeight*1.5f);
-			jumping = true;
-		}
-		if ((player.transform.position.x < gameObject.transform.position.x)) {
-			speed = -1.0f;
-			NinCat.velocity = new Vector2 (speed, NinCat.velocity.y);
-		} 
-		else if ((player.transform.position.x > gameObject.transform.position.x)) {
-			speed = 1.0f;
-			NinCat.velocity = new Vector2 (speed, NinCat.velocity.y);
-		} 
-
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)

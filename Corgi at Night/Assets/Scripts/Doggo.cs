@@ -57,12 +57,12 @@ public class Doggo : MonoBehaviour {
 			if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && !hidden && hideable) {
 				Debug.Log ("Hidden");
 				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-				gameObject.GetComponent<BoxCollider2D> ().enabled = !gameObject.GetComponent<BoxCollider2D> ().enabled;
+				gameObject.GetComponent<PolygonCollider2D> ().enabled = !gameObject.GetComponent<PolygonCollider2D> ().enabled;
 				hidden = true;
 			}
 			else if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && hidden) {
 				Debug.Log ("!");
-				gameObject.GetComponent<BoxCollider2D> ().enabled = !gameObject.GetComponent<BoxCollider2D> ().enabled;
+				gameObject.GetComponent<PolygonCollider2D> ().enabled = !gameObject.GetComponent<PolygonCollider2D> ().enabled;
 				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 				hidden = false;
 			}

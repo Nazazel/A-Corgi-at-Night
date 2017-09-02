@@ -20,22 +20,22 @@ public class GoombaDCJ : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (player.GetComponent<Doggo> ().dead == true) {
-			if (waittime == false) {
-				waittime = true;
-				StartCoroutine ("Death");
+		if (player.GetComponent<Doggo> ().hidden == false) {
+			if (player.GetComponent<Doggo> ().dead == true) {
+				if (waittime == false) {
+					waittime = true;
+					StartCoroutine ("Death");
+				}
 			}
-		}
-		if ((player.transform.position.x < gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false) {
-			speed = -0.75f;
-			DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
-		} 
-		else if ((player.transform.position.x > gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false) {
-			speed = 0.75f;
-			DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
-		} 
-		else {
-			DCJ.velocity = new Vector2 (-speed, DCJ.velocity.y);
+			if ((player.transform.position.x < gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false) {
+				speed = -0.75f;
+				DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
+			} else if ((player.transform.position.x > gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false) {
+				speed = 0.75f;
+				DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
+			} else {
+				DCJ.velocity = new Vector2 (-speed, DCJ.velocity.y);
+			}
 		}
 	}
 
