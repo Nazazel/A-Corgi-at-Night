@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bork : MonoBehaviour {
+	
+	private GameObject player;
 	private bool delete;
 	private ArrayList enemies = new ArrayList ();
 	private GameObject temp;
 
 	// Use this for initialization
 	void Start () {
+		player = GameObject.Find ("QuinSpriteFinal_1");
 		delete = false;
 	}
 	
@@ -16,6 +19,7 @@ public class Bork : MonoBehaviour {
 	void Update () {
 		if (delete && Input.GetKeyDown (KeyCode.E)) {
 			StartCoroutine("BorkAttack");
+			player.GetComponent<Doggo> ().Bark();
 			delete = false;
 		}
 	}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Doggo : MonoBehaviour {
 
 	//General
+	public bool barking;
 	public bool dead;
 	public bool hidden;
 	public bool hideable;
@@ -25,6 +26,7 @@ public class Doggo : MonoBehaviour {
 	private bool crouching;
 	private bool jumping;
 	private bool right;
+	private bool landing;
 
 	//Sprites
 	private SpriteRenderer sr;
@@ -44,8 +46,10 @@ public class Doggo : MonoBehaviour {
 		jumpHeight = 2.0f;
 		canMove = true;
 		crouching = false;
+		barking = false;
 		running = false;
 		jumping = false;
+		landing = false;
 		dead = false;
 		hidden = false;
 		right = true;
@@ -53,9 +57,17 @@ public class Doggo : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (!dead && !landing && jumping) {
+			if (rb.velocity.y < 0) {
+				Debug.Log ("f");
+				landing = true;
+				pa.Play ("Land");
+			}
+		}
 		if (!dead) {
 			if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && !hidden && hideable) {
 				Debug.Log ("Hidden");
+				pa.Play ("Hide");
 				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 				gameObject.GetComponent<PolygonCollider2D> ().enabled = !gameObject.GetComponent<PolygonCollider2D> ().enabled;
 				hidden = true;
@@ -71,11 +83,15 @@ public class Doggo : MonoBehaviour {
 			
 			if (Input.GetKey (KeyCode.Space) && !crouching && !jumping) {
 				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight*1.5f);
+				pa.Play ("Jump");
 				jumping = true;
 			}
 
 			if (Input.GetKey (KeyCode.DownArrow) && !Input.GetKey (KeyCode.LeftShift)) {
 				crouching = true;
+				if (!Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
+					pa.Play("Crouch");
+				}
 			} else {
 				crouching = false;
 			}
@@ -98,9 +114,14 @@ public class Doggo : MonoBehaviour {
 				}
 
 				if (running) {
-					pa.Play("Run");
+					if (!jumping) {
+						pa.Play ("Run");
+					}
 					rb.velocity = new Vector2 (-1.0f * runSpeed, rb.velocity.y);
 				} else if (crouching) {
+					if (!jumping) {
+						pa.Play("CWalkR");
+					}
 					rb.velocity = new Vector2 (-1.0f * crouchSpeed, rb.velocity.y);
 				} else if (!running && !crouching) {
 					if (!jumping) {
@@ -121,9 +142,14 @@ public class Doggo : MonoBehaviour {
 				}
 
 				if (running) {
-					pa.Play("Run");
+					if (!jumping) {
+						pa.Play ("Run");
+					}
 					rb.velocity = new Vector2 (runSpeed, rb.velocity.y);
 				} else if (crouching) {
+					if (!jumping) {
+						pa.Play("CWalkR");
+					}
 					rb.velocity = new Vector2 (crouchSpeed, rb.velocity.y);
 				} else if (!running && !crouching) {
 					if (!jumping) {
@@ -131,7 +157,7 @@ public class Doggo : MonoBehaviour {
 					}
 					rb.velocity = new Vector2 (speed, rb.velocity.y);
 				}
-			} else if (!jumping) {
+			} else if (!jumping && !barking && !crouching) {
 				pa.Play("Stand");
 				rb.velocity = new Vector2 (0.0f, rb.velocity.y);
 			}
@@ -142,6 +168,7 @@ public class Doggo : MonoBehaviour {
 	{
 		if (coll.gameObject.CompareTag ("Floor") && jumping == true) {
 			jumping = false;
+			landing = false;
 		}
 		else if (coll.gameObject.CompareTag ("Death") && !dead) {
 			dead = true;
@@ -157,8 +184,19 @@ public class Doggo : MonoBehaviour {
 		}
 	}
 
+//  CODE FOR FALLING OFF PLATFORMS: DOESN'T WORK RIGHT NOW, BUT POSSIBLE
+//	void OnCollisionExit2D(Collision2D colll)
+//	{
+//		if (colll.gameObject.CompareTag ("Floor")) {
+//			Debug.Log ("Fall?");
+//			landing = true;
+//			pa.Play ("Land");
+//		}
+//	}
+
 	public IEnumerator Death()
 	{
+		pa.Play("DieR");
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 		yield return new WaitForSeconds (3.0f);
@@ -170,12 +208,26 @@ public class Doggo : MonoBehaviour {
 	public void StompBoop()
 	{
 		rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
+		pa.Play ("Jump");
 	}
 
 	public void Caught()
 	{
 		dead = true;
 		StartCoroutine("Death");
+	}
+
+	public void Bark()
+	{
+		StartCoroutine ("Borking");
+	}
+
+	public IEnumerator Borking()
+	{
+		barking = true;
+		pa.Play ("BorkR");
+		yield return new WaitForSeconds (0.15f);
+		barking = false;
 	}
 }
 
