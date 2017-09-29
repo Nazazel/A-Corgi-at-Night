@@ -22,9 +22,9 @@ public class Doggo : MonoBehaviour {
 	private float speed;
 	private float crouchSpeed;
 	private float jumpHeight;
-	private bool running;
-	private bool crouching;
-	private bool jumping;
+	public bool running;
+	public bool crouching;
+	public bool jumping;
 	private bool right;
 	private bool landing;
 
@@ -185,14 +185,15 @@ public class Doggo : MonoBehaviour {
 	}
 
 //  CODE FOR FALLING OFF PLATFORMS: DOESN'T WORK RIGHT NOW, BUT POSSIBLE
-//	void OnCollisionExit2D(Collision2D colll)
-//	{
-//		if (colll.gameObject.CompareTag ("Floor")) {
-//			Debug.Log ("Fall?");
-//			landing = true;
-//			pa.Play ("Land");
-//		}
-//	}
+	void OnCollisionExit2D(Collision2D colll)
+	{
+		if (colll.gameObject.CompareTag ("Floor") && !jumping) {
+			Debug.Log ("Fall?");
+			landing = true;
+			jumping = true;
+			pa.Play ("Land");
+		}
+	}
 
 	public IEnumerator Death()
 	{
