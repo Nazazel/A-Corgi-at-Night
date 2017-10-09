@@ -5,12 +5,18 @@ using UnityEngine;
 public class Doggo : MonoBehaviour {
 
 	//General
+	private bool idling;
+	private bool idlingtimerstarted;
 	public bool barking;
 	public bool dead;
 	public bool hidden;
 	public bool hideable;
 	private GameObject attackBox;
 	public Vector3 spawnpoint;
+
+	//Idle Animation List
+	public string[] lookingAnim;
+	public string[] sniffingAnim;
 
 	//Camera
 	public GameObject mainCam;
@@ -40,6 +46,12 @@ public class Doggo : MonoBehaviour {
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 		sr = gameObject.GetComponent<SpriteRenderer> ();
 		pa = gameObject.GetComponent<Animator> ();
+		lookingAnim = new string[2];
+		lookingAnim [0] = "LookSR";
+		lookingAnim [1] = "LookR";
+		sniffingAnim = new string[2];
+		sniffingAnim [0] = "SniffStand";
+		sniffingAnim [1] = "SniffWalk";
 		speed = 2.0f;
 		runSpeed = 4.0f;
 		crouchSpeed = 1.0f;
@@ -50,9 +62,12 @@ public class Doggo : MonoBehaviour {
 		running = false;
 		jumping = false;
 		landing = false;
+		idling = false;
+		idlingtimerstarted = false;
 		dead = false;
 		hidden = false;
 		right = true;
+
 	}
 
 	// Update is called once per frame
@@ -67,6 +82,9 @@ public class Doggo : MonoBehaviour {
 		if (!dead) {
 			if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && !hidden && hideable) {
 				Debug.Log ("Hidden");
+				idling = false;
+				StopCoroutine ("IdleAnimate");
+				idlingtimerstarted = false;
 				pa.Play ("Hide");
 				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 				gameObject.GetComponent<PolygonCollider2D> ().enabled = !gameObject.GetComponent<PolygonCollider2D> ().enabled;
@@ -82,12 +100,18 @@ public class Doggo : MonoBehaviour {
 		if (canMove && !dead && !hidden) {
 			
 			if (Input.GetKey (KeyCode.Space) && !crouching && !jumping) {
+				idling = false;
+				StopCoroutine ("IdleAnimate");
+				idlingtimerstarted = false;
 				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight*1.5f);
 				pa.Play ("Jump");
 				jumping = true;
 			}
 
 			if (Input.GetKey (KeyCode.DownArrow) && !Input.GetKey (KeyCode.LeftShift)) {
+				idling = false;
+				StopCoroutine ("IdleAnimate");
+				idlingtimerstarted = false;
 				crouching = true;
 				if (!Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
 					pa.Play("Crouch");
@@ -103,6 +127,9 @@ public class Doggo : MonoBehaviour {
 			}
 
 			if (Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
+				idling = false;
+				StopCoroutine ("IdleAnimate");
+				idlingtimerstarted = false;
 				attackBox.transform.localPosition = new Vector3 (0.0f, 0.007f, attackBox.transform.position.z);
 				if (gameObject.transform.rotation.y == 0) {
 					mainCam.transform.localPosition = new Vector3 (0.0f, 0.26f, 10.0f);
@@ -130,6 +157,9 @@ public class Doggo : MonoBehaviour {
 					rb.velocity = new Vector2 (-1.0f * speed, rb.velocity.y);
 				}
 			} else if (Input.GetKey (KeyCode.RightArrow) && !Input.GetKey (KeyCode.LeftArrow)) {
+				idling = false;
+				StopCoroutine ("IdleAnimate");
+				idlingtimerstarted = false;
 				attackBox.transform.localPosition = new Vector3 (0.984f, 0.007f, attackBox.transform.position.z);
 				if (gameObject.transform.rotation.y != 0) {
 					mainCam.transform.localPosition = new Vector3 (0.0f, 0.26f, -10.0f);
@@ -158,8 +188,13 @@ public class Doggo : MonoBehaviour {
 					rb.velocity = new Vector2 (speed, rb.velocity.y);
 				}
 			} else if (!jumping && !barking && !crouching) {
-				pa.Play("Stand");
 				rb.velocity = new Vector2 (0.0f, rb.velocity.y);
+				idling = true;
+			}
+
+			if (idling && !hidden && !idlingtimerstarted) {
+				idlingtimerstarted = true;
+				StartCoroutine ("IdleAnimate");
 			}
 		}
 	}
@@ -225,10 +260,32 @@ public class Doggo : MonoBehaviour {
 
 	public IEnumerator Borking()
 	{
+		idling = false;
+		StopCoroutine ("IdleAnimate");
+		idlingtimerstarted = false;
 		barking = true;
 		pa.Play ("BorkR");
 		yield return new WaitForSeconds (0.15f);
 		barking = false;
+	}
+
+	public IEnumerator IdleAnimate()
+	{
+		pa.Play("Idle1");
+		yield return new WaitForSeconds (15.0f);
+		pa.Play (lookingAnim [Random.Range (0, 2)]);
+		yield return new WaitForSeconds (1.15f);
+		pa.Play("Idle1");
+		yield return new WaitForSeconds (15.0f);
+		pa.Play ("SniffStand");
+		yield return new WaitForSeconds (1.15f);
+		pa.Play("Idle1");
+		yield return new WaitForSeconds (15.0f);
+		pa.Play (lookingAnim [Random.Range (0, 2)]);
+		yield return new WaitForSeconds (1.15f);
+		pa.Play("Idle1");
+		yield return new WaitForSeconds (15.0f);
+		pa.Play ("SitR");
 	}
 }
 
