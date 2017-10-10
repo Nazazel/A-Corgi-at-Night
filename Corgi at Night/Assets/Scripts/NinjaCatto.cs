@@ -31,7 +31,7 @@ public class NinjaCatto : MonoBehaviour {
 			if (player.GetComponent<Doggo> ().dead == true) {
 				if (waittime == false) {
 					waittime = true;
-					StartCoroutine ("Death");
+					StartCoroutine ("Death"); 
 				}
 			}
 			if (!jumping && player.GetComponent<Doggo> ().dead == false) {
