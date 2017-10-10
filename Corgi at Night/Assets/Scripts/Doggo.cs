@@ -110,7 +110,7 @@ public class Doggo : MonoBehaviour {
 				jumping = true;
 			}
 
-			if (Input.GetKey (KeyCode.DownArrow) && !Input.GetKey (KeyCode.LeftShift)) {
+			if (Input.GetKey (KeyCode.DownArrow) && !Input.GetKey (KeyCode.LeftShift) && !jumping) {
 				idling = false;
 				StopCoroutine ("IdleAnimate");
 				idlingtimerstarted = false;
