@@ -50,10 +50,11 @@ public class Bork : MonoBehaviour {
 	private IEnumerator BorkAttack()
 	{
 		for (int i = 0; i < enemies.Count; i++) {
-			Debug.Log ("Enemy Deleted");
 			temp = (GameObject)enemies [i];
-			Destroy (temp);
+			temp.SendMessage("Die");
 		}
 		yield return new WaitForSeconds (0.01f);
+		enemies.Clear ();
+		enemies.TrimToSize ();
 	}
 }

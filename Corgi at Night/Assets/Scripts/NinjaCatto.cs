@@ -8,6 +8,7 @@ public class NinjaCatto : MonoBehaviour {
 	public Vector3 initSpawn;
 	private GameObject player;
 	public float speed;
+	private PolygonCollider2D catColl;
 
 	private float jumpHeight;
 	private bool jumping;
@@ -18,6 +19,7 @@ public class NinjaCatto : MonoBehaviour {
 		player = GameObject.Find ("QuinSpriteFinal_1");
 		initSpawn = gameObject.transform.position;
 		NinCat = gameObject.GetComponent<Rigidbody2D> ();
+		catColl = gameObject.GetComponent<PolygonCollider2D> ();
 		jumpHeight = 2.0f;
 		jumping = false;
 		waittime = false;
@@ -70,5 +72,15 @@ public class NinjaCatto : MonoBehaviour {
 		gameObject.transform.position = initSpawn;
 		jumping = false;
 		waittime = false;
+	}
+
+	public IEnumerator Die()
+	{
+		catColl.enabled = false;
+		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+		yield return new WaitForSeconds (1.0f);
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+		Destroy (gameObject);
 	}
 }

@@ -82,6 +82,7 @@ public class Doggo : MonoBehaviour {
 		if (!dead) {
 			if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && !hidden && hideable) {
 				Debug.Log ("Hidden");
+				sr.sortingOrder = 28;
 				idling = false;
 				StopCoroutine ("IdleAnimate");
 				idlingtimerstarted = false;
@@ -92,6 +93,7 @@ public class Doggo : MonoBehaviour {
 			}
 			else if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && hidden) {
 				Debug.Log ("!");
+				sr.sortingOrder = 30;
 				gameObject.GetComponent<PolygonCollider2D> ().enabled = !gameObject.GetComponent<PolygonCollider2D> ().enabled;
 				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 				hidden = false;
@@ -204,6 +206,7 @@ public class Doggo : MonoBehaviour {
 		if (coll.gameObject.CompareTag ("Floor") && jumping == true) {
 			jumping = false;
 			landing = false;
+			pa.Play ("Stand");
 		}
 		else if (coll.gameObject.CompareTag ("Death") && !dead) {
 			dead = true;
@@ -233,12 +236,14 @@ public class Doggo : MonoBehaviour {
 	public IEnumerator Death()
 	{
 		pa.Play("DieR");
+		StopCoroutine ("IdleAnimate");
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 		yield return new WaitForSeconds (3.0f);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 		gameObject.transform.position = spawnpoint;
 		dead = false;
+		landing = false;
 	}
 
 	public void StompBoop()
@@ -271,20 +276,20 @@ public class Doggo : MonoBehaviour {
 
 	public IEnumerator IdleAnimate()
 	{
-		pa.Play("Idle1");
-		yield return new WaitForSeconds (15.0f);
+		pa.Play("Stand");
+		yield return new WaitForSeconds (5.0f);
 		pa.Play (lookingAnim [Random.Range (0, 2)]);
-		yield return new WaitForSeconds (1.15f);
-		pa.Play("Idle1");
-		yield return new WaitForSeconds (15.0f);
+		yield return new WaitForSeconds (2.15f);
+		pa.Play("Stand");
+		yield return new WaitForSeconds (5.0f);
 		pa.Play ("SniffStand");
-		yield return new WaitForSeconds (1.15f);
-		pa.Play("Idle1");
-		yield return new WaitForSeconds (15.0f);
+		yield return new WaitForSeconds (2.15f);
+		pa.Play("Stand");
+		yield return new WaitForSeconds (5.0f);
 		pa.Play (lookingAnim [Random.Range (0, 2)]);
-		yield return new WaitForSeconds (1.15f);
-		pa.Play("Idle1");
-		yield return new WaitForSeconds (15.0f);
+		yield return new WaitForSeconds (2.15f);
+		pa.Play("Stand");
+		yield return new WaitForSeconds (5.0f);
 		pa.Play ("SitR");
 	}
 }
