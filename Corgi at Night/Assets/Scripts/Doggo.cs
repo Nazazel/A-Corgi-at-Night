@@ -55,7 +55,7 @@ public class Doggo : MonoBehaviour {
 		speed = 2.0f;
 		runSpeed = 4.0f;
 		crouchSpeed = 1.0f;
-		jumpHeight = 2.0f;
+		jumpHeight = 3.0f;
 		canMove = true;
 		crouching = false;
 		barking = false;
@@ -134,7 +134,7 @@ public class Doggo : MonoBehaviour {
 				idlingtimerstarted = false;
 				attackBox.transform.localPosition = new Vector3 (0.0f, 0.007f, attackBox.transform.position.z);
 				if (gameObject.transform.rotation.y == 0) {
-					mainCam.transform.localPosition = new Vector3 (0.0f, 0.26f, 10.0f);
+					mainCam.transform.localPosition = new Vector3 (0.0f, 0.36f, 10.0f);
 					mainCam.transform.Rotate (Vector3.up, 180.0f);
 					gameObject.transform.Rotate (Vector3.up, 180.0f);
 				}
@@ -164,7 +164,7 @@ public class Doggo : MonoBehaviour {
 				idlingtimerstarted = false;
 				attackBox.transform.localPosition = new Vector3 (0.984f, 0.007f, attackBox.transform.position.z);
 				if (gameObject.transform.rotation.y != 0) {
-					mainCam.transform.localPosition = new Vector3 (0.0f, 0.26f, -10.0f);
+					mainCam.transform.localPosition = new Vector3 (0.0f, 0.36f, -10.0f);
 					mainCam.transform.Rotate (Vector3.up, 180.0f);
 					gameObject.transform.Rotate (Vector3.up, 180.0f);
 				}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class NinjaCatto : MonoBehaviour {
 
 	private Rigidbody2D NinCat;
+	private Animator ca;
 	public Vector3 initSpawn;
 	private GameObject player;
 	public float speed;
@@ -20,7 +21,9 @@ public class NinjaCatto : MonoBehaviour {
 		initSpawn = gameObject.transform.position;
 		NinCat = gameObject.GetComponent<Rigidbody2D> ();
 		catColl = gameObject.GetComponent<PolygonCollider2D> ();
-		jumpHeight = 2.0f;
+		ca = gameObject.GetComponent<Animator> ();
+		speed = -1.0f;
+		jumpHeight = 3.0f;
 		jumping = false;
 		waittime = false;
 	}
@@ -35,16 +38,26 @@ public class NinjaCatto : MonoBehaviour {
 				}
 			}
 			if (!jumping && player.GetComponent<Doggo> ().dead == false) {
+				ca.Play ("CatJumpUp");
 				NinCat.velocity = new Vector2 (NinCat.velocity.x, jumpHeight * 1.5f);
 				jumping = true;
 			}
 			if ((player.transform.position.x < gameObject.transform.position.x)) {
 				speed = -1.0f;
+				if (gameObject.GetComponent<SpriteRenderer> ().flipX == true) {
+					gameObject.GetComponent<SpriteRenderer> ().flipX = false;
+				}
 				NinCat.velocity = new Vector2 (speed, NinCat.velocity.y);
 			} else if ((player.transform.position.x > gameObject.transform.position.x)) {
 				speed = 1.0f;
+				if (gameObject.GetComponent<SpriteRenderer> ().flipX == false) {
+					gameObject.GetComponent<SpriteRenderer> ().flipX = true;
+				}
 				NinCat.velocity = new Vector2 (speed, NinCat.velocity.y);
 			} 
+			if (NinCat.velocity.y < 0) {
+				ca.Play ("CatJumpDown");
+			}
 		}
 	}
 
@@ -77,9 +90,10 @@ public class NinjaCatto : MonoBehaviour {
 	public IEnumerator Die()
 	{
 		catColl.enabled = false;
+		ca.Play ("CatPoof");
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-		yield return new WaitForSeconds (1.0f);
+		yield return new WaitForSeconds (1.05f);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 		Destroy (gameObject);
 	}

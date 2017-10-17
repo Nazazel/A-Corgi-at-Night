@@ -6,6 +6,7 @@ public class GoombaDCJ : MonoBehaviour {
 
 	private Rigidbody2D DCJ;
 	private GameObject player;
+	private Animator ga;
 	private float speed;
 	public Vector3 initSpawn;
 	private bool waittime;
@@ -13,6 +14,7 @@ public class GoombaDCJ : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("QuinSpriteFinal_1");
+		ga = gameObject.GetComponent<Animator> ();
 		initSpawn = gameObject.transform.position;
 		DCJ = gameObject.GetComponent<Rigidbody2D> ();
 		waittime = false;
@@ -28,9 +30,15 @@ public class GoombaDCJ : MonoBehaviour {
 				}
 			}
 			if ((player.transform.position.x < gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false) {
+				if (gameObject.GetComponent<SpriteRenderer> ().flipX == true) {
+					gameObject.GetComponent<SpriteRenderer> ().flipX = false;
+				}
 				speed = -0.75f;
 				DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
 			} else if ((player.transform.position.x > gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false) {
+				if (gameObject.GetComponent<SpriteRenderer> ().flipX == false) {
+					gameObject.GetComponent<SpriteRenderer> ().flipX = true;
+				}
 				speed = 0.75f;
 				DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
 			} else {
@@ -41,11 +49,21 @@ public class GoombaDCJ : MonoBehaviour {
 
 	public IEnumerator Death()
 	{
+		ga.enabled = false;
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 		yield return new WaitForSeconds (3.0f);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 		gameObject.transform.position = initSpawn;
+		ga.enabled = true;
 		waittime = false;
+	}
+
+	public IEnumerator Die()
+	{
+		gameObject.GetComponent<BoxCollider2D> ().enabled = false;
+		ga.Play("DCJDie");
+		yield return new WaitForSeconds (0.7f);
+		Destroy (gameObject);
 	}
 }
