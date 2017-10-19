@@ -22,6 +22,7 @@ public class Doggo : MonoBehaviour {
 	public GameObject mainCam;
 
 	//Audio Stuff
+	private GameObject mainListener;
 	private AudioSource QuinnAS;
 	private int barkQ;
 	public AudioClip barkAudio1;
@@ -30,6 +31,7 @@ public class Doggo : MonoBehaviour {
 	public AudioClip jumpAudio;
 	public AudioClip deathAudio;
 	public AudioClip sniffAudio;
+	public AudioClip stompAudio;
 
 	//Movement
 	private bool canMove;
@@ -51,6 +53,7 @@ public class Doggo : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		barkQ = 0;
+		mainListener = GameObject.Find ("AudioListener");
 		GameObject.DontDestroyOnLoad (GameObject.Find("Corgo"));
 		mainCam = GameObject.Find ("Main Camera");
 		attackBox = GameObject.Find ("AttackBox");
@@ -114,8 +117,10 @@ public class Doggo : MonoBehaviour {
 		if (canMove && !dead && !hidden) {
 			
 			if (Input.GetKey (KeyCode.Space) && !crouching && !jumping) {
+				QuinnAS.clip = jumpAudio;
 				idling = false;
 				StopCoroutine ("IdleAnimate");
+				QuinnAS.Play ();
 				idlingtimerstarted = false;
 				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight*1.5f);
 				pa.Play ("Jump");
@@ -144,11 +149,12 @@ public class Doggo : MonoBehaviour {
 				idling = false;
 				StopCoroutine ("IdleAnimate");
 				idlingtimerstarted = false;
-				attackBox.transform.localPosition = new Vector3 (0.0f, 0.007f, attackBox.transform.position.z);
+				//attackBox.transform.localPosition = new Vector (0.0f, 0.007f, attackBox.transform.position.z);
 				if (gameObject.transform.rotation.y == 0) {
 					mainCam.transform.localPosition = new Vector3 (0.0f, 0.36f, 10.0f);
 					mainCam.transform.Rotate (Vector3.up, 180.0f);
 					gameObject.transform.Rotate (Vector3.up, 180.0f);
+					mainListener.transform.Rotate (Vector3.up, 180.0f);
 				}
 				if ((rb.velocity.x > 0.0f) && (rb.velocity.y != 0.0f)) {
 					rb.velocity = new Vector2 (0.0f, rb.velocity.y);
@@ -174,11 +180,12 @@ public class Doggo : MonoBehaviour {
 				idling = false;
 				StopCoroutine ("IdleAnimate");
 				idlingtimerstarted = false;
-				attackBox.transform.localPosition = new Vector3 (0.984f, 0.007f, attackBox.transform.position.z);
+				//attackBox.transform.localPosition = new Vector3 (0.984f, 0.007f, attackBox.transform.position.z);
 				if (gameObject.transform.rotation.y != 0) {
 					mainCam.transform.localPosition = new Vector3 (0.0f, 0.36f, -10.0f);
 					mainCam.transform.Rotate (Vector3.up, 180.0f);
 					gameObject.transform.Rotate (Vector3.up, 180.0f);
+					mainListener.transform.Rotate (Vector3.up, 180.0f);
 				}
 				if ((rb.velocity.x < 0.0f) && (rb.velocity.y != 0.0f)) {
 					rb.velocity = new Vector2 (0.0f, rb.velocity.y);
@@ -262,6 +269,8 @@ public class Doggo : MonoBehaviour {
 
 	public void StompBoop()
 	{
+		QuinnAS.clip = stompAudio;
+		QuinnAS.Play ();
 		rb.velocity = new Vector2 (rb.velocity.x, jumpHeight);
 		pa.Play ("Jump");
 	}
@@ -289,6 +298,7 @@ public class Doggo : MonoBehaviour {
 			QuinnAS.clip = barkAudio3;
 		}
 		idling = false;
+		QuinnAS.Play ();
 		StopCoroutine ("IdleAnimate");
 		idlingtimerstarted = false;
 		barking = true;
@@ -311,6 +321,8 @@ public class Doggo : MonoBehaviour {
 		yield return new WaitForSeconds (2.15f);
 		pa.Play("Stand");
 		yield return new WaitForSeconds (5.0f);
+		QuinnAS.clip = sniffAudio;
+		QuinnAS.Play ();
 		pa.Play ("SniffStand");
 		yield return new WaitForSeconds (2.15f);
 		pa.Play("Stand");

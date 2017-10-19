@@ -42,6 +42,7 @@ public class NinjaCatto : MonoBehaviour {
 				}
 			}
 			if (!jumping && player.GetComponent<Doggo> ().dead == false) {
+				caDB.Play ();
 				ca.Play ("CatJumpUp");
 				NinCat.velocity = new Vector2 (NinCat.velocity.x, jumpHeight * 1.5f);
 				jumping = true;
