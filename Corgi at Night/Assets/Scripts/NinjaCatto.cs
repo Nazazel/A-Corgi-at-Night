@@ -10,6 +10,8 @@ public class NinjaCatto : MonoBehaviour {
 	private GameObject player;
 	public float speed;
 	private PolygonCollider2D catColl;
+	private AudioSource caDS;
+	private AudioSource caDB;
 
 	private float jumpHeight;
 	private bool jumping;
@@ -22,6 +24,8 @@ public class NinjaCatto : MonoBehaviour {
 		NinCat = gameObject.GetComponent<Rigidbody2D> ();
 		catColl = gameObject.GetComponent<PolygonCollider2D> ();
 		ca = gameObject.GetComponent<Animator> ();
+		caDS = GameObject.Find("NINDEATH").GetComponent<AudioSource> ();
+		caDB = GameObject.Find("NINBOUNCE").GetComponent<AudioSource> ();
 		speed = -1.0f;
 		jumpHeight = 3.0f;
 		jumping = false;
@@ -90,6 +94,7 @@ public class NinjaCatto : MonoBehaviour {
 	public IEnumerator Die()
 	{
 		catColl.enabled = false;
+		caDS.Play ();
 		ca.Play ("CatPoof");
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;

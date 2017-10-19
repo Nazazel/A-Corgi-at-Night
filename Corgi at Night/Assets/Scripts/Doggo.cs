@@ -20,7 +20,17 @@ public class Doggo : MonoBehaviour {
 
 	//Camera
 	public GameObject mainCam;
-	
+
+	//Audio Stuff
+	private AudioSource QuinnAS;
+	private int barkQ;
+	public AudioClip barkAudio1;
+	public AudioClip barkAudio2;
+	public AudioClip barkAudio3;
+	public AudioClip jumpAudio;
+	public AudioClip deathAudio;
+	public AudioClip sniffAudio;
+
 	//Movement
 	private bool canMove;
 	private Rigidbody2D rb;
@@ -40,12 +50,14 @@ public class Doggo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		barkQ = 0;
 		GameObject.DontDestroyOnLoad (GameObject.Find("Corgo"));
 		mainCam = GameObject.Find ("Main Camera");
 		attackBox = GameObject.Find ("AttackBox");
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 		sr = gameObject.GetComponent<SpriteRenderer> ();
 		pa = gameObject.GetComponent<Animator> ();
+		QuinnAS = gameObject.GetComponent<AudioSource> ();
 		lookingAnim = new string[2];
 		lookingAnim [0] = "LookSR";
 		lookingAnim [1] = "LookR";
@@ -235,6 +247,8 @@ public class Doggo : MonoBehaviour {
 
 	public IEnumerator Death()
 	{
+		QuinnAS.clip = deathAudio;
+		QuinnAS.Play ();
 		pa.Play("DieR");
 		StopCoroutine ("IdleAnimate");
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
@@ -265,12 +279,27 @@ public class Doggo : MonoBehaviour {
 
 	public IEnumerator Borking()
 	{
+		if (barkQ == 0) {
+			QuinnAS.clip = barkAudio1;
+		} 
+		else if (barkQ == 1) {
+			QuinnAS.clip = barkAudio2;
+		} 
+		else if (barkQ == 2) {
+			QuinnAS.clip = barkAudio3;
+		}
 		idling = false;
 		StopCoroutine ("IdleAnimate");
 		idlingtimerstarted = false;
 		barking = true;
 		pa.Play ("BorkR");
 		yield return new WaitForSeconds (0.15f);
+		if (barkQ < 2) {
+			barkQ += 1;
+		} 
+		else {
+			barkQ = 0;
+		}
 		barking = false;
 	}
 
