@@ -374,7 +374,7 @@ public class Doggo : MonoBehaviour {
 
 	public IEnumerator HideCool()
 	{
-		yield return new WaitForSeconds (0.5f);
+		yield return new WaitForSeconds (0.1f);
 		cooldown = false;
 	}
 }
