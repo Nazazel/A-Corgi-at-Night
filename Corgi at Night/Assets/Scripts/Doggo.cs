@@ -99,6 +99,9 @@ public class Doggo : MonoBehaviour {
 			}
 		}
 		if (!dead) {
+			if (hidden) {
+				pa.Play ("Hide");
+			}
 
 			if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && !hidden && hideable) {
 				Debug.Log ("Hidden");
@@ -113,7 +116,7 @@ public class Doggo : MonoBehaviour {
 				cooldown = true;
 				StartCoroutine ("HideCool");
 			}
-			else if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && hidden && !cooldown) {
+			else if (Input.GetKeyDown (KeyCode.H) && !crouching && hidden && !cooldown) {
 				Debug.Log ("!");
 				sr.sortingOrder = 30;
 				gameObject.GetComponent<PolygonCollider2D> ().enabled = !gameObject.GetComponent<PolygonCollider2D> ().enabled;
