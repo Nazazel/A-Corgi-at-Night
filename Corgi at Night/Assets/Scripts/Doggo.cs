@@ -11,6 +11,7 @@ public class Doggo : MonoBehaviour {
 	public bool dead;
 	public bool hidden;
 	public bool hideable;
+	private bool cooldown;
 	private GameObject attackBox;
 	public Vector3 spawnpoint;
 
@@ -32,6 +33,8 @@ public class Doggo : MonoBehaviour {
 	public AudioClip deathAudio;
 	public AudioClip sniffAudio;
 	public AudioClip stompAudio;
+	public AudioClip walkAudio;
+	public AudioClip runAudio;
 
 	//Movement
 	private bool canMove;
@@ -53,6 +56,7 @@ public class Doggo : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		barkQ = 0;
+		cooldown = false;
 		mainListener = GameObject.Find ("AudioListener");
 		GameObject.DontDestroyOnLoad (GameObject.Find("Corgo"));
 		mainCam = GameObject.Find ("Main Camera");
@@ -88,13 +92,14 @@ public class Doggo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!dead && !landing && jumping) {
-			if (rb.velocity.y < 0) {
-				Debug.Log ("f");
+			if (rb.velocity.y < -0.5f) {
+				Debug.Log ("Free Falling");
 				landing = true;
 				pa.Play ("Land");
 			}
 		}
 		if (!dead) {
+
 			if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && !hidden && hideable) {
 				Debug.Log ("Hidden");
 				sr.sortingOrder = 28;
@@ -105,8 +110,10 @@ public class Doggo : MonoBehaviour {
 				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 				gameObject.GetComponent<PolygonCollider2D> ().enabled = !gameObject.GetComponent<PolygonCollider2D> ().enabled;
 				hidden = true;
+				cooldown = true;
+				StartCoroutine ("HideCool");
 			}
-			else if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && hidden) {
+			else if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && hidden && !cooldown) {
 				Debug.Log ("!");
 				sr.sortingOrder = 30;
 				gameObject.GetComponent<PolygonCollider2D> ().enabled = !gameObject.GetComponent<PolygonCollider2D> ().enabled;
@@ -162,16 +169,28 @@ public class Doggo : MonoBehaviour {
 
 				if (running) {
 					if (!jumping) {
+						QuinnAS.clip = runAudio;
+						if (!QuinnAS.isPlaying) {
+							QuinnAS.Play ();
+						}
 						pa.Play ("Run");
 					}
 					rb.velocity = new Vector2 (-1.0f * runSpeed, rb.velocity.y);
 				} else if (crouching) {
 					if (!jumping) {
+						QuinnAS.clip = runAudio;
+						if (!QuinnAS.isPlaying) {
+							QuinnAS.Play ();
+						}
 						pa.Play("CWalkR");
 					}
 					rb.velocity = new Vector2 (-1.0f * crouchSpeed, rb.velocity.y);
 				} else if (!running && !crouching) {
 					if (!jumping) {
+						QuinnAS.clip = walkAudio;
+						if (!QuinnAS.isPlaying) {
+							QuinnAS.Play ();
+						}
 						pa.Play("Walk");
 					}
 					rb.velocity = new Vector2 (-1.0f * speed, rb.velocity.y);
@@ -194,16 +213,28 @@ public class Doggo : MonoBehaviour {
 
 				if (running) {
 					if (!jumping) {
+						QuinnAS.clip = runAudio;
+						if (!QuinnAS.isPlaying) {
+							QuinnAS.Play ();
+						}
 						pa.Play ("Run");
 					}
 					rb.velocity = new Vector2 (runSpeed, rb.velocity.y);
 				} else if (crouching) {
 					if (!jumping) {
+						QuinnAS.clip = runAudio;
+						if (!QuinnAS.isPlaying) {
+							QuinnAS.Play ();
+						}
 						pa.Play("CWalkR");
 					}
 					rb.velocity = new Vector2 (crouchSpeed, rb.velocity.y);
 				} else if (!running && !crouching) {
 					if (!jumping) {
+						QuinnAS.clip = walkAudio;
+						if (!QuinnAS.isPlaying) {
+							QuinnAS.Play ();
+						}
 						pa.Play("Walk");
 					}
 					rb.velocity = new Vector2 (speed, rb.velocity.y);
@@ -214,6 +245,9 @@ public class Doggo : MonoBehaviour {
 			}
 
 			if (idling && !hidden && !idlingtimerstarted) {
+				if (QuinnAS.isPlaying && (QuinnAS.clip == walkAudio || QuinnAS.clip == runAudio)) {
+					QuinnAS.Stop ();
+				}
 				idlingtimerstarted = true;
 				StartCoroutine ("IdleAnimate");
 			}
@@ -242,6 +276,7 @@ public class Doggo : MonoBehaviour {
 	}
 
 //  CODE FOR FALLING OFF PLATFORMS: DOESN'T WORK RIGHT NOW, BUT POSSIBLE
+//	JK, WORKS NOW (FUCK COLLIDERS...)
 	void OnCollisionExit2D(Collision2D colll)
 	{
 		if (colll.gameObject.CompareTag ("Floor") && !jumping) {
@@ -332,6 +367,12 @@ public class Doggo : MonoBehaviour {
 		pa.Play("Stand");
 		yield return new WaitForSeconds (5.0f);
 		pa.Play ("SitR");
+	}
+
+	public IEnumerator HideCool()
+	{
+		yield return new WaitForSeconds (0.1f);
+		cooldown = false;
 	}
 }
 

@@ -1488,6 +1488,16 @@ Prefab:
       propertyPath: stompAudio
       value: 
       objectReference: {fileID: 8300000, guid: dbcb14c0267ac9f43b79792b51e07c90, type: 3}
+    - target: {fileID: 114836739128514418, guid: 823adabb5f67a1c43bf5ddc4e07406a1,
+        type: 2}
+      propertyPath: walkAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: ca227250855e9f0468c11ea2e7eec5aa, type: 3}
+    - target: {fileID: 114836739128514418, guid: 823adabb5f67a1c43bf5ddc4e07406a1,
+        type: 2}
+      propertyPath: runAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 40e618548be17dc47b137683ef419a06, type: 3}
     m_RemovedComponents:
     - {fileID: 81270429302957634, guid: 823adabb5f67a1c43bf5ddc4e07406a1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 823adabb5f67a1c43bf5ddc4e07406a1, type: 2}
