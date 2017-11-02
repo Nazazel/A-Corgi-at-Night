@@ -91,7 +91,7 @@ public class Doggo : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (!dead && !landing && jumping) {
+		if (!dead && !landing && jumping && !hidden) {
 			if (rb.velocity.y < -0.5f) {
 				Debug.Log ("Free Falling");
 				landing = true;
@@ -102,6 +102,7 @@ public class Doggo : MonoBehaviour {
 
 			if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && !hidden && hideable) {
 				Debug.Log ("Hidden");
+				hidden = true;
 				sr.sortingOrder = 28;
 				idling = false;
 				StopCoroutine ("IdleAnimate");
@@ -109,7 +110,6 @@ public class Doggo : MonoBehaviour {
 				pa.Play ("Hide");
 				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 				gameObject.GetComponent<PolygonCollider2D> ().enabled = !gameObject.GetComponent<PolygonCollider2D> ().enabled;
-				hidden = true;
 				cooldown = true;
 				StartCoroutine ("HideCool");
 			}
