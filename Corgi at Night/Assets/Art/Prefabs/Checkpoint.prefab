@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4474267498159390}
-  - component: {fileID: 58557721419294762}
   - component: {fileID: 114074527478775722}
+  - component: {fileID: 61040179307171346}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Checkpoint
@@ -34,15 +34,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1454597234778748}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.481, y: -0.73, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -24.85, y: 0.2875709, z: 0}
   m_LocalScale: {x: 0.21299338, y: 0.21299338, z: 0.21299338}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58557721419294762
-CircleCollider2D:
+--- !u!61 &61040179307171346
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -52,9 +52,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 13.951628}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 78.39451}
 --- !u!114 &114074527478775722
 MonoBehaviour:
   m_ObjectHideFlags: 1
