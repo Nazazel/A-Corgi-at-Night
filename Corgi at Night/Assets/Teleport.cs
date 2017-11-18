@@ -6,18 +6,18 @@ public class Teleport : MonoBehaviour {
 
 	public GameObject teleportExit;
 	private bool teleportable;
-	private Doggo player;
+	private GameObject player;
 
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find ("QuinSpriteFinal_1").GetComponent<Doggo> ();
+		player = GameObject.Find ("QuinSpriteFinal_1");
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.R) && !player.jumping && !player.barking && !player.crouching) {
-			
+		if (Input.GetKeyDown (KeyCode.R) && !player.GetComponent<Doggo> ().jumping && !player.GetComponent<Doggo> ().barking && !player.GetComponent<Doggo> ().crouching && teleportable) {
+			player.transform.position = new Vector3(teleportExit.transform.position.x, teleportExit.transform.position.y+0.1f, teleportExit.transform.position.z);
 		}
 	}
 

@@ -29,19 +29,19 @@ public class GoombaDCJ : MonoBehaviour {
 					StartCoroutine ("Death");
 				}
 			}
-			if ((player.transform.position.x < gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false) {
+			if ((player.transform.position.x < gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7) {
 				if (gameObject.GetComponent<SpriteRenderer> ().flipX == true) {
 					gameObject.GetComponent<SpriteRenderer> ().flipX = false;
 				}
 				speed = -0.75f;
 				DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
-			} else if ((player.transform.position.x > gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false) {
+			} else if ((player.transform.position.x > gameObject.transform.position.x) && player.GetComponent<Doggo> ().dead == false && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7) {
 				if (gameObject.GetComponent<SpriteRenderer> ().flipX == false) {
 					gameObject.GetComponent<SpriteRenderer> ().flipX = true;
 				}
 				speed = 0.75f;
 				DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
-			} else {
+			} else if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7) {
 				DCJ.velocity = new Vector2 (-speed, DCJ.velocity.y);
 			}
 		}

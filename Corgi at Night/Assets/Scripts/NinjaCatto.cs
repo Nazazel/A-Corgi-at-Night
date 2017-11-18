@@ -45,13 +45,13 @@ public class NinjaCatto : MonoBehaviour {
 				NinCat.velocity = new Vector2 (NinCat.velocity.x, jumpHeight * 1.5f);
 				jumping = true;
 			}
-			if ((player.transform.position.x < gameObject.transform.position.x)) {
+			if ((player.transform.position.x < gameObject.transform.position.x) && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7) {
 				speed = -1.0f;
 				if (gameObject.GetComponent<SpriteRenderer> ().flipX == true) {
 					gameObject.GetComponent<SpriteRenderer> ().flipX = false;
 				}
 				NinCat.velocity = new Vector2 (speed, NinCat.velocity.y);
-			} else if ((player.transform.position.x > gameObject.transform.position.x)) {
+			} else if ((player.transform.position.x > gameObject.transform.position.x) && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7) {
 				speed = 1.0f;
 				if (gameObject.GetComponent<SpriteRenderer> ().flipX == false) {
 					gameObject.GetComponent<SpriteRenderer> ().flipX = true;

@@ -17,7 +17,7 @@ public class Bork : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<Doggo> ().dead == false && player.GetComponent<Doggo> ().barking == false && player.GetComponent<Doggo> ().running == false && player.GetComponent<Doggo> ().crouching == false && player.GetComponent<Doggo> ().jumping == false) {
+		if (Input.GetKeyDown (KeyCode.E) && player.GetComponent<Doggo> ().dead == false && player.GetComponent<Doggo> ().hidden == false && player.GetComponent<Rigidbody2D>().velocity.x == 0 && player.GetComponent<Doggo> ().barking == false && player.GetComponent<Doggo> ().running == false && player.GetComponent<Doggo> ().crouching == false && player.GetComponent<Doggo> ().jumping == false) {
 			player.GetComponent<Doggo> ().Bark ();
 			if (delete) {
 				StartCoroutine ("BorkAttack");

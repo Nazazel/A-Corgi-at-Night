@@ -10,13 +10,17 @@ public class CheckpointSystem : MonoBehaviour {
 	void Start () {
 		player = GameObject.Find ("QuinSpriteFinal_1");
 	}
-	
+
 	void OnTriggerEnter2D(Collider2D coll)
 	{
 		if (coll.gameObject.CompareTag ("Player")) {
-			player.GetComponent<Doggo>().spawnpoint = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-			Debug.Log (gameObject.name);
-			Destroy (gameObject);
+			if (player.GetComponent<Doggo> ().spawnpoint != gameObject.transform.position) {
+				player.GetComponent<Doggo> ().spawnpoint = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+				Debug.Log (gameObject.name);
+			} 
+			else {
+				Debug.Log ("You feel like you've been here before...");
+			}
 		}
 	}
 		
