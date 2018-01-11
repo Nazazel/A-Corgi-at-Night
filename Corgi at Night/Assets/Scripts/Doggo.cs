@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Doggo : MonoBehaviour {
 
@@ -53,8 +54,17 @@ public class Doggo : MonoBehaviour {
 	private SpriteRenderer sr;
 	private Animator pa;
 
+	//Tutorial
+	public bool firstPatrol;
+	public GameObject HintBox;
+	public Text hintText;
+	public bool hintActive;
+
 	// Use this for initialization
 	void Start () {
+		hintActive = false;
+		HintBox.SetActive (false);
+		firstPatrol = true;
 		barkQ = 0;
 		cooldown = false;
 		mainListener = GameObject.Find ("AudioListener");
@@ -376,6 +386,21 @@ public class Doggo : MonoBehaviour {
 	{
 		yield return new WaitForSeconds (0.1f);
 		cooldown = false;
+	}
+
+	public void firstPatrolCatcher()
+	{
+		firstPatrol = false;
+		StartCoroutine ("patrolCatcherDiag");
+	}
+
+	public IEnumerator patrolCatcherDiag()
+	{
+		HintBox.SetActive (true);
+		hintText.text = "Better watch out for the dog catchers roaming around the streets! Avoid their flashlight by hiding in nearby shrubs or cardboard boxes by pressing the \"Q\" key when close to the item of interest.";
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.5f);
+		HintBox.SetActive (false);
 	}
 }
 
