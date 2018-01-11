@@ -5200,6 +5200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 845254249}
   - component: {fileID: 845254248}
+  - component: {fileID: 845254250}
   m_Layer: 0
   m_Name: HintBox (2 Enemies)
   m_TagString: Untagged
@@ -5234,6 +5235,17 @@ Transform:
   m_Father: {fileID: 700556082}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &845254250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 845254247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce21006de45d7e945a1c9a87cb70381c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &845329870
 Prefab:
   m_ObjectHideFlags: 0
@@ -6035,7 +6047,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4567121073999764, guid: fc5e364ea0d36b2489dacc21d12831ec, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -22.6
+      value: -12.82
       objectReference: {fileID: 0}
     - target: {fileID: 4567121073999764, guid: fc5e364ea0d36b2489dacc21d12831ec, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6067,7 +6079,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1078245365735354, guid: fc5e364ea0d36b2489dacc21d12831ec, type: 2}
       propertyPath: m_Name
-      value: DogCatcher
+      value: DogCatcherFirst
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc5e364ea0d36b2489dacc21d12831ec, type: 2}
@@ -12237,7 +12249,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4998438701331798, guid: 823adabb5f67a1c43bf5ddc4e07406a1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.082
+      value: -3.319
       objectReference: {fileID: 0}
     - target: {fileID: 4998438701331798, guid: 823adabb5f67a1c43bf5ddc4e07406a1, type: 2}
       propertyPath: m_LocalPosition.y
@@ -14596,7 +14608,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2047904737
 MonoBehaviour:
   m_ObjectHideFlags: 0

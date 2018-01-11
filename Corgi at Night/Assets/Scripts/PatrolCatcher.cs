@@ -39,33 +39,31 @@ public class PatrolCatcher : MonoBehaviour {
 				StartCoroutine ("Death");
 			}
 		}
-		if (player.GetComponent<Doggo> ().firstPatrol && (Mathf.Abs(gameObject.transform.position.x-player.transform.position.x)<=2.52)){
-			Debug.Log (gameObject.transform.position.x);
-			Debug.Log (player.transform.position.x);
-			player.GetComponent<Doggo> ().firstPatrol = false;
-			player.GetComponent<Doggo> ().firstPatrolCatcher ();
-		}
-		if (player.GetComponent<Doggo> ().hintActive == false) {
-			if ((gameObject.transform.position.x <= originPos - patrolArea) && right == false) {
-				//Debug.Log ("Turn Right");
-				pa.Play ("Patrol");
-				right = true;
-				gameObject.transform.Rotate (Vector3.up, 180.0f);
+//		if (player.GetComponent<Doggo> ().firstPatrol && (Mathf.Abs(gameObject.transform.position.x-player.transform.position.x)<=2.52)){
+//			Debug.Log (gameObject.transform.position.x);
+//			Debug.Log (player.transform.position.x);
+//			player.GetComponent<Doggo> ().firstPatrol = false;
+//			player.GetComponent<Doggo> ().firstPatrolCatcher ();
+//		}
+		if ((gameObject.transform.position.x <= originPos - patrolArea) && right == false) {
+			//Debug.Log ("Turn Right");
+			pa.Play ("Patrol");
+			right = true;
+			gameObject.transform.Rotate (Vector3.up, 180.0f);
+			DC.velocity = new Vector2 (0.5f, DC.velocity.y);
+		} else if ((gameObject.transform.position.x >= originPos + patrolArea) && right == true) {
+			//Debug.Log ("Turn Left");
+			pa.Play ("Patrol");
+			right = false;
+			gameObject.transform.Rotate (Vector3.up, 180.0f);
+			DC.velocity = new Vector2 (-0.5f, DC.velocity.y);
+		} else {
+			if (right) {
+				//Debug.Log ("Moving Right");
 				DC.velocity = new Vector2 (0.5f, DC.velocity.y);
-			} else if ((gameObject.transform.position.x >= originPos + patrolArea) && right == true) {
-				//Debug.Log ("Turn Left");
-				pa.Play ("Patrol");
-				right = false;
-				gameObject.transform.Rotate (Vector3.up, 180.0f);
-				DC.velocity = new Vector2 (-0.5f, DC.velocity.y);
 			} else {
-				if (right) {
-					//Debug.Log ("Moving Right");
-					DC.velocity = new Vector2 (0.5f, DC.velocity.y);
-				} else {
-					//Debug.Log ("Moving Left");
-					DC.velocity = new Vector2 (-0.5f, DC.velocity.y);
-				}
+				//Debug.Log ("Moving Left");
+				DC.velocity = new Vector2 (-0.5f, DC.velocity.y);
 			}
 		}
 	}

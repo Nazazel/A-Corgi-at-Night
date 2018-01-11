@@ -56,6 +56,9 @@ public class Doggo : MonoBehaviour {
 
 	//Tutorial
 	public bool firstPatrol;
+	public bool firstDCJ;
+	public bool firstNinCat;
+	public bool release;
 	public GameObject HintBox;
 	public Text hintText;
 	public bool hintActive;
@@ -65,6 +68,9 @@ public class Doggo : MonoBehaviour {
 		hintActive = false;
 		HintBox.SetActive (false);
 		firstPatrol = true;
+		firstDCJ = true;
+		firstNinCat = true;
+		release = true;
 		barkQ = 0;
 		cooldown = false;
 		mainListener = GameObject.Find ("AudioListener");
@@ -391,13 +397,46 @@ public class Doggo : MonoBehaviour {
 	public void firstPatrolCatcher()
 	{
 		firstPatrol = false;
+		release = false;
 		StartCoroutine ("patrolCatcherDiag");
+	}
+
+	public void firstDCJs()
+	{
+		firstDCJ = false;
+		release = false;
+		StartCoroutine ("dcjDiag");
+	}
+
+	public void firstNinCats()
+	{
+		firstNinCat = false;
+		release = false;
+		StartCoroutine ("ninCatDiag");
 	}
 
 	public IEnumerator patrolCatcherDiag()
 	{
 		HintBox.SetActive (true);
 		hintText.text = "Better watch out for the dog catchers roaming around the streets! Avoid their flashlight by hiding in nearby shrubs or cardboard boxes by pressing the \"Q\" key when close to the item of interest.";
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.5f);
+		HintBox.SetActive (false);
+	}
+
+	public IEnumerator dcjDiag()
+	{
+		HintBox.SetActive (true);
+		hintText.text = "Looks like dog catching runs in the family. Jump on top of the jr. dog catchers to avoid losing!";
+		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
+		yield return new WaitForSeconds (0.5f);
+		HintBox.SetActive (false);
+	}
+
+	public IEnumerator ninCatDiag()
+	{
+		HintBox.SetActive (true);
+		hintText.text = "Uh-oh, looks like a cat! Not just any cat-- a ninja cat! Quick, use the \"E\" key to bark and scare him away!";
 		yield return new WaitUntil (() => Input.GetKeyDown (KeyCode.Return));
 		yield return new WaitForSeconds (0.5f);
 		HintBox.SetActive (false);
