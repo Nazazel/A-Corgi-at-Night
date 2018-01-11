@@ -116,7 +116,7 @@ public class Doggo : MonoBehaviour {
 			if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && !hidden && hideable) {
 				Debug.Log ("Hidden");
 				hidden = true;
-				sr.sortingOrder = 28;
+				sr.sortingOrder = 24;
 				idling = false;
 				StopCoroutine ("IdleAnimate");
 				idlingtimerstarted = false;
