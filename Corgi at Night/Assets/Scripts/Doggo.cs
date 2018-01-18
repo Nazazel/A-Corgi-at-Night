@@ -15,6 +15,7 @@ public class Doggo : MonoBehaviour {
 	private bool cooldown;
 	private GameObject attackBox;
 	public Vector3 spawnpoint;
+    private bool introRunning;
 
 	//Idle Animation List
 	public string[] lookingAnim;
@@ -38,7 +39,7 @@ public class Doggo : MonoBehaviour {
 	public AudioClip runAudio;
 
 	//Movement
-	private bool canMove;
+	public bool canMove;
 	private Rigidbody2D rb;
 	private float runSpeed;
 	private float speed;
@@ -65,6 +66,9 @@ public class Doggo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //Debug.Log(gameObject.transform.position);
+        gameObject.transform.position = new Vector3(-6.32f, -0.8f, 0.0f);
+        introRunning = true;
 		hintActive = false;
 		HintBox.SetActive (false);
 		firstPatrol = true;
@@ -76,7 +80,9 @@ public class Doggo : MonoBehaviour {
 		mainListener = GameObject.Find ("AudioListener");
 		GameObject.DontDestroyOnLoad (GameObject.Find("Corgo"));
 		mainCam = GameObject.Find ("Main Camera");
-		attackBox = GameObject.Find ("AttackBox");
+        mainCam.transform.position = new Vector3(-3.32f, -0.43f, -10.0f);
+        Debug.Log(mainCam.transform.position.x);
+        attackBox = GameObject.Find ("AttackBox");
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 		sr = gameObject.GetComponent<SpriteRenderer> ();
 		pa = gameObject.GetComponent<Animator> ();
@@ -102,175 +108,251 @@ public class Doggo : MonoBehaviour {
 		dead = false;
 		hidden = false;
 		right = true;
-
+        StartCoroutine("intro");
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (!dead && !landing && jumping && !hidden) {
-			if (rb.velocity.y < -0.5f) {
-				Debug.Log ("Free Falling");
-				landing = true;
-				pa.Play ("Land");
-			}
-		}
-		if (!dead) {
-			if (hidden) {
-				pa.Play ("Hide");
-			}
+        if (introRunning)
+        {
+            mainCam.transform.position = new Vector3(-3.32f,-0.43f,-10.0f);
+            if(gameObject.transform.position.x <= -3.33f)
+            {
+                pa.Play("Walk");
+                QuinnAS.clip = walkAudio;
+                if (!QuinnAS.isPlaying)
+                {
+                    QuinnAS.Play();
+                }
+                rb.velocity = new Vector2(1.5f, rb.velocity.y);
+            }
+            else
+            {
+                //Debug.Log(gameObject.transform.position.x);
+                rb.velocity = new Vector2(0.0f, rb.velocity.y);
+                if (gameObject.transform.position.x != -3.32f)
+                {
+                    QuinnAS.Stop();
+                    pa.Play("Stand");
+                    gameObject.transform.position = new Vector3(-3.32f, -0.787f, 0.0f);
+                }
+            }
+        }
+        else
+        {
+            if (!dead && !landing && jumping && !hidden)
+            {
+                if (rb.velocity.y < -0.5f)
+                {
+                    Debug.Log("Free Falling");
+                    landing = true;
+                    pa.Play("Land");
+                }
+            }
+            if (canMove && !dead)
+            {
+                if (hidden)
+                {
+                    pa.Play("Hide");
+                }
 
-			if (Input.GetKeyDown (KeyCode.H) && !crouching && !jumping && !hidden && hideable) {
-				Debug.Log ("Hidden");
-				hidden = true;
-				sr.sortingOrder = 24;
-				idling = false;
-				StopCoroutine ("IdleAnimate");
-				idlingtimerstarted = false;
-				pa.Play ("Hide");
-				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-				gameObject.GetComponent<PolygonCollider2D> ().enabled = !gameObject.GetComponent<PolygonCollider2D> ().enabled;
-				cooldown = true;
-				StartCoroutine ("HideCool");
-			}
-			else if (Input.GetKeyDown (KeyCode.H) && !crouching && hidden && !cooldown) {
-				Debug.Log ("!");
-				sr.sortingOrder = 30;
-				gameObject.GetComponent<PolygonCollider2D> ().enabled = !gameObject.GetComponent<PolygonCollider2D> ().enabled;
-				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-				hidden = false;
-			}
-		}
-		if (canMove && !dead && !hidden) {
-			
-			if (Input.GetKey (KeyCode.Space) && !crouching && !jumping) {
-				QuinnAS.clip = jumpAudio;
-				idling = false;
-				StopCoroutine ("IdleAnimate");
-				QuinnAS.Play ();
-				idlingtimerstarted = false;
-				rb.velocity = new Vector2 (rb.velocity.x, jumpHeight*1.5f);
-				pa.Play ("Jump");
-				jumping = true;
-			}
+                if (Input.GetKeyDown(KeyCode.H) && !crouching && !jumping && !hidden && hideable)
+                {
+                    Debug.Log("Hidden");
+                    hidden = true;
+                    sr.sortingOrder = 24;
+                    idling = false;
+                    StopCoroutine("IdleAnimate");
+                    idlingtimerstarted = false;
+                    pa.Play("Hide");
+                    GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                    gameObject.GetComponent<PolygonCollider2D>().enabled = !gameObject.GetComponent<PolygonCollider2D>().enabled;
+                    cooldown = true;
+                    StartCoroutine("HideCool");
+                }
+                else if (Input.GetKeyDown(KeyCode.H) && !crouching && hidden && !cooldown)
+                {
+                    Debug.Log("!");
+                    sr.sortingOrder = 30;
+                    gameObject.GetComponent<PolygonCollider2D>().enabled = !gameObject.GetComponent<PolygonCollider2D>().enabled;
+                    GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+                    hidden = false;
+                }
+            }
+            if (canMove && !dead && !hidden)
+            {
 
-			if (Input.GetKey (KeyCode.DownArrow) && !Input.GetKey (KeyCode.LeftShift) && !jumping) {
-				idling = false;
-				StopCoroutine ("IdleAnimate");
-				idlingtimerstarted = false;
-				crouching = true;
-				if (!Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
-					pa.Play("Crouch");
-				}
-			} else {
-				crouching = false;
-			}
+                if (Input.GetKey(KeyCode.Space) && !crouching && !jumping)
+                {
+                    QuinnAS.clip = jumpAudio;
+                    idling = false;
+                    StopCoroutine("IdleAnimate");
+                    QuinnAS.Play();
+                    idlingtimerstarted = false;
+                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight * 1.5f);
+                    pa.Play("Jump");
+                    jumping = true;
+                }
 
-			if (Input.GetKey (KeyCode.LeftShift) && !Input.GetKey (KeyCode.DownArrow)) {
-				running = true;
-			} else {
-				running = false;
-			}
+                if (Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.LeftShift) && !jumping)
+                {
+                    idling = false;
+                    StopCoroutine("IdleAnimate");
+                    idlingtimerstarted = false;
+                    crouching = true;
+                    if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+                    {
+                        pa.Play("Crouch");
+                    }
+                }
+                else
+                {
+                    crouching = false;
+                }
 
-			if (Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey (KeyCode.RightArrow)) {
-				idling = false;
-				StopCoroutine ("IdleAnimate");
-				idlingtimerstarted = false;
-				//attackBox.transform.localPosition = new Vector (0.0f, 0.007f, attackBox.transform.position.z);
-				if (gameObject.transform.rotation.y == 0) {
-					mainCam.transform.localPosition = new Vector3 (0.0f, 0.36f, 10.0f);
-					mainCam.transform.Rotate (Vector3.up, 180.0f);
-					gameObject.transform.Rotate (Vector3.up, 180.0f);
-					mainListener.transform.Rotate (Vector3.up, 180.0f);
-				}
-				if ((rb.velocity.x > 0.0f) && (rb.velocity.y != 0.0f)) {
-					rb.velocity = new Vector2 (0.0f, rb.velocity.y);
-				}
+                if (Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.DownArrow))
+                {
+                    running = true;
+                }
+                else
+                {
+                    running = false;
+                }
 
-				if (running) {
-					if (!jumping) {
-						QuinnAS.clip = runAudio;
-						if (!QuinnAS.isPlaying) {
-							QuinnAS.Play ();
-						}
-						pa.Play ("Run");
-					}
-					rb.velocity = new Vector2 (-1.0f * runSpeed, rb.velocity.y);
-				} else if (crouching) {
-					if (!jumping) {
-						QuinnAS.clip = runAudio;
-						if (!QuinnAS.isPlaying) {
-							QuinnAS.Play ();
-						}
-						pa.Play("CWalkR");
-					}
-					rb.velocity = new Vector2 (-1.0f * crouchSpeed, rb.velocity.y);
-				} else if (!running && !crouching) {
-					if (!jumping) {
-						QuinnAS.clip = walkAudio;
-						if (!QuinnAS.isPlaying) {
-							QuinnAS.Play ();
-						}
-						pa.Play("Walk");
-					}
-					rb.velocity = new Vector2 (-1.0f * speed, rb.velocity.y);
-				}
-			} else if (Input.GetKey (KeyCode.RightArrow) && !Input.GetKey (KeyCode.LeftArrow)) {
-				idling = false;
-				StopCoroutine ("IdleAnimate");
-				idlingtimerstarted = false;
-				//attackBox.transform.localPosition = new Vector3 (0.984f, 0.007f, attackBox.transform.position.z);
-				if (gameObject.transform.rotation.y != 0) {
-					mainCam.transform.localPosition = new Vector3 (0.0f, 0.36f, -10.0f);
-					mainCam.transform.Rotate (Vector3.up, 180.0f);
-					gameObject.transform.Rotate (Vector3.up, 180.0f);
-					mainListener.transform.Rotate (Vector3.up, 180.0f);
-				}
-				if ((rb.velocity.x < 0.0f) && (rb.velocity.y != 0.0f)) {
-					rb.velocity = new Vector2 (0.0f, rb.velocity.y);
+                if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+                {
+                    idling = false;
+                    StopCoroutine("IdleAnimate");
+                    idlingtimerstarted = false;
+                    //attackBox.transform.localPosition = new Vector (0.0f, 0.007f, attackBox.transform.position.z);
+                    if (gameObject.transform.rotation.y == 0)
+                    {
+                        mainCam.transform.localPosition = new Vector3(0.0f, 0.36f, 10.0f);
+                        mainCam.transform.Rotate(Vector3.up, 180.0f);
+                        gameObject.transform.Rotate(Vector3.up, 180.0f);
+                        mainListener.transform.Rotate(Vector3.up, 180.0f);
+                    }
+                    if ((rb.velocity.x > 0.0f) && (rb.velocity.y != 0.0f))
+                    {
+                        rb.velocity = new Vector2(0.0f, rb.velocity.y);
+                    }
 
-				}
+                    if (running)
+                    {
+                        if (!jumping)
+                        {
+                            QuinnAS.clip = runAudio;
+                            if (!QuinnAS.isPlaying)
+                            {
+                                QuinnAS.Play();
+                            }
+                            pa.Play("Run");
+                        }
+                        rb.velocity = new Vector2(-1.0f * runSpeed, rb.velocity.y);
+                    }
+                    else if (crouching)
+                    {
+                        if (!jumping)
+                        {
+                            QuinnAS.clip = runAudio;
+                            if (!QuinnAS.isPlaying)
+                            {
+                                QuinnAS.Play();
+                            }
+                            pa.Play("CWalkR");
+                        }
+                        rb.velocity = new Vector2(-1.0f * crouchSpeed, rb.velocity.y);
+                    }
+                    else if (!running && !crouching)
+                    {
+                        if (!jumping)
+                        {
+                            QuinnAS.clip = walkAudio;
+                            if (!QuinnAS.isPlaying)
+                            {
+                                QuinnAS.Play();
+                            }
+                            pa.Play("Walk");
+                        }
+                        rb.velocity = new Vector2(-1.0f * speed, rb.velocity.y);
+                    }
+                }
+                else if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
+                {
+                    idling = false;
+                    StopCoroutine("IdleAnimate");
+                    idlingtimerstarted = false;
+                    //attackBox.transform.localPosition = new Vector3 (0.984f, 0.007f, attackBox.transform.position.z);
+                    if (gameObject.transform.rotation.y != 0)
+                    {
+                        mainCam.transform.localPosition = new Vector3(0.0f, 0.36f, -10.0f);
+                        mainCam.transform.Rotate(Vector3.up, 180.0f);
+                        gameObject.transform.Rotate(Vector3.up, 180.0f);
+                        mainListener.transform.Rotate(Vector3.up, 180.0f);
+                    }
+                    if ((rb.velocity.x < 0.0f) && (rb.velocity.y != 0.0f))
+                    {
+                        rb.velocity = new Vector2(0.0f, rb.velocity.y);
 
-				if (running) {
-					if (!jumping) {
-						QuinnAS.clip = runAudio;
-						if (!QuinnAS.isPlaying) {
-							QuinnAS.Play ();
-						}
-						pa.Play ("Run");
-					}
-					rb.velocity = new Vector2 (runSpeed, rb.velocity.y);
-				} else if (crouching) {
-					if (!jumping) {
-						QuinnAS.clip = runAudio;
-						if (!QuinnAS.isPlaying) {
-							QuinnAS.Play ();
-						}
-						pa.Play("CWalkR");
-					}
-					rb.velocity = new Vector2 (crouchSpeed, rb.velocity.y);
-				} else if (!running && !crouching) {
-					if (!jumping) {
-						QuinnAS.clip = walkAudio;
-						if (!QuinnAS.isPlaying) {
-							QuinnAS.Play ();
-						}
-						pa.Play("Walk");
-					}
-					rb.velocity = new Vector2 (speed, rb.velocity.y);
-				}
-			} else if (!jumping && !barking && !crouching) {
-				rb.velocity = new Vector2 (0.0f, rb.velocity.y);
-				idling = true;
-			}
+                    }
 
-			if (idling && !hidden && !idlingtimerstarted) {
-				if (QuinnAS.isPlaying && (QuinnAS.clip == walkAudio || QuinnAS.clip == runAudio)) {
-					QuinnAS.Stop ();
-				}
-				idlingtimerstarted = true;
-				StartCoroutine ("IdleAnimate");
-			}
-		}
+                    if (running)
+                    {
+                        if (!jumping)
+                        {
+                            QuinnAS.clip = runAudio;
+                            if (!QuinnAS.isPlaying)
+                            {
+                                QuinnAS.Play();
+                            }
+                            pa.Play("Run");
+                        }
+                        rb.velocity = new Vector2(runSpeed, rb.velocity.y);
+                    }
+                    else if (crouching)
+                    {
+                        if (!jumping)
+                        {
+                            QuinnAS.clip = runAudio;
+                            if (!QuinnAS.isPlaying)
+                            {
+                                QuinnAS.Play();
+                            }
+                            pa.Play("CWalkR");
+                        }
+                        rb.velocity = new Vector2(crouchSpeed, rb.velocity.y);
+                    }
+                    else if (!running && !crouching)
+                    {
+                        if (!jumping)
+                        {
+                            QuinnAS.clip = walkAudio;
+                            if (!QuinnAS.isPlaying)
+                            {
+                                QuinnAS.Play();
+                            }
+                            pa.Play("Walk");
+                        }
+                        rb.velocity = new Vector2(speed, rb.velocity.y);
+                    }
+                }
+                else if (!jumping && !barking && !crouching)
+                {
+                    rb.velocity = new Vector2(0.0f, rb.velocity.y);
+                    idling = true;
+                }
+
+                if (idling && !hidden && !idlingtimerstarted)
+                {
+                    if (QuinnAS.isPlaying && (QuinnAS.clip == walkAudio || QuinnAS.clip == runAudio))
+                    {
+                        QuinnAS.Stop();
+                    }
+                    idlingtimerstarted = true;
+                    StartCoroutine("IdleAnimate");
+                }
+            }
+        }
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)
@@ -318,6 +400,7 @@ public class Doggo : MonoBehaviour {
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 		gameObject.transform.position = spawnpoint;
 		dead = false;
+        canMove = true;
 		landing = false;
 	}
 
@@ -441,6 +524,24 @@ public class Doggo : MonoBehaviour {
 		yield return new WaitForSeconds (0.5f);
 		HintBox.SetActive (false);
 	}
+
+    public IEnumerator intro()
+    {
+        yield return new WaitForSeconds(3.0f);
+        pa.Play("LookR");
+        yield return new WaitForSeconds(4.0f);
+        pa.Play("SniffStand");
+        QuinnAS.clip = sniffAudio;
+        QuinnAS.Play();
+        yield return new WaitForSeconds(3.0f);
+        pa.Play("Stand");
+        HintBox.SetActive(true);
+        hintText.text = "Looks like this pupper lost his way! Help Quinn find his way home!";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.1f);
+        HintBox.SetActive(false);
+        introRunning = false;
+    }
 }
 
 
