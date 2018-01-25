@@ -213,7 +213,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4461512392399036}
   - component: {fileID: 61786564827823584}
-  - component: {fileID: 114221470098546350}
   m_Layer: 0
   m_Name: HintBox (2 Enemies)
   m_TagString: Untagged
@@ -825,17 +824,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initSpawn: {x: 0, y: 0, z: 0}
   falling: 0
---- !u!114 &114221470098546350
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1793540908780190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce21006de45d7e945a1c9a87cb70381c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114301082302784214
 MonoBehaviour:
   m_ObjectHideFlags: 1
