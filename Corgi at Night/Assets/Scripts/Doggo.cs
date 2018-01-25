@@ -68,6 +68,8 @@ public class Doggo : MonoBehaviour {
 	void Start () {
         //Debug.Log(gameObject.transform.position);
         gameObject.transform.position = new Vector3(-6.32f, -0.8f, 0.0f);
+        HintBox = GameObject.Find("HintBox");
+        hintText = GameObject.Find("HintText").GetComponent<Text>();
         introRunning = true;
 		hintActive = false;
 		HintBox.SetActive (false);
