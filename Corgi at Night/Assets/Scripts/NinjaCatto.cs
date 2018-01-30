@@ -32,36 +32,54 @@ public class NinjaCatto : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (player.GetComponent<Pibble>().hidden == false) {
-			if (player.GetComponent<Pibble> ().dead == true) {
-				if (waittime == false) {
-					waittime = true;
-					StartCoroutine ("Death"); 
-				}
-			}
-			if (!jumping && player.GetComponent<Pibble>().dead == false) {
-				caDB.Play ();
-				ca.Play ("CatJumpUp");
-				NinCat.velocity = new Vector2 (NinCat.velocity.x, jumpHeight * 1.5f);
-				jumping = true;
-			}
-			if ((player.transform.position.x < gameObject.transform.position.x) && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7) {
-				speed = -1.0f;
-				if (gameObject.GetComponent<SpriteRenderer> ().flipX == true) {
-					gameObject.GetComponent<SpriteRenderer> ().flipX = false;
-				}
-				NinCat.velocity = new Vector2 (speed, NinCat.velocity.y);
-			} else if ((player.transform.position.x > gameObject.transform.position.x) && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7) {
-				speed = 1.0f;
-				if (gameObject.GetComponent<SpriteRenderer> ().flipX == false) {
-					gameObject.GetComponent<SpriteRenderer> ().flipX = true;
-				}
-				NinCat.velocity = new Vector2 (speed, NinCat.velocity.y);
-			} 
-			if (NinCat.velocity.y < 0) {
-				ca.Play ("CatJumpDown");
-			}
-		}
+        if (player.GetComponent<Pibble>().hintActive == false)
+        {
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+            if (player.GetComponent<Pibble>().hidden == false)
+            {
+                if (player.GetComponent<Pibble>().dead == true)
+                {
+                    if (waittime == false)
+                    {
+                        waittime = true;
+                        StartCoroutine("Death");
+                    }
+                }
+                if (!jumping && player.GetComponent<Pibble>().dead == false)
+                {
+                    caDB.Play();
+                    ca.Play("CatJumpUp");
+                    NinCat.velocity = new Vector2(NinCat.velocity.x, jumpHeight * 1.5f);
+                    jumping = true;
+                }
+                if ((player.transform.position.x < gameObject.transform.position.x) && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+                {
+                    speed = -1.0f;
+                    if (gameObject.GetComponent<SpriteRenderer>().flipX == true)
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                    NinCat.velocity = new Vector2(speed, NinCat.velocity.y);
+                }
+                else if ((player.transform.position.x > gameObject.transform.position.x) && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+                {
+                    speed = 1.0f;
+                    if (gameObject.GetComponent<SpriteRenderer>().flipX == false)
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    NinCat.velocity = new Vector2(speed, NinCat.velocity.y);
+                }
+                if (NinCat.velocity.y < 0)
+                {
+                    ca.Play("CatJumpDown");
+                }
+            }
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        }
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)

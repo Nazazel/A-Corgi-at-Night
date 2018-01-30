@@ -22,29 +22,46 @@ public class GoombaDCJ : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (player.GetComponent<Pibble> ().hidden == false) {
-			if (player.GetComponent<Pibble> ().dead == true) {
-				if (waittime == false) {
-					waittime = true;
-					StartCoroutine ("Death");
-				}
-			}
-			if ((player.transform.position.x < gameObject.transform.position.x) && player.GetComponent<Pibble> ().dead == false && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7) {
-				if (gameObject.GetComponent<SpriteRenderer> ().flipX == true) {
-					gameObject.GetComponent<SpriteRenderer> ().flipX = false;
-				}
-				speed = -0.75f;
-				DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
-			} else if ((player.transform.position.x > gameObject.transform.position.x) && player.GetComponent<Pibble> ().dead == false && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7) {
-				if (gameObject.GetComponent<SpriteRenderer> ().flipX == false) {
-					gameObject.GetComponent<SpriteRenderer> ().flipX = true;
-				}
-				speed = 0.75f;
-				DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
-			} else if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7) {
-				DCJ.velocity = new Vector2 (-speed, DCJ.velocity.y);
-			}
-		}
+        if (player.GetComponent<Pibble>().hintActive == false)
+        {
+            if (player.GetComponent<Pibble>().hidden == false)
+            {
+                if (player.GetComponent<Pibble>().dead == true)
+                {
+                    if (waittime == false)
+                    {
+                        waittime = true;
+                        StartCoroutine("Death");
+                    }
+                }
+                if ((player.transform.position.x < gameObject.transform.position.x) && player.GetComponent<Pibble>().dead == false && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+                {
+                    if (gameObject.GetComponent<SpriteRenderer>().flipX == true)
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                    speed = -0.75f;
+                    DCJ.velocity = new Vector2(speed, DCJ.velocity.y);
+                }
+                else if ((player.transform.position.x > gameObject.transform.position.x) && player.GetComponent<Pibble>().dead == false && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+                {
+                    if (gameObject.GetComponent<SpriteRenderer>().flipX == false)
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    speed = 0.75f;
+                    DCJ.velocity = new Vector2(speed, DCJ.velocity.y);
+                }
+                else if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+                {
+                    DCJ.velocity = new Vector2(-speed, DCJ.velocity.y);
+                }
+            }
+        }
+        else
+        {
+            DCJ.velocity = new Vector2(0.0f, 0.0f);
+        }
 	}
 
 	public IEnumerator Death()
