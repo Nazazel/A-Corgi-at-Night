@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hints : MonoBehaviour {
 
-	private Doggo corgo;
+	private Pibble corgo;
 	private GameObject DC;
 
 	// Use this for initialization
