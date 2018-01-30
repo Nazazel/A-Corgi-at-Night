@@ -31,8 +31,8 @@ public class ScrollingParallax : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (player.GetComponent<Doggo>().introRunning == false)
-        {
+        //if (player.GetComponent<Doggo>().introRunning == false)
+        //{
             float deltaX = cameraTransform.position.x - lastCameraX;
             transform.position += Vector3.right * (deltaX * paralaxSpeed);
             lastCameraX = cameraTransform.position.x;
@@ -45,7 +45,7 @@ public class ScrollingParallax : MonoBehaviour {
             {
                 ScrollRight();
             }
-        }
+        //}
 	}
 
 	private void ScrollLeft()
