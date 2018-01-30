@@ -32,14 +32,14 @@ public class NinjaCatto : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (player.GetComponent<Doggo> ().hidden == false) {
+		if (player.GetComponent<Doggo> ().hidden == false || player.GetComponent<Pibble>().hidden == false) {
 			if (player.GetComponent<Doggo> ().dead == true) {
 				if (waittime == false) {
 					waittime = true;
 					StartCoroutine ("Death"); 
 				}
 			}
-			if (!jumping && player.GetComponent<Doggo> ().dead == false) {
+			if (!jumping && (player.GetComponent<Doggo> ().dead == false || player.GetComponent<Pibble>().dead == false)) {
 				caDB.Play ();
 				ca.Play ("CatJumpUp");
 				NinCat.velocity = new Vector2 (NinCat.velocity.x, jumpHeight * 1.5f);
