@@ -9,7 +9,7 @@ public class Hints : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		corgo = GameObject.Find ("QuinSpriteFinal_1").GetComponent<Doggo> ();
+		corgo = GameObject.Find ("QuinSpriteFinal_1").GetComponent<Pibble> ();
 		DC = GameObject.Find ("DogCatcherFirst");
 	}
 	

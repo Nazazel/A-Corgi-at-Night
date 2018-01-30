@@ -7,6 +7,8 @@ public class ScrollingParallax : MonoBehaviour {
 	public float backgroundSize;
 	public float paralaxSpeed;
 
+    private GameObject player;
+
 	private Transform cameraTransform;
 	private Transform[] layers;
 	private float viewZone = 3;
@@ -16,6 +18,7 @@ public class ScrollingParallax : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        player = GameObject.Find("QuinSpriteFinal_1");
 		cameraTransform = Camera.main.transform;
 		lastCameraX = cameraTransform.position.x;
 		layers = new Transform[transform.childCount];
@@ -28,17 +31,21 @@ public class ScrollingParallax : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (player.GetComponent<Doggo>().introRunning == false)
+        {
+            float deltaX = cameraTransform.position.x - lastCameraX;
+            transform.position += Vector3.right * (deltaX * paralaxSpeed);
+            lastCameraX = cameraTransform.position.x;
+            if (cameraTransform.position.x < (layers[leftIndex].transform.position.x + viewZone))
+            {
+                ScrollLeft();
+            }
 
-		float deltaX = cameraTransform.position.x - lastCameraX;
-		transform.position += Vector3.right * (deltaX * paralaxSpeed);
-		lastCameraX = cameraTransform.position.x;
-		if (cameraTransform.position.x < (layers [leftIndex].transform.position.x + viewZone)) {
-			ScrollLeft ();
-		}
-
-		if (cameraTransform.position.x > (layers [rightIndex].transform.position.x - viewZone)) {
-			ScrollRight ();
-		}
+            if (cameraTransform.position.x > (layers[rightIndex].transform.position.x - viewZone))
+            {
+                ScrollRight();
+            }
+        }
 	}
 
 	private void ScrollLeft()

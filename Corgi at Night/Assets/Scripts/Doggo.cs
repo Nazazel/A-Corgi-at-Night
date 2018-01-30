@@ -15,7 +15,7 @@ public class Doggo : MonoBehaviour {
 	private bool cooldown;
 	private GameObject attackBox;
 	public Vector3 spawnpoint;
-    private bool introRunning;
+    public bool introRunning;
 
 	//Idle Animation List
 	public string[] lookingAnim;
