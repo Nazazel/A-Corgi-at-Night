@@ -65,6 +65,8 @@ public class Pibble : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        HintBox = GameObject.Find("HintBox");
+        hintText = GameObject.Find("HintText").GetComponent<Text>();
         hintActive = false;
         HintBox.SetActive(false);
         firstPatrol = true;
