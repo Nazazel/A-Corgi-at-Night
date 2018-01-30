@@ -14,8 +14,8 @@ public class CheckpointSystem : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll)
 	{
 		if (coll.gameObject.CompareTag ("Player")) {
-			if (player.GetComponent<Doggo> ().spawnpoint != gameObject.transform.position) {
-				player.GetComponent<Doggo> ().spawnpoint = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+			if (player.GetComponent<Pibble> ().spawnpoint != gameObject.transform.position) {
+				player.GetComponent<Pibble> ().spawnpoint = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
 				Debug.Log (gameObject.name);
 			} 
 			else {
