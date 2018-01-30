@@ -37,7 +37,7 @@ public class Pibble : MonoBehaviour {
     public AudioClip runAudio;
 
     //Movement
-    private bool canMove;
+    public bool canMove;
     private Rigidbody2D rb;
     private float runSpeed;
     private float speed;

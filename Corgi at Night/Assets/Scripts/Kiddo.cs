@@ -32,7 +32,7 @@ public class Kiddo : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<Doggo>().dead == true)
+        if (player.GetComponent<Pibble>().dead == true)
         {
             if (waittime == false)
             {
@@ -103,7 +103,7 @@ public class Kiddo : MonoBehaviour {
 
     public IEnumerator hold()
     {
-        player.GetComponent<Doggo>().canMove = false;
+        player.GetComponent<Pibble>().canMove = false;
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.RightArrow));
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.LeftArrow));
@@ -136,7 +136,7 @@ public class Kiddo : MonoBehaviour {
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.LeftArrow));
         yield return new WaitForSeconds(0.1f);
-        player.GetComponent<Doggo>().canMove = true;
+        player.GetComponent<Pibble>().canMove = true;
         StartCoroutine("Die");
     }
 }

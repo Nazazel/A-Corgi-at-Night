@@ -30,7 +30,7 @@ public class Roomba : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (player.GetComponent<Doggo>().dead == true)
+        if (player.GetComponent<Pibble>().dead == true)
         {
             if (waittime == false)
             {

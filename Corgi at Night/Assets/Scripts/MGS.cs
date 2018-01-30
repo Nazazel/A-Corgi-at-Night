@@ -20,7 +20,7 @@ public class MGS : MonoBehaviour {
 
 	void Update()
 	{
-		if (player.GetComponent<Doggo> ().hideable == true && player.GetComponent<Doggo> ().hidden == true && entryCalled == false) {
+		if (player.GetComponent<Pibble> ().hideable == true && player.GetComponent<Pibble> ().hidden == true && entryCalled == false) {
 			entryCalled = true;
 			exitCalled = false;
 			if (gameObject.tag == "Bush") {
@@ -29,7 +29,7 @@ public class MGS : MonoBehaviour {
 			}
 				
 		}
-		else if (player.GetComponent<Doggo> ().hideable == true && player.GetComponent<Doggo> ().hidden == false && exitCalled == false && entryCalled == true) {
+		else if (player.GetComponent<Pibble> ().hideable == true && player.GetComponent<Pibble> ().hidden == false && exitCalled == false && entryCalled == true) {
 			entryCalled = false;
 			exitCalled = true;
 			if (gameObject.tag == "Bush") {

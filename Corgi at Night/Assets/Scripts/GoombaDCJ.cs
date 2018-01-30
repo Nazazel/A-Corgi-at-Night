@@ -22,8 +22,8 @@ public class GoombaDCJ : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (player.GetComponent<Doggo> ().hidden == false) {
-			if (player.GetComponent<Doggo> ().dead == true) {
+		if (player.GetComponent<Pibble> ().hidden == false) {
+			if (player.GetComponent<Pibble> ().dead == true) {
 				if (waittime == false) {
 					waittime = true;
 					StartCoroutine ("Death");
