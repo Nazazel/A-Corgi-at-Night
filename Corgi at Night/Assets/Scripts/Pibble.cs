@@ -481,12 +481,14 @@ public class Pibble : MonoBehaviour {
 
     public IEnumerator patrolCatcherDiag()
     {
+        pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
         HintBox.SetActive(true);
         hintText.text = "Better watch out for the dog catchers roaming around the streets! Avoid their flashlight by hiding in nearby shrubs or cardboard boxes by pressing the \"Q\" key when close to the item of interest.";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
+        pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
         HintBox.SetActive(false);
@@ -494,12 +496,14 @@ public class Pibble : MonoBehaviour {
 
     public IEnumerator dcjDiag()
     {
+        pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
         HintBox.SetActive(true);
         hintText.text = "Looks like dog catching runs in the family. Jump on top of the jr. dog catchers to avoid losing!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
+        pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
         HintBox.SetActive(false);
@@ -507,12 +511,14 @@ public class Pibble : MonoBehaviour {
 
     public IEnumerator ninCatDiag()
     {
+        pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
         HintBox.SetActive(true);
         hintText.text = "Uh-oh, looks like a cat! Not just any cat-- a ninja cat! Quick, use the \"E\" key to bark and scare him away!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
+        pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
         HintBox.SetActive(false);

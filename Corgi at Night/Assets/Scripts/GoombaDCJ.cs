@@ -67,6 +67,7 @@ public class GoombaDCJ : MonoBehaviour {
         }
         else
         {
+            ga.enabled = false;
             DCJ.velocity = new Vector2(0.0f, 0.0f);
         }
 	}
