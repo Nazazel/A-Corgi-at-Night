@@ -65,7 +65,7 @@ public class NinjaCatto : MonoBehaviour {
                 if ((player.transform.position.x < gameObject.transform.position.x) && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
                 {
                     speed = -1.0f;
-                    if (gameObject.GetComponent<SpriteRenderer>().flipX == true)
+                    if (gameObject.GetComponent<SpriteRenderer>().flipX == true && player.GetComponent<Pibble>().dead == false)
                     {
                         gameObject.GetComponent<SpriteRenderer>().flipX = false;
                     }
@@ -74,7 +74,7 @@ public class NinjaCatto : MonoBehaviour {
                 else if ((player.transform.position.x > gameObject.transform.position.x) && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
                 {
                     speed = 1.0f;
-                    if (gameObject.GetComponent<SpriteRenderer>().flipX == false)
+                    if (gameObject.GetComponent<SpriteRenderer>().flipX == false && player.GetComponent<Pibble>().dead == false)
                     {
                         gameObject.GetComponent<SpriteRenderer>().flipX = true;
                     }
