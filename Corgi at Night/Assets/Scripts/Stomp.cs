@@ -19,7 +19,7 @@ public class Stomp : MonoBehaviour {
 	{
 		if (col.gameObject.CompareTag ("DogCatcherJR")) {
 			col.gameObject.SendMessage ("Die");
-			player.GetComponent<Doggo> ().StompBoop ();
+			player.GetComponent<Pibble> ().StompBoop ();
 			Debug.Log ("Enemy Stomped");
 		}
 	}

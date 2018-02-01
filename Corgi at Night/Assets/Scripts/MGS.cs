@@ -49,14 +49,14 @@ public class MGS : MonoBehaviour {
 	{
 		if (coll.gameObject.CompareTag ("Player")) {
 			Debug.Log ("???");
-			player.GetComponent<Doggo>().hideable = true;
+			player.GetComponent<Pibble>().hideable = true;
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D col)
 	{
 		if (col.gameObject.CompareTag ("Player")) {
-			player.GetComponent<Doggo>().hideable = false;
+			player.GetComponent<Pibble>().hideable = false;
 		}
 	}
 }

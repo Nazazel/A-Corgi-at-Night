@@ -34,7 +34,10 @@ public class NinjaCatto : MonoBehaviour {
 	void Update () {
         if (player.GetComponent<Pibble>().hintActive == false)
         {
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+            if (catColl.enabled == true)
+            {
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
             if (player.GetComponent<Pibble>().hidden == false)
             {
                 if (player.GetComponent<Pibble>().dead == true)

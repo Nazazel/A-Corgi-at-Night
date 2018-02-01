@@ -13,8 +13,8 @@ public class PatrolLight : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.CompareTag ("Player") && player.GetComponent<Doggo>().hidden == false) {
-			player.GetComponent<Doggo>().Caught();
+		if (col.gameObject.CompareTag ("Player") && player.GetComponent<Pibble>().hidden == false) {
+			player.GetComponent<Pibble>().Caught();
 		}
 	}
 }
