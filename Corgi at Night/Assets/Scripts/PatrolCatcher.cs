@@ -43,6 +43,14 @@ public class PatrolCatcher : MonoBehaviour {
                     StartCoroutine("Death");
                 }
             }
+            else
+            {
+                if (pa.enabled == false)
+                {
+                    pa.enabled = true;
+                }
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            }
             //		if (player.GetComponent<Doggo> ().firstPatrol && (Mathf.Abs(gameObject.transform.position.x-player.transform.position.x)<=2.52)){
             //			Debug.Log (gameObject.transform.position.x);
             //			Debug.Log (player.transform.position.x);
@@ -78,6 +86,11 @@ public class PatrolCatcher : MonoBehaviour {
                     DC.velocity = new Vector2(-0.5f, DC.velocity.y);
                 }
             }
+        }
+        else
+        {
+            pa.enabled = false;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
 	}
 

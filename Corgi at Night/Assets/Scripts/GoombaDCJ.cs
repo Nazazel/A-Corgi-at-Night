@@ -34,6 +34,13 @@ public class GoombaDCJ : MonoBehaviour {
                         StartCoroutine("Death");
                     }
                 }
+                else
+                {
+                    if (ga.enabled == false)
+                    {
+                        ga.enabled = true;
+                    }
+                }
                 if ((player.transform.position.x < gameObject.transform.position.x) && player.GetComponent<Pibble>().dead == false && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
                 {
                     if (gameObject.GetComponent<SpriteRenderer>().flipX == true)

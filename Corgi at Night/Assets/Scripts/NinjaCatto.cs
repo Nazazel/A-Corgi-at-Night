@@ -48,6 +48,13 @@ public class NinjaCatto : MonoBehaviour {
                         StartCoroutine("Death");
                     }
                 }
+                else
+                {
+                    if (ca.enabled == false)
+                    {
+                        ca.enabled = true;
+                    }
+                }
                 if (!jumping && player.GetComponent<Pibble>().dead == false)
                 {
                     caDB.Play();
@@ -81,6 +88,7 @@ public class NinjaCatto : MonoBehaviour {
         }
         else
         {
+            ca.enabled = false;
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
 	}
@@ -102,11 +110,13 @@ public class NinjaCatto : MonoBehaviour {
 
 	public IEnumerator Death()
 	{
+        ca.enabled = false;
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 		yield return new WaitForSeconds (3.0f);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 		gameObject.transform.position = initSpawn;
+        ca.enabled = true;
 		jumping = false;
 		waittime = false;
 	}
