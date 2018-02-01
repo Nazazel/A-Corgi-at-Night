@@ -34,7 +34,7 @@ public class NinjaCatto : MonoBehaviour {
 	void Update () {
         if (player.GetComponent<Pibble>().hintActive == false)
         {
-            if (catColl.enabled == true)
+            if (catColl.enabled == true && player.GetComponent<Pibble>().dead == false)
             {
                 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
             }
@@ -111,7 +111,7 @@ public class NinjaCatto : MonoBehaviour {
 	public IEnumerator Death()
 	{
         ca.enabled = false;
-		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0.0f, 0.0f);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 		yield return new WaitForSeconds (3.0f);
 		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
