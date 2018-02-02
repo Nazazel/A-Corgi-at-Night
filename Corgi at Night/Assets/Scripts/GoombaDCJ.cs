@@ -10,6 +10,7 @@ public class GoombaDCJ : MonoBehaviour {
 	private float speed;
 	public Vector3 initSpawn;
 	private bool waittime;
+    private bool idle;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,7 @@ public class GoombaDCJ : MonoBehaviour {
 		initSpawn = gameObject.transform.position;
 		DCJ = gameObject.GetComponent<Rigidbody2D> ();
 		waittime = false;
+        idle = false;
 	}
 
 	// Update is called once per frame
@@ -26,8 +28,12 @@ public class GoombaDCJ : MonoBehaviour {
         {
             if (player.GetComponent<Pibble>().hidden == false)
             {
-                if (player.GetComponent<Pibble>().dead == true)
+                if (idle == true)
                 {
+                    ga.Play("DCJWalk");
+                }
+                if (player.GetComponent<Pibble>().dead == true)
+                {                                                    
                     if (waittime == false)
                     {
                         waittime = true;
@@ -63,6 +69,11 @@ public class GoombaDCJ : MonoBehaviour {
                 {
                     DCJ.velocity = new Vector2(-speed, DCJ.velocity.y);
                 }
+            }
+            else
+            {
+                idle = true;
+                ga.Play("DCJidle");
             }
         }
         else
