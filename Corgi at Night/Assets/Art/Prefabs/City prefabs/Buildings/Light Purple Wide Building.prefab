@@ -9,43 +9,43 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1476937049876982}
+  m_RootGameObject: {fileID: 1566097675936052}
   m_IsPrefabParent: 1
---- !u!1 &1476937049876982
+--- !u!1 &1566097675936052
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4797755039471272}
-  - component: {fileID: 212740721054198680}
+  - component: {fileID: 4223485976058808}
+  - component: {fileID: 212371477694457534}
   m_Layer: 0
-  m_Name: Nightclub
+  m_Name: Light Purple Wide Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4797755039471272
+--- !u!4 &4223485976058808
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1476937049876982}
+  m_GameObject: {fileID: 1566097675936052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.58, y: 0.449, z: 0}
-  m_LocalScale: {x: 1.1387706, y: 1.1387703, z: 1.1387703}
+  m_LocalPosition: {x: -251.85, y: 6.7628465, z: 0}
+  m_LocalScale: {x: 1.09282, y: 1.18559, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &212740721054198680
+--- !u!212 &212371477694457534
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1476937049876982}
+  m_GameObject: {fileID: 1566097675936052}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 15
-  m_Sprite: {fileID: 21300000, guid: 825791d36a820604ca458ebbf05d612f, type: 3}
+  m_SortingOrder: 28
+  m_Sprite: {fileID: 21300000, guid: 82fb84ff42a537f4c815a28024695dc8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
