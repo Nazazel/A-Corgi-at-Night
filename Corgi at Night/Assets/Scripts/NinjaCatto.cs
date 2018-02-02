@@ -85,6 +85,10 @@ public class NinjaCatto : MonoBehaviour {
                     ca.Play("CatJumpDown");
                 }
             }
+            else
+            {
+                ca.Play("CatIdle");
+            }
         }
         else
         {
