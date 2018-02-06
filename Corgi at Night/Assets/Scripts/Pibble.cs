@@ -132,7 +132,7 @@ public class Pibble : MonoBehaviour {
                 {
                     Debug.Log("Hidden");
                     hidden = true;
-                    sr.sortingOrder = 24;
+                    sr.sortingOrder = 28;
                     idling = false;
                     StopCoroutine("IdleAnimate");
                     idlingtimerstarted = false;
@@ -145,7 +145,7 @@ public class Pibble : MonoBehaviour {
                 else if (Input.GetKeyDown(KeyCode.H) && !crouching && hidden && !cooldown)
                 {
                     Debug.Log("!");
-                    sr.sortingOrder = 30;
+                    sr.sortingOrder = 31;
                     gameObject.GetComponent<PolygonCollider2D>().enabled = !gameObject.GetComponent<PolygonCollider2D>().enabled;
                     GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                     hidden = false;
