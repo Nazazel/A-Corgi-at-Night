@@ -25,7 +25,7 @@ public class ThrowingStar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (player.GetComponent<Pibble>().hintActive == false)
+        if (player.GetComponent<Pibble>().hintActive == false && player.GetComponent<Pibble>().paused == false)
         {
             rb.velocity = new Vector2(dir, 0.0f);
         }
