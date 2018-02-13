@@ -38,7 +38,7 @@ public class NinCatStar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<Pibble>().hintActive == false)
+        if (player.GetComponent<Pibble>().hintActive == false && player.GetComponent<Pibble>().paused == false)
         {
             if (catColl.enabled == true && player.GetComponent<Pibble>().dead == false)
             {
