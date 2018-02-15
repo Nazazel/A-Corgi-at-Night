@@ -24,7 +24,7 @@ public class GoombaDCJ : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (player.GetComponent<Pibble>().hintActive == false)
+        if (player.GetComponent<Pibble>().hintActive == false && player.GetComponent<Pibble>().paused == false)
         {
             if (player.GetComponent<Pibble>().hidden == false)
             {
