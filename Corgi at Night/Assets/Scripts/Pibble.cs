@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Pibble : MonoBehaviour {
+
+    
     //General
     public bool paused;
     private bool idling;
@@ -106,7 +108,11 @@ public class Pibble : MonoBehaviour {
         dead = false;
         hidden = false;
         right = true;
-
+        if(PlayerPrefs.HasKey("PlayerX"))
+        {
+            spawnpoint = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
+            gameObject.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ")); 
+        }
     }
 
     // Update is called once per frame

@@ -16,13 +16,13 @@ public class PauseMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.P) && player.GetComponent<Pibble>().paused == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && player.GetComponent<Pibble>().paused == false)
         {
             player.GetComponent<Pibble>().paused = true;
             pauseText.SetActive(true);
             player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
-        else if (Input.GetKeyDown(KeyCode.P) && player.GetComponent<Pibble>().paused == true)
+        else if (Input.GetKeyDown(KeyCode.Escape) && player.GetComponent<Pibble>().paused == true)
         {
             player.GetComponent<Pibble>().paused = false;
             pauseText.SetActive(false);
