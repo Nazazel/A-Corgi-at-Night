@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4084308633154312}
   - component: {fileID: 212088201111833444}
   m_Layer: 0
-  m_Name: (layer 32) photobooth
+  m_Name: layer 32 (Photobooth)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
