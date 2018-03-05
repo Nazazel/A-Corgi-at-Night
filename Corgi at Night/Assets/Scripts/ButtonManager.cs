@@ -40,17 +40,16 @@ public class ButtonManager : MonoBehaviour
     public void save()
     {
         player = GameObject.Find("QuinSpriteFinal_1");
-        PlayerPrefs.SetFloat("PlayerX", player.GetComponent<Pibble>().spawnpoint.x);
-        PlayerPrefs.SetFloat("PlayerY", player.GetComponent<Pibble>().spawnpoint.y);
-        PlayerPrefs.SetFloat("PlayerZ", player.GetComponent<Pibble>().spawnpoint.z);
-        //if(player.GetComponent<Pibble>().introRunning)
-        //{
-        //    PlayerPrefs.SetInt("IntroPlayed", 0);
-        //}
-        //else
-        //{
-        //    PlayerPrefs.SetInt("IntroPlayed", 1);
-        //}
+		PlayerPrefsX.SetVector3("PlayerPos", new Vector3(player.GetComponent<Pibble>().spawnpoint.x, player.GetComponent<Pibble>().spawnpoint.y, player.GetComponent<Pibble>().spawnpoint.z));
+        if(player.GetComponent<Pibble>().introRunning)
+        {
+            PlayerPrefsX.SetBool("IntroPlayed", false);
+        }
+        else
+        {
+            PlayerPrefsX.SetBool("IntroPlayed", true);
+        }
+
         
     }
 

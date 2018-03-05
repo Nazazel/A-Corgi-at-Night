@@ -7,6 +7,7 @@ public class Pibble : MonoBehaviour {
 
     
     //General
+	public bool introRunning;
     public bool paused;
     private bool idling;
     private bool idlingtimerstarted;
@@ -68,6 +69,7 @@ public class Pibble : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+		introRunning = false;
         paused = false;
         HintBox = GameObject.Find("HintBox");
         hintText = GameObject.Find("HintText").GetComponent<Text>();
