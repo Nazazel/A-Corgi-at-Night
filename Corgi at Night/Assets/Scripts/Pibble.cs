@@ -69,15 +69,31 @@ public class Pibble : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-		introRunning = false;
+        if(PlayerPrefs.HasKey("IntroPlayed"))
+        {
+            introRunning = PlayerPrefsX.GetBool("IntroPlayed");
+        }
+        else
+        {
+            introRunning = false;
+        }
         paused = false;
         HintBox = GameObject.Find("HintBox");
         hintText = GameObject.Find("HintText").GetComponent<Text>();
         hintActive = false;
         HintBox.SetActive(false);
-        firstPatrol = true;
-        firstDCJ = true;
-        firstNinCat = true;
+        if (PlayerPrefs.HasKey("HintDC"))
+        {
+            firstDCJ = PlayerPrefsX.GetBool("HintDCJ");
+            firstPatrol = PlayerPrefsX.GetBool("HintDC");
+            firstNinCat = PlayerPrefsX.GetBool("HintNC");
+        }
+        else
+        {
+            firstPatrol = true;
+            firstDCJ = true;
+            firstNinCat = true;
+        }
         release = true;
         barkQ = 0;
         cooldown = false;
@@ -110,10 +126,10 @@ public class Pibble : MonoBehaviour {
         dead = false;
         hidden = false;
         right = true;
-        if(PlayerPrefs.HasKey("PlayerX"))
+        if(PlayerPrefs.HasKey("PlayerPos"))
         {
-            spawnpoint = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
-            gameObject.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ")); 
+            spawnpoint = PlayerPrefsX.GetVector3("PlayerPos");
+            gameObject.transform.position = PlayerPrefsX.GetVector3("PlayerPos");
         }
     }
 

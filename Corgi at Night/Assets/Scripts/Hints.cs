@@ -10,7 +10,7 @@ public class Hints : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		corgo = GameObject.Find ("QuinSpriteFinal_1").GetComponent<Pibble> ();
-		//DC = GameObject.Find ("DogCatcherFirst");
+		//DC = GameObject.Find ("Dog Catcher");
 	}
 	
 	// Update is called once per frame

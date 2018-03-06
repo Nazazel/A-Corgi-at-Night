@@ -13,4 +13,7 @@ EditorBuildSettings:
     guid: 050a9ed9c98ded84da431ad4a65199ca
   - enabled: 1
     path: Assets/Credits.unity
-    guid: 00000000000000000000000000000000
+    guid: b918dc54a908d1645ba320bf199da956
+  - enabled: 1
+    path: Assets/LowGravityTestScene.unity
+    guid: e0e71b4c7fae0984ea8c2c35c1aad7c9
