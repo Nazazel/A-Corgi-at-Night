@@ -16,14 +16,14 @@ public class Teleport : MonoBehaviour
     void Start()
     {
         cooldown = false;
-        fade = GameObject.Find("Transition");
+        fade = GameObject.Find("TransitionControl");
         player = GameObject.Find("QuinSpriteFinal_1");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !player.GetComponent<Doggo>().jumping && !player.GetComponent<Doggo>().barking && !player.GetComponent<Doggo>().crouching && teleportable)
+        if (Input.GetKeyDown(KeyCode.R) && !player.GetComponent<Pibble>().jumping && !player.GetComponent<Pibble>().barking && !player.GetComponent<Pibble>().crouching && teleportable)
         {
             StartCoroutine("fadeScreen");
         }
@@ -47,7 +47,7 @@ public class Teleport : MonoBehaviour
 
     public IEnumerator fadeScreen()
     {
-        fade.GetComponent<TransitionScreenGrp>().FadeDiag();
+        fade.GetComponent<TransitionController>().FadeBegin();
         yield return new WaitForSeconds(1.0f);
         player.transform.position = new Vector3(teleportExit.transform.position.x, teleportExit.transform.position.y + 0.1f, teleportExit.transform.position.z);
         yield return new WaitForSeconds(3.0f);
