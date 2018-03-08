@@ -39,49 +39,62 @@ public class BirbBomber : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<Pibble>().dead == true)
+        if (player.GetComponent<Pibble>().hintActive == false && player.GetComponent<Pibble>().paused == false)
         {
-            if (waittime == false)
+            if(player.GetComponent<Pibble>().dead == false && pa.enabled == false)
             {
-                waittime = true;
-                StartCoroutine("Death");
+                pa.enabled = true;
+                DC.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             }
-        }
-
-        if(!eggDropping)
-        {
-            eggDropping = true;
-            StartCoroutine("eggsAhoy");
-        }
-
-        if ((gameObject.transform.position.x <= originPos - patrolArea) && right == false)
-        {
-            //Debug.Log ("Turn Right");
-            //pa.Play("Patrol");
-            right = true;
-            gameObject.transform.Rotate(Vector3.up, 180.0f);
-            DC.velocity = new Vector2(2.0f, DC.velocity.y);
-        }
-        else if ((gameObject.transform.position.x >= originPos + patrolArea) && right == true)
-        {
-            //Debug.Log ("Turn Left");
-            //pa.Play("Patrol");
-            right = false;
-            gameObject.transform.Rotate(Vector3.up, 180.0f);
-            DC.velocity = new Vector2(-2.0f, DC.velocity.y);
-        }
-        else
-        {
-            if (right)
+            if (player.GetComponent<Pibble>().dead == true)
             {
-                //Debug.Log ("Moving Right");
+                if (waittime == false)
+                {
+                    waittime = true;
+                    StartCoroutine("Death");
+                }
+            }
+
+            if (!eggDropping && player.GetComponent<Pibble>().dead == false && player.GetComponent<Pibble>().hintActive == false && player.GetComponent<Pibble>().paused == false)
+            {
+                eggDropping = true;
+                StartCoroutine("eggsAhoy");
+            }
+
+            if ((gameObject.transform.position.x <= originPos - patrolArea) && right == false)
+            {
+                //Debug.Log ("Turn Right");
+                //pa.Play("Patrol");
+                right = true;
+                gameObject.transform.Rotate(Vector3.up, 180.0f);
                 DC.velocity = new Vector2(2.0f, DC.velocity.y);
+            }
+            else if ((gameObject.transform.position.x >= originPos + patrolArea) && right == true)
+            {
+                //Debug.Log ("Turn Left");
+                //pa.Play("Patrol");
+                right = false;
+                gameObject.transform.Rotate(Vector3.up, 180.0f);
+                DC.velocity = new Vector2(-2.0f, DC.velocity.y);
             }
             else
             {
-                //Debug.Log ("Moving Left");
-                DC.velocity = new Vector2(-2.0f, DC.velocity.y);
+                if (right)
+                {
+                    //Debug.Log ("Moving Right");
+                    DC.velocity = new Vector2(2.0f, DC.velocity.y);
+                }
+                else
+                {
+                    //Debug.Log ("Moving Left");
+                    DC.velocity = new Vector2(-2.0f, DC.velocity.y);
+                }
             }
+        }
+        else
+        {
+            pa.enabled = false;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
     }
 
