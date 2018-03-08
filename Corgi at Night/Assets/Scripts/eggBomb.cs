@@ -5,10 +5,12 @@ using UnityEngine;
 public class eggBomb : MonoBehaviour {
 
     private CircleCollider2D shellsplosion;
+    private Animator eggAnim;
 
 	// Update is called once per frame
 	void Start () {
         shellsplosion = gameObject.GetComponent<CircleCollider2D>();
+        eggAnim = gameObject.GetComponent<Animator>();
 	}
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -17,7 +19,7 @@ public class eggBomb : MonoBehaviour {
         {
             shellsplosion.radius = shellsplosion.radius * 1.5f;
             StartCoroutine("deathLinger");
-            //pa.Play("Stand");
+            eggAnim.Play("boom");
         }
     }
 

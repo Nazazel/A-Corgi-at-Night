@@ -28,6 +28,14 @@ public class NinjaCatto : MonoBehaviour {
 		jumpHeight = 3.0f;
 		jumping = false;
 		waittime = false;
+        if(PlayerPrefs.HasKey("PlayerPos"))
+        {
+            if(!PlayerPrefs.HasKey(gameObject.name))
+            {
+                Destroy(gameObject);
+            }
+        }
+
 	}
 	
 	// Update is called once per frame

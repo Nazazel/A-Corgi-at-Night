@@ -6,6 +6,7 @@ public class ButtonManager : MonoBehaviour
 {
     private GameObject player;
     private GameObject savetext;
+    private GameObject enemylist;
     private bool hasBeenSet;
 
     void Start()
@@ -65,6 +66,12 @@ public class ButtonManager : MonoBehaviour
         PlayerPrefsX.SetBool("HintDC", player.GetComponent<Pibble>().firstPatrol);
         PlayerPrefsX.SetBool("HintDCJ", player.GetComponent<Pibble>().firstDCJ);
         PlayerPrefsX.SetBool("HintNC", player.GetComponent<Pibble>().firstNinCat);
+        enemylist = GameObject.Find("Enemies");
+        foreach (Transform t in enemylist.transform)
+        {
+            Debug.Log(t.name);
+            PlayerPrefs.SetString(t.name, t.name);
+        }
 
 
     }
