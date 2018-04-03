@@ -20,7 +20,14 @@ public class GoombaDCJ : MonoBehaviour {
 		DCJ = gameObject.GetComponent<Rigidbody2D> ();
 		waittime = false;
         idle = false;
-	}
+        if (PlayerPrefs.HasKey("PlayerPos"))
+        {
+            if (!PlayerPrefs.HasKey(gameObject.name))
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 
 	// Update is called once per frame
 	void Update () {

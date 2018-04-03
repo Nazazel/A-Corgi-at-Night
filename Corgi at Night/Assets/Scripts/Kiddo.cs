@@ -27,6 +27,13 @@ public class Kiddo : MonoBehaviour {
         holding = false;
         switching = false;
         speed = -1.25f;
+        if (PlayerPrefs.HasKey("PlayerPos"))
+        {
+            if (!PlayerPrefs.HasKey(gameObject.name))
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -49,6 +56,7 @@ public class Kiddo : MonoBehaviour {
         {
             if(!holdbreak)
             {
+                ga.Play("letitgoletitgoooo");
                 holdbreak = true;
                 StartCoroutine("hold");
             }
@@ -72,13 +80,13 @@ public class Kiddo : MonoBehaviour {
 
     public IEnumerator Death()
     {
-        //ga.enabled = false;
+        ga.enabled = false;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         yield return new WaitForSeconds(3.0f);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
         gameObject.transform.position = initSpawn;
-        //ga.enabled = true;
+        ga.enabled = true;
         waittime = false;
         holding = false;
         holdbreak = false;
@@ -87,6 +95,7 @@ public class Kiddo : MonoBehaviour {
 
     public IEnumerator Die()
     {
+        DCJ.constraints = RigidbodyConstraints2D.FreezeAll;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         //ga.Play("DCJDie");
         yield return new WaitForSeconds(0.7f);
