@@ -1346,6 +1346,26 @@ Prefab:
       propertyPath: m_Name
       value: Balloon Tower (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 61339330627074884, guid: 8583bf2a381531140af030254c4fae7e,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.09809899
+      objectReference: {fileID: 0}
+    - target: {fileID: 61339330627074884, guid: 8583bf2a381531140af030254c4fae7e,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.80357254
+      objectReference: {fileID: 0}
+    - target: {fileID: 61339330627074884, guid: 8583bf2a381531140af030254c4fae7e,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.5063945
+      objectReference: {fileID: 0}
+    - target: {fileID: 61339330627074884, guid: 8583bf2a381531140af030254c4fae7e,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.75217
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8583bf2a381531140af030254c4fae7e, type: 2}
   m_IsPrefabParent: 0
@@ -2375,6 +2395,26 @@ Prefab:
         type: 2}
       propertyPath: m_SortingOrder
       value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 61339330627074884, guid: 8583bf2a381531140af030254c4fae7e,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0.1297493
+      objectReference: {fileID: 0}
+    - target: {fileID: 61339330627074884, guid: 8583bf2a381531140af030254c4fae7e,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 1.2620409
+      objectReference: {fileID: 0}
+    - target: {fileID: 61339330627074884, guid: 8583bf2a381531140af030254c4fae7e,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.26446646
+      objectReference: {fileID: 0}
+    - target: {fileID: 61339330627074884, guid: 8583bf2a381531140af030254c4fae7e,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2.6690981
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8583bf2a381531140af030254c4fae7e, type: 2}
@@ -3807,6 +3847,26 @@ Prefab:
     - target: {fileID: 1026850697177156, guid: f68fbe59175da86449423f1ffcfea9d4, type: 2}
       propertyPath: m_Name
       value: Balloon Tower (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 61698978855933786, guid: f68fbe59175da86449423f1ffcfea9d4,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.24800134
+      objectReference: {fileID: 0}
+    - target: {fileID: 61698978855933786, guid: f68fbe59175da86449423f1ffcfea9d4,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 1.18682
+      objectReference: {fileID: 0}
+    - target: {fileID: 61698978855933786, guid: f68fbe59175da86449423f1ffcfea9d4,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.3304467
+      objectReference: {fileID: 0}
+    - target: {fileID: 61698978855933786, guid: f68fbe59175da86449423f1ffcfea9d4,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2.5186622
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f68fbe59175da86449423f1ffcfea9d4, type: 2}
