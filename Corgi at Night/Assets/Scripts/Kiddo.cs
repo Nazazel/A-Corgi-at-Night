@@ -54,7 +54,8 @@ public class Kiddo : MonoBehaviour {
         }
         else if (holding)
         {
-            if(!holdbreak)
+            player.GetComponent<Animator>().Play("SitR");
+            if (!holdbreak)
             {
                 ga.Play("letitgoletitgoooo");
                 holdbreak = true;
@@ -97,7 +98,7 @@ public class Kiddo : MonoBehaviour {
     {
         DCJ.constraints = RigidbodyConstraints2D.FreezeAll;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        //ga.Play("DCJDie");
+        ga.Play("thenperish");
         yield return new WaitForSeconds(0.7f);
         Destroy(gameObject);
     }
@@ -126,24 +127,6 @@ public class Kiddo : MonoBehaviour {
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.LeftArrow));
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.RightArrow));
-        yield return new WaitForSeconds(0.1f);
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.LeftArrow));
-        yield return new WaitForSeconds(0.1f);
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.RightArrow));
-        yield return new WaitForSeconds(0.1f);
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.LeftArrow));
-        yield return new WaitForSeconds(0.1f);
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.RightArrow));
-        yield return new WaitForSeconds(0.1f);
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.LeftArrow));
-        yield return new WaitForSeconds(0.1f);
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.RightArrow));
-        yield return new WaitForSeconds(0.1f);
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.LeftArrow));
-        yield return new WaitForSeconds(0.1f);
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.RightArrow));
-        yield return new WaitForSeconds(0.1f);
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.LeftArrow));
         yield return new WaitForSeconds(0.1f);
         player.GetComponent<Pibble>().canMove = true;
         StartCoroutine("Die");
