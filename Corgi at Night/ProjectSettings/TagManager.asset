@@ -12,6 +12,7 @@ TagManager:
   - DogCatcher
   - HidingSpot
   - Bush
+  - Doomba
   layers:
   - Default
   - TransparentFX

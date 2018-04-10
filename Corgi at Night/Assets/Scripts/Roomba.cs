@@ -18,7 +18,7 @@ public class Roomba : MonoBehaviour {
     // Use this for initialization
     void Start () {
         player = GameObject.Find("QuinSpriteFinal_1");
-        ga = gameObject.GetComponent<Animator>();
+        //ga = gameObject.GetComponent<Animator>();
         initSpawn = gameObject.transform.position;
         DCJ = gameObject.GetComponent<Rigidbody2D>();
         waittime = false;
@@ -66,13 +66,13 @@ public class Roomba : MonoBehaviour {
 
     public IEnumerator Death()
     {
-        ga.enabled = false;
+        //ga.enabled = false;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         yield return new WaitForSeconds(3.0f);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         gameObject.transform.position = initSpawn;
-        ga.enabled = true;
+        //ga.enabled = true;
         waittime = false;
     }
 }

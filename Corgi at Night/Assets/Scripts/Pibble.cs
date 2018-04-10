@@ -18,6 +18,7 @@ public class Pibble : MonoBehaviour {
     private bool cooldown;
     private GameObject attackBox;
     public Vector3 spawnpoint;
+    private GameObject originalParent;
 
     //Idle Animation List
     public string[] lookingAnim;
@@ -77,6 +78,8 @@ public class Pibble : MonoBehaviour {
         {
             introRunning = false;
         }
+        originalParent = gameObject.transform.parent.gameObject;
+        Debug.Log(originalParent.name);
         paused = false;
         HintBox = GameObject.Find("HintBox");
         hintText = GameObject.Find("HintText").GetComponent<Text>();
@@ -234,7 +237,7 @@ public class Pibble : MonoBehaviour {
                         }
                         if ((rb.velocity.x > 0.0f) && (rb.velocity.y != 0.0f))
                         {
-                            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+                            rb.velocity = new Vector2(gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x + 0.0f, gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y + rb.velocity.y);
                         }
 
                         if (running)
@@ -248,7 +251,7 @@ public class Pibble : MonoBehaviour {
                                 }
                                 pa.Play("Run");
                             }
-                            rb.velocity = new Vector2(-1.0f * runSpeed, rb.velocity.y);
+                            rb.velocity = new Vector2(gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x + (-1.0f * runSpeed), gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y +rb.velocity.y);
                         }
                         else if (crouching)
                         {
@@ -261,7 +264,7 @@ public class Pibble : MonoBehaviour {
                                 }
                                 pa.Play("CWalkR");
                             }
-                            rb.velocity = new Vector2(-1.0f * crouchSpeed, rb.velocity.y);
+                            rb.velocity = new Vector2(gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x + (-1.0f * crouchSpeed), gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y + rb.velocity.y);
                         }
                         else if (!running && !crouching)
                         {
@@ -274,7 +277,7 @@ public class Pibble : MonoBehaviour {
                                 }
                                 pa.Play("Walk");
                             }
-                            rb.velocity = new Vector2(-1.0f * speed, rb.velocity.y);
+                            rb.velocity = new Vector2(gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x + (-1.0f * speed), gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y + rb.velocity.y);
                         }
                     }
                     else if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
@@ -292,7 +295,7 @@ public class Pibble : MonoBehaviour {
                         }
                         if ((rb.velocity.x < 0.0f) && (rb.velocity.y != 0.0f))
                         {
-                            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+                            rb.velocity = new Vector2(gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x + 0.0f, gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y + rb.velocity.y);
 
                         }
 
@@ -307,7 +310,7 @@ public class Pibble : MonoBehaviour {
                                 }
                                 pa.Play("Run");
                             }
-                            rb.velocity = new Vector2(runSpeed, rb.velocity.y);
+                            rb.velocity = new Vector2(gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x + runSpeed, gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y + rb.velocity.y);
                         }
                         else if (crouching)
                         {
@@ -320,7 +323,7 @@ public class Pibble : MonoBehaviour {
                                 }
                                 pa.Play("CWalkR");
                             }
-                            rb.velocity = new Vector2(crouchSpeed, rb.velocity.y);
+                            rb.velocity = new Vector2(gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x + crouchSpeed, gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y + rb.velocity.y);
                         }
                         else if (!running && !crouching)
                         {
@@ -333,12 +336,12 @@ public class Pibble : MonoBehaviour {
                                 }
                                 pa.Play("Walk");
                             }
-                            rb.velocity = new Vector2(speed, rb.velocity.y);
+                            rb.velocity = new Vector2(gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x + speed, gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y + rb.velocity.y);
                         }
                     }
                     else if (!jumping && !barking && !crouching)
                     {
-                        rb.velocity = new Vector2(0.0f, rb.velocity.y);
+                        rb.velocity = new Vector2(gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x + 0.0f, gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y + rb.velocity.y);
                         idling = true;
                     }
 
@@ -364,6 +367,13 @@ public class Pibble : MonoBehaviour {
             landing = false;
             pa.Play("Stand");
         }
+        else if (coll.gameObject.CompareTag("Doomba") && !dead)
+        {
+            jumping = false;
+            landing = false;
+            pa.Play("Stand");
+            gameObject.transform.parent = coll.gameObject.transform;
+        }
         else if (coll.gameObject.CompareTag("Death") && !dead)
         {
             dead = true;
@@ -381,9 +391,20 @@ public class Pibble : MonoBehaviour {
         }
     }
 
-    //  CODE FOR FALLING OFF PLATFORMS: DOESN'T WORK RIGHT NOW, BUT POSSIBLE
-    //	JK, WORKS NOW (FUCK COLLIDERS...)
-    void OnCollisionExit2D(Collision2D colll)
+    //void OnCollisionStay2D(Collision2D coll)
+    //{
+    //    if (coll.gameObject.CompareTag("Doomba"))
+    //    {
+    //        jumping = false;
+    //        landing = false;
+    //        pa.Play("Stand");
+    //        gameObject.transform.parent = coll.gameObject.transform;
+    //    }
+    //}
+
+//  CODE FOR FALLING OFF PLATFORMS: DOESN'T WORK RIGHT NOW, BUT POSSIBLE
+//	JK, WORKS NOW (FUCK COLLIDERS...)
+void OnCollisionExit2D(Collision2D colll)
     {
         if (colll.gameObject.CompareTag("Floor") && !jumping)
         {
@@ -392,10 +413,12 @@ public class Pibble : MonoBehaviour {
             jumping = true;
             pa.Play("Land");
         }
+        gameObject.transform.parent = originalParent.transform;
     }
 
     public IEnumerator Death()
     {
+        gameObject.transform.parent = originalParent.transform;
         QuinnAS.clip = deathAudio;
         QuinnAS.Play();
         pa.Play("DieR");
