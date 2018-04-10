@@ -106,6 +106,14 @@ public class Kiddo : MonoBehaviour {
     public IEnumerator switchDir()
     {
         switching = true;
+        if (gameObject.GetComponent<SpriteRenderer>().flipX == true)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (gameObject.GetComponent<SpriteRenderer>().flipX == false)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
         speed = -1.0f * speed;
         yield return new WaitForSeconds(0.5f);
         switching = false;
