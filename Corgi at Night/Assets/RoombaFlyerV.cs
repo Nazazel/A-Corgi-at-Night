@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Roomba : MonoBehaviour {
+public class RoombaFlyerV : MonoBehaviour
+{
 
     private Rigidbody2D DCJ;
     private GameObject player;
@@ -14,11 +15,18 @@ public class Roomba : MonoBehaviour {
     public bool holding;
     private bool holdbreak;
     private bool switching;
+    private float originPos;
+    private float patrolArea;
+    private bool right;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
+        right = true;
         player = GameObject.Find("QuinSpriteFinal_1");
         ga = gameObject.GetComponent<Animator>();
+        originPos = gameObject.transform.position.y;
+        patrolArea = 1.0f;
         initSpawn = gameObject.transform.position;
         DCJ = gameObject.GetComponent<Rigidbody2D>();
         waittime = false;
@@ -26,11 +34,13 @@ public class Roomba : MonoBehaviour {
         holding = false;
         switching = false;
         speed = -1.25f;
-        StartCoroutine("windUp");
+        ga.Play("RoombaFloat");
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (player.GetComponent<Pibble>().dead == true)
         {
             if (waittime == false)
@@ -40,38 +50,36 @@ public class Roomba : MonoBehaviour {
                 StartCoroutine("Death");
             }
         }
-        if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+        if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7 && !player.GetComponent<Pibble>().dead)
         {
-            DCJ.velocity = new Vector2(speed, DCJ.velocity.y);
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D coll)
-    {
-        if (coll.gameObject.tag != "Floor")
-        {
-            if (!switching && coll.gameObject.tag != "Player")
+            if ((gameObject.transform.position.y <= originPos - patrolArea) && right == false)
             {
-                StartCoroutine("switchDir");
+                //Debug.Log ("Turn Up");
+                ga.Play("RoombaFloat");
+                right = true;
+                DCJ.velocity = new Vector2(0.0f, 0.5f);
+            }
+            else if ((gameObject.transform.position.y >= originPos + patrolArea) && right == true)
+            {
+                //Debug.Log ("Turn Down");
+                ga.Play("RoombaFloat");
+                right = false;
+                DCJ.velocity = new Vector2(0.0f, -0.5f);
+            }
+            else
+            {
+                if (right)
+                {
+                    //Debug.Log ("Moving Up");
+                    DCJ.velocity = new Vector2(0.0f, 0.5f);
+                }
+                else
+                {
+                    //Debug.Log ("Moving Down");
+                    DCJ.velocity = new Vector2(0.0f, -0.5f);
+                }
             }
         }
-    }
-
-    public IEnumerator switchDir()
-    {
-        StartCoroutine("windUp");
-        switching = true;
-        if (gameObject.GetComponent<SpriteRenderer>().flipX == true)
-        {
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
-        }
-        else if (gameObject.GetComponent<SpriteRenderer>().flipX == false)
-        {
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        }
-        speed = -1.0f * speed;
-        yield return new WaitForSeconds(0.5f);
-        switching = false;
     }
 
     public IEnumerator Death()
@@ -86,10 +94,4 @@ public class Roomba : MonoBehaviour {
         waittime = false;
     }
 
-    public IEnumerator windUp()
-    {
-        ga.Play("RoombaStartup");
-        yield return new WaitForSeconds(0.33f);
-        ga.Play("RoombaMove");
-    }
 }

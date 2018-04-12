@@ -121,6 +121,28 @@ public class Kiddo : MonoBehaviour {
 
     public IEnumerator hold()
     {
+        if(gameObject.GetComponent<SpriteRenderer>().flipX == true && player.transform.rotation.y == 1)
+        {
+            if (player.GetComponent<SpriteRenderer>().flipX == true)
+            {
+                player.GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if (player.GetComponent<SpriteRenderer>().flipX == false)
+            {
+                player.GetComponent<SpriteRenderer>().flipX = true;
+            }
+        }
+        else if (gameObject.GetComponent<SpriteRenderer>().flipX == false && player.transform.rotation.y == 0)
+        {
+            if (player.GetComponent<SpriteRenderer>().flipX == true)
+            {
+                player.GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if (player.GetComponent<SpriteRenderer>().flipX == false)
+            {
+                player.GetComponent<SpriteRenderer>().flipX = true;
+            }
+        }
         player.GetComponent<Pibble>().canMove = false;
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.RightArrow));
         yield return new WaitForSeconds(0.1f);
@@ -136,6 +158,7 @@ public class Kiddo : MonoBehaviour {
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.RightArrow));
         yield return new WaitForSeconds(0.1f);
+        player.GetComponent<SpriteRenderer>().flipX = false;
         player.GetComponent<Pibble>().canMove = true;
         StartCoroutine("Die");
     }
