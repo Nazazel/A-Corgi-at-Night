@@ -39,6 +39,7 @@ public class Boom : MonoBehaviour
         gameObject.transform.position = initSpawn;
         doomAnim.enabled = true;
         doomAnim.Play("RoombaBoom");
+        
     }
 
 }
