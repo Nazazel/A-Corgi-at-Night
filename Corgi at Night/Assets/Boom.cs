@@ -24,10 +24,15 @@ public class Boom : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Player") && player.GetComponent<Pibble>().dead == false)
         {
-            player.GetComponent<Pibble>().dead = true;
-            player.GetComponent<Pibble>().StartCoroutine("Death");
-            doomAnim.Play("Boomba");
-            StartCoroutine("Death");
+            StartCoroutine("SelfDestructSequenceInitiated");
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D coll)
+    {
+        if (coll.gameObject.CompareTag("Player") && player.GetComponent<Pibble>().dead == false)
+        {
+            StopCoroutine("SelfDestructSequenceInitiated");
         }
     }
 
@@ -42,4 +47,12 @@ public class Boom : MonoBehaviour
         
     }
 
+    public IEnumerator SelfDestructSequenceInitiated()
+    {
+        yield return new WaitForSeconds(2.0f);
+        player.GetComponent<Pibble>().dead = true;
+        player.GetComponent<Pibble>().StartCoroutine("Death");
+        doomAnim.Play("Boomba");
+        StartCoroutine("Death");
+    }
 }

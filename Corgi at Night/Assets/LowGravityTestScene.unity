@@ -1209,9 +1209,10 @@ GameObject:
   - component: {fileID: 404834679}
   - component: {fileID: 404834678}
   - component: {fileID: 404834676}
+  - component: {fileID: 404834677}
   m_Layer: 0
   m_Name: Doomba Chainsaw
-  m_TagString: Doomba
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1233,6 +1234,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &404834677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404834675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b59fadd9bb1706499caf808266bb24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &404834678
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1532,6 +1544,7 @@ MonoBehaviour:
   initSpawn: {x: 0, y: 0, z: 0}
   levelStart: {x: 0, y: 0, z: 0}
   holding: 0
+  switching: 0
 --- !u!61 &512328397
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2099,6 +2112,7 @@ MonoBehaviour:
   initSpawn: {x: 0, y: 0, z: 0}
   levelStart: {x: 0, y: 0, z: 0}
   holding: 0
+  switching: 0
 --- !u!61 &674248802
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4491,15 +4505,15 @@ GameObject:
   - component: {fileID: 1728869644}
   - component: {fileID: 1728869643}
   - component: {fileID: 1728869642}
-  - component: {fileID: 1728869641}
   - component: {fileID: 1728869640}
+  - component: {fileID: 1728869641}
   m_Layer: 0
   m_Name: Doomba Fly Horizontal
   m_TagString: Doomba
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1728869640
 Animator:
   serializedVersion: 3
@@ -4525,7 +4539,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1728869639}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 966a3aa20f2ba53419572a496ea5e5eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fd1ca8a8ea4f8e4ba7f67b33416af11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   initSpawn: {x: 0, y: 0, z: 0}
@@ -4610,7 +4624,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 32
-  m_Sprite: {fileID: 21300008, guid: 8fbc9a531d10ab5439b0c824ecf81114, type: 3}
+  m_Sprite: {fileID: 21300038, guid: 8fbc9a531d10ab5439b0c824ecf81114, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4627,7 +4641,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1728869639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.549, y: -0.746, z: 0}
+  m_LocalPosition: {x: -0.781, y: 0.301, z: 0}
   m_LocalScale: {x: 1.1841421, y: 1.1841422, z: 1.1841422}
   m_Children:
   - {fileID: 2040690269}

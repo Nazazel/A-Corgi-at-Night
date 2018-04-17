@@ -13,7 +13,7 @@ public class Roomba : MonoBehaviour {
     private bool waittime;
     public bool holding;
     private bool holdbreak;
-    private bool switching;
+    public bool switching;
 
     // Use this for initialization
     void Start () {
