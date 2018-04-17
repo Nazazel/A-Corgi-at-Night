@@ -70,7 +70,7 @@ public class Kiddo : MonoBehaviour {
         {
             holding = true;
         }
-        else if (coll.gameObject.tag != "Floor")
+        else if (coll.gameObject.tag != "Floor" && !holding)
         {
             if (!switching)
             {
@@ -121,6 +121,7 @@ public class Kiddo : MonoBehaviour {
 
     public IEnumerator hold()
     {
+        player.GetComponent<Pibble>().isHeld = true;
         if(gameObject.GetComponent<SpriteRenderer>().flipX == true && player.transform.rotation.y == 1)
         {
             if (player.GetComponent<SpriteRenderer>().flipX == true)
@@ -158,8 +159,10 @@ public class Kiddo : MonoBehaviour {
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.RightArrow));
         yield return new WaitForSeconds(0.1f);
+        player.GetComponent<Pibble>().isHeld = false;
         player.GetComponent<SpriteRenderer>().flipX = false;
         player.GetComponent<Pibble>().canMove = true;
         StartCoroutine("Die");
+
     }
 }

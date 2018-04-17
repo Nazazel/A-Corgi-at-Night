@@ -19,6 +19,7 @@ public class Pibble : MonoBehaviour {
     private GameObject attackBox;
     public Vector3 spawnpoint;
     private GameObject originalParent;
+    public bool isHeld;
 
     //Idle Animation List
     public string[] lookingAnim;
@@ -81,6 +82,7 @@ public class Pibble : MonoBehaviour {
         originalParent = gameObject.transform.parent.gameObject;
         Debug.Log(originalParent.name);
         paused = false;
+        isHeld = false;
         HintBox = GameObject.Find("HintBox");
         hintText = GameObject.Find("HintText").GetComponent<Text>();
         hintActive = false;
@@ -345,7 +347,7 @@ public class Pibble : MonoBehaviour {
                         idling = true;
                     }
 
-                    if (idling && !hidden && !idlingtimerstarted)
+                    if (idling && !hidden && !idlingtimerstarted && !isHeld)
                     {
                         if (QuinnAS.isPlaying && (QuinnAS.clip == walkAudio || QuinnAS.clip == runAudio))
                         {
