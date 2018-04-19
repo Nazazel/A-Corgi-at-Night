@@ -71,6 +71,7 @@ public class Pibble : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        Debug.Log(transform.rotation.y);
         if(PlayerPrefs.HasKey("IntroPlayed"))
         {
             introRunning = PlayerPrefsX.GetBool("IntroPlayed");
@@ -365,6 +366,7 @@ public class Pibble : MonoBehaviour {
     {
         if (coll.gameObject.CompareTag("Floor") && jumping == true)
         {
+            Debug.Log(gameObject.transform.position.y);
             jumping = false;
             landing = false;
             pa.Play("Stand");

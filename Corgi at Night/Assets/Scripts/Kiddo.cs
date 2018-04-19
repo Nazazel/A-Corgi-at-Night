@@ -27,6 +27,7 @@ public class Kiddo : MonoBehaviour {
         holding = false;
         switching = false;
         speed = -1.25f;
+        Debug.Log(gameObject.GetComponent<SpriteRenderer>().flipX);
         if (PlayerPrefs.HasKey("PlayerPos"))
         {
             if (!PlayerPrefs.HasKey(gameObject.name))
@@ -121,30 +122,48 @@ public class Kiddo : MonoBehaviour {
 
     public IEnumerator hold()
     {
+        DCJ.velocity = new Vector2(0.0f, 0.0f);
+        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
         player.GetComponent<Pibble>().isHeld = true;
+        Debug.Log(player.transform.position.x - gameObject.transform.position.x);
         if(gameObject.GetComponent<SpriteRenderer>().flipX == true && player.transform.rotation.y == 1)
         {
-            if (player.GetComponent<SpriteRenderer>().flipX == true)
+            if (player.transform.position.x - gameObject.transform.position.x < 0)
             {
-                player.GetComponent<SpriteRenderer>().flipX = false;
+                if (player.GetComponent<SpriteRenderer>().flipX == false)
+                {
+                    player.GetComponent<SpriteRenderer>().flipX = true;
+                    player.transform.position = new Vector3(gameObject.transform.position.x - 0.21f, -0.87f, player.transform.position.z);
+                }
             }
-            else if (player.GetComponent<SpriteRenderer>().flipX == false)
+            else
             {
-                player.GetComponent<SpriteRenderer>().flipX = true;
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                player.transform.position = new Vector3(gameObject.transform.position.x + 0.23f, -0.87f, player.transform.position.z);
             }
+
         }
         else if (gameObject.GetComponent<SpriteRenderer>().flipX == false && player.transform.rotation.y == 0)
         {
-            if (player.GetComponent<SpriteRenderer>().flipX == true)
+            if (player.transform.position.x - gameObject.transform.position.x > 0)
             {
-                player.GetComponent<SpriteRenderer>().flipX = false;
+                if (player.GetComponent<SpriteRenderer>().flipX == false)
+                {
+                    player.GetComponent<SpriteRenderer>().flipX = true;
+                    player.transform.position = new Vector3(gameObject.transform.position.x + 0.21f, -0.87f, player.transform.position.z);
+                }
             }
-            else if (player.GetComponent<SpriteRenderer>().flipX == false)
+            else
             {
-                player.GetComponent<SpriteRenderer>().flipX = true;
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                player.transform.position = new Vector3(gameObject.transform.position.x - 0.23f, -0.87f, player.transform.position.z);
             }
         }
+        player.GetComponent<Pibble>().StopCoroutine("IdleAnimate");
         player.GetComponent<Pibble>().canMove = false;
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        player.transform.position = new Vector3(player.transform.position.x, -0.87f, player.transform.position.z);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.RightArrow));
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.LeftArrow));
@@ -160,6 +179,7 @@ public class Kiddo : MonoBehaviour {
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.RightArrow));
         yield return new WaitForSeconds(0.1f);
         player.GetComponent<Pibble>().isHeld = false;
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         player.GetComponent<SpriteRenderer>().flipX = false;
         player.GetComponent<Pibble>().canMove = true;
         StartCoroutine("Die");
