@@ -3,7 +3,17 @@ guid: 4a87759b80af05940aad5de0cae5a959
 timeCreated: 1522968032
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: shootingstar_spritesheet_0
+    21300002: shootingstar_spritesheet_1
+    21300004: shootingstar_spritesheet_2
+    21300006: shootingstar_spritesheet_3
+    21300008: shootingstar_spritesheet_4
+    21300010: shootingstar_spritesheet_5
+    21300012: shootingstar_spritesheet_6
+    21300014: shootingstar_spritesheet_7
+    21300016: shootingstar_spritesheet_8
+    21300018: shootingstar_spritesheet_9
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -78,7 +88,147 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: shootingstar_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 287.1
+        width: 92
+        height: 31.9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shootingstar_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256.1
+        width: 92
+        height: 31.9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shootingstar_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 225.1
+        width: 92
+        height: 31.9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shootingstar_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 194.1
+        width: 92
+        height: 31.9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shootingstar_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 163.1
+        width: 92
+        height: 31.9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shootingstar_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 132.1
+        width: 92
+        height: 31.9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shootingstar_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 101.1
+        width: 92
+        height: 31.9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shootingstar_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 70.1
+        width: 92
+        height: 31.9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shootingstar_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 39.1
+        width: 92
+        height: 31.9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: shootingstar_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8.1
+        width: 92
+        height: 31.9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
