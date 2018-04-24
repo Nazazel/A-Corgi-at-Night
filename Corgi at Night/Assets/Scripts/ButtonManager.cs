@@ -57,11 +57,11 @@ public class ButtonManager : MonoBehaviour
 		PlayerPrefsX.SetVector3("PlayerPos", new Vector3(player.GetComponent<Pibble>().spawnpoint.x, player.GetComponent<Pibble>().spawnpoint.y, player.GetComponent<Pibble>().spawnpoint.z));
         if (player.GetComponent<Pibble>().introRunning)
         {
-            PlayerPrefsX.SetBool("IntroPlayed", false);
+            PlayerPrefsX.SetBool("IntroPlayed", true);
         }
         else
         {
-            PlayerPrefsX.SetBool("IntroPlayed", true);
+            PlayerPrefsX.SetBool("IntroPlayed", false);
         }
         PlayerPrefsX.SetBool("HintDC", player.GetComponent<Pibble>().firstPatrol);
         PlayerPrefsX.SetBool("HintDCJ", player.GetComponent<Pibble>().firstDCJ);

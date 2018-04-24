@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/LowGravityTestScene.unity
     guid: e0e71b4c7fae0984ea8c2c35c1aad7c9
+  - enabled: 1
+    path: Assets/IntroCutscene.unity
+    guid: da239c2436c5c664ea72e808b884cd18
