@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Pibble : MonoBehaviour {
 
+    //Testing
+    public bool sceneTesting;
+    public bool hintSystemDisable;
     
     //General
 	public bool introRunning;
@@ -72,23 +75,33 @@ public class Pibble : MonoBehaviour {
     void Start()
     {
         Debug.Log(transform.rotation.y);
-        if(PlayerPrefs.HasKey("IntroPlayed"))
+        if (sceneTesting)
         {
-            introRunning = PlayerPrefsX.GetBool("IntroPlayed");
+            introRunning = false;
         }
         else
         {
-            introRunning = true;
-            StartCoroutine("intro");
+            if (PlayerPrefs.HasKey("IntroPlayed"))
+            {
+                introRunning = PlayerPrefsX.GetBool("IntroPlayed");
+            }
+            else
+            {
+                introRunning = true;
+                StartCoroutine("intro");
+            }
         }
         originalParent = gameObject.transform.parent.gameObject;
         Debug.Log(originalParent.name);
         paused = false;
         isHeld = false;
-        HintBox = GameObject.Find("HintBox");
-        hintText = GameObject.Find("HintText").GetComponent<Text>();
-        hintActive = false;
-        HintBox.SetActive(false);
+        if (!hintSystemDisable)
+        {
+            HintBox = GameObject.Find("HintBox");
+            hintText = GameObject.Find("HintText").GetComponent<Text>();
+            hintActive = false;
+            HintBox.SetActive(false);
+        }
         if (PlayerPrefs.HasKey("HintDC"))
         {
             firstDCJ = PlayerPrefsX.GetBool("HintDCJ");

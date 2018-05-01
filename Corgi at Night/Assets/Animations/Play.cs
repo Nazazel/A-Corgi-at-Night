@@ -8,22 +8,22 @@ public class Play : MonoBehaviour
 {
 	
 	private Text finScore;
-    public AudioSource audio;
+    public AudioSource movAudio;
     public bool started;
 
     // Use this for initialization
     void Start()
     {
         ((MovieTexture)GetComponent<Renderer>().material.mainTexture).Play();
-        audio = gameObject.GetComponent<AudioSource>();
-        audio.Play();
+        movAudio = gameObject.GetComponent<AudioSource>();
+        movAudio.Play();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!audio.isPlaying)
+        if (!movAudio.isPlaying)
         {
             if (!started)
             {
@@ -43,6 +43,6 @@ public class Play : MonoBehaviour
 	public void vidStop()
 	{
 		((MovieTexture)GetComponent<Renderer> ().material.mainTexture).Pause();
-		audio.Stop ();
+		movAudio.Stop ();
 	}
 }
