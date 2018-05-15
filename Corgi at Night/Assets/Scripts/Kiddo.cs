@@ -82,6 +82,7 @@ public class Kiddo : MonoBehaviour {
 
     public IEnumerator Death()
     {
+        StopCoroutine("hold");
         ga.enabled = false;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;

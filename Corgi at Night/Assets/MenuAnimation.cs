@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MenuAnimation : MonoBehaviour {
 
-    public bool anim = true;
+    public bool anim;
     public bool idleNotPlayed = true;
     public bool finishedIdle = false;
     public Animator pa;
 	// Use this for initialization
 	void Start () {
+        anim = false;
         pa = gameObject.GetComponent<Animator>();
 	}
 	
@@ -62,6 +63,7 @@ public class MenuAnimation : MonoBehaviour {
     public void AnimatingTime()
     {
         anim = true;
+        StartCoroutine("TimedDestruction");
     }
 
     public IEnumerator idleAnimate()
@@ -75,5 +77,11 @@ public class MenuAnimation : MonoBehaviour {
         pa.Play("LookR");
         yield return new WaitForSeconds(2.15f);
         finishedIdle = true;
+    }
+
+    public IEnumerator TimedDestruction()
+    {
+        yield return new WaitForSeconds(20.0f);
+        Destroy(gameObject);
     }
 }
