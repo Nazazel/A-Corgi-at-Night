@@ -50,7 +50,7 @@ public class RoombaFlyerV : MonoBehaviour
                 StartCoroutine("Death");
             }
         }
-        if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7 && !player.GetComponent<Pibble>().dead)
+        if (!player.GetComponent<Pibble>().dead)
         {
             if ((gameObject.transform.position.y <= originPos - patrolArea) && right == false)
             {
