@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003545d5485ccd848a9db3a8f04e080f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movAudio: {fileID: 0}
+  movAudio: {fileID: 117472459}
   started: 0
 --- !u!1 &164370295
 GameObject:
