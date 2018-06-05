@@ -92,7 +92,7 @@ public class Pibble : MonoBehaviour {
             }
         }
         originalParent = gameObject.transform.parent.gameObject;
-        Debug.Log(originalParent.name);
+        Debug.Log(originalParent.name); 
         paused = false;
         isHeld = false;
         if (!hintSystemDisable)

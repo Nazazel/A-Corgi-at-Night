@@ -3,27 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class Play : MonoBehaviour
 {
 	
 	private Text finScore;
-    public AudioSource movAudio;
+	public VideoPlayer movAudio;
     public bool started;
+	public bool delayed;
 
-    // Use this for initialization
-    void Start()
-    {
-        ((MovieTexture)GetComponent<Renderer>().material.mainTexture).Play();
-        movAudio = gameObject.GetComponent<AudioSource>();
-        movAudio.Play();
-        
-    }
-
+	void Start()
+	{
+		delayed = false;
+		StartCoroutine ("DelayedStart");
+	}
     // Update is called once per frame
     void Update()
     {
-        if (!movAudio.isPlaying)
+		Debug.Log (movAudio.isPlaying);
+		if (!movAudio.isPlaying && delayed)
         {
             if (!started)
             {
@@ -40,9 +39,10 @@ public class Play : MonoBehaviour
         SceneManager.LoadSceneAsync("Main Level");
     }
 
-	public void vidStop()
+	IEnumerator DelayedStart()
 	{
-		((MovieTexture)GetComponent<Renderer> ().material.mainTexture).Pause();
-		movAudio.Stop ();
+		yield return new WaitForSeconds(1F);
+		delayed = true;
 	}
+
 }
