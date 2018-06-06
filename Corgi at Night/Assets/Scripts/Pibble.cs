@@ -57,6 +57,7 @@ public class Pibble : MonoBehaviour {
     public bool jumping;
     private bool right;
     private bool landing;
+	public bool falling;
 
     //Sprites
     private SpriteRenderer sr;
@@ -117,6 +118,7 @@ public class Pibble : MonoBehaviour {
         release = true;
         barkQ = 0;
         cooldown = false;
+		falling = false;
         mainListener = GameObject.Find("AudioListener");
         GameObject.DontDestroyOnLoad(GameObject.Find("Corgo"));
         mainCam = GameObject.Find("Main Camera");
@@ -187,7 +189,7 @@ public class Pibble : MonoBehaviour {
             {
                 if (hintActive == false)
                 {
-                    if (!dead && !landing && jumping && !hidden)
+					if (!dead && !landing && (jumping || falling) && !hidden)
                     {
                         if (rb.velocity.y < -0.5f)
                         {
@@ -229,7 +231,7 @@ public class Pibble : MonoBehaviour {
                     if (canMove && !dead && !hidden)
                     {
 
-                        if (Input.GetKey(KeyCode.Space) && !crouching && !jumping)
+                        if (Input.GetKey(KeyCode.Space) && !crouching && !jumping && !falling)
                         {
                             QuinnAS.clip = jumpAudio;
                             idling = false;
@@ -241,7 +243,7 @@ public class Pibble : MonoBehaviour {
                             jumping = true;
                         }
 
-                        if (Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.LeftShift) && !jumping)
+                        if (Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.LeftShift) && !jumping && !falling)
                         {
                             idling = false;
                             StopCoroutine("IdleAnimate");
@@ -286,7 +288,7 @@ public class Pibble : MonoBehaviour {
 
                             if (running)
                             {
-                                if (!jumping)
+								if (!jumping && !falling)
                                 {
                                     QuinnAS.clip = runAudio;
                                     if (!QuinnAS.isPlaying)
@@ -299,7 +301,7 @@ public class Pibble : MonoBehaviour {
                             }
                             else if (crouching)
                             {
-                                if (!jumping)
+                                if (!jumping && !falling)
                                 {
                                     QuinnAS.clip = runAudio;
                                     if (!QuinnAS.isPlaying)
@@ -312,7 +314,7 @@ public class Pibble : MonoBehaviour {
                             }
                             else if (!running && !crouching)
                             {
-                                if (!jumping)
+								if (!jumping && !falling)
                                 {
                                     QuinnAS.clip = walkAudio;
                                     if (!QuinnAS.isPlaying)
@@ -345,7 +347,7 @@ public class Pibble : MonoBehaviour {
 
                             if (running)
                             {
-                                if (!jumping)
+                                if (!jumping && !falling)
                                 {
                                     QuinnAS.clip = runAudio;
                                     if (!QuinnAS.isPlaying)
@@ -358,7 +360,7 @@ public class Pibble : MonoBehaviour {
                             }
                             else if (crouching)
                             {
-                                if (!jumping)
+								if (!jumping && !falling)
                                 {
                                     QuinnAS.clip = runAudio;
                                     if (!QuinnAS.isPlaying)
@@ -371,7 +373,7 @@ public class Pibble : MonoBehaviour {
                             }
                             else if (!running && !crouching)
                             {
-                                if (!jumping)
+								if (!jumping && !falling)
                                 {
                                     QuinnAS.clip = walkAudio;
                                     if (!QuinnAS.isPlaying)
@@ -406,21 +408,7 @@ public class Pibble : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.CompareTag("Floor") && jumping == true)
-        {
-            //Debug.Log(gameObject.transform.position.y);
-            jumping = false;
-            landing = false;
-            pa.Play("Stand");
-        }
-        else if (coll.gameObject.CompareTag("Doomba") && !dead)
-        {
-            jumping = false;
-            landing = false;
-            pa.Play("Stand");
-            gameObject.transform.parent = coll.gameObject.transform;
-        }
-        else if (coll.gameObject.CompareTag("Death") && !dead)
+        if (coll.gameObject.CompareTag("Death") && !dead)
         {
             dead = true;
             StartCoroutine("Death");
@@ -437,28 +425,51 @@ public class Pibble : MonoBehaviour {
         }
     }
 
-    //void OnCollisionStay2D(Collision2D coll)
-    //{
-    //    if (coll.gameObject.CompareTag("Doomba"))
-    //    {
-    //        jumping = false;
-    //        landing = false;
-    //        pa.Play("Stand");
-    //        gameObject.transform.parent = coll.gameObject.transform;
-    //    }
-    //}
+    void OnCollisionStay2D(Collision2D coll)
+    {
+		if (coll.gameObject.CompareTag("Floor") && jumping == true)
+		{
+			//Debug.Log(gameObject.transform.position.y);
+			falling = false;
+			jumping = false;
+			landing = false;
+			pa.Play("Stand");
+		}
+		else if (coll.gameObject.CompareTag("Floor") && falling == true)
+		{
+			//Debug.Log(gameObject.transform.position.y);
+			falling = false;
+			jumping = false;
+			landing = false;
+			pa.Play("Stand");
+		}
+		else if (coll.gameObject.CompareTag("Doomba") && !dead)
+		{
+			falling = false;
+			jumping = false;
+			landing = false;
+			pa.Play("Stand");
+			gameObject.transform.parent = coll.gameObject.transform;
+		}
+    }
 
 //  CODE FOR FALLING OFF PLATFORMS: DOESN'T WORK RIGHT NOW, BUT POSSIBLE
 //	JK, WORKS NOW (FUCK COLLIDERS...)
 void OnCollisionExit2D(Collision2D colll)
     {
-        if (colll.gameObject.CompareTag("Floor") && !jumping)
+		if (colll.gameObject.CompareTag("Floor") && jumping)
+		{
+			falling = true;
+			pa.Play("Jump");
+		}
+		else if (colll.gameObject.CompareTag("Floor") && !falling && !jumping)
         {
             Debug.Log("Fall?");
             landing = true;
-            jumping = true;
+            falling = true;
             pa.Play("Land");
         }
+
         gameObject.transform.parent = originalParent.transform;
     }
 
