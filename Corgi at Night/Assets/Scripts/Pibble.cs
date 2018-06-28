@@ -93,7 +93,7 @@ public class Pibble : MonoBehaviour {
             }
         }
         originalParent = gameObject.transform.parent.gameObject;
-        Debug.Log(originalParent.name); 
+        Debug.Log(originalParent.name);
         paused = false;
         isHeld = false;
         if (!hintSystemDisable)
@@ -158,6 +158,7 @@ public class Pibble : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(gameObject.transform.position.x);
         if (!paused)
         {
             if (introRunning)
@@ -239,7 +240,7 @@ public class Pibble : MonoBehaviour {
                             QuinnAS.Play();
                             idlingtimerstarted = false;
                             rb.velocity = new Vector2(rb.velocity.x, jumpHeight * 1.5f);
-                            pa.Play("Jump");
+                            StartCoroutine("JumpAnimation");
                             jumping = true;
                         }
 
@@ -385,7 +386,7 @@ public class Pibble : MonoBehaviour {
                                 rb.velocity = new Vector2(gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x + speed, gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y + rb.velocity.y);
                             }
                         }
-                        else if (!jumping && !barking && !crouching)
+                        else if (!jumping && !falling && !barking && !crouching)
                         {
                             rb.velocity = new Vector2(gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x + 0.0f, gameObject.transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.y + rb.velocity.y);
                             idling = true;
@@ -408,7 +409,19 @@ public class Pibble : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.CompareTag("Death") && !dead)
+        if (coll.gameObject.CompareTag("Floor") && jumping == true)
+        {
+            pa.Play("Stand");
+        }
+        else if (coll.gameObject.CompareTag("Floor") && falling == true)
+        {
+            pa.Play("Stand");
+        }
+        else if (coll.gameObject.CompareTag("Doomba") && !dead)
+        {
+            pa.Play("Stand");
+        }
+        else if (coll.gameObject.CompareTag("Death") && !dead)
         {
             dead = true;
             StartCoroutine("Death");
@@ -433,7 +446,7 @@ public class Pibble : MonoBehaviour {
 			falling = false;
 			jumping = false;
 			landing = false;
-			pa.Play("Stand");
+			//pa.Play("Stand");
 		}
 		else if (coll.gameObject.CompareTag("Floor") && falling == true)
 		{
@@ -441,14 +454,14 @@ public class Pibble : MonoBehaviour {
 			falling = false;
 			jumping = false;
 			landing = false;
-			pa.Play("Stand");
+			//pa.Play("Stand");
 		}
 		else if (coll.gameObject.CompareTag("Doomba") && !dead)
 		{
 			falling = false;
 			jumping = false;
 			landing = false;
-			pa.Play("Stand");
+			//pa.Play("Stand");
 			gameObject.transform.parent = coll.gameObject.transform;
 		}
     }
@@ -460,12 +473,11 @@ void OnCollisionExit2D(Collision2D colll)
 		if (colll.gameObject.CompareTag("Floor") && jumping)
 		{
 			falling = true;
-			pa.Play("Jump");
+			//pa.Play("Jump");
 		}
 		else if (colll.gameObject.CompareTag("Floor") && !falling && !jumping)
         {
             Debug.Log("Fall?");
-            landing = true;
             falling = true;
             pa.Play("Land");
         }
@@ -478,6 +490,7 @@ void OnCollisionExit2D(Collision2D colll)
         gameObject.transform.parent = originalParent.transform;
         QuinnAS.clip = deathAudio;
         QuinnAS.Play();
+        yield return new WaitForSeconds(0.05f);
         pa.Play("DieR");
         StopCoroutine("IdleAnimate");
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
@@ -658,6 +671,13 @@ void OnCollisionExit2D(Collision2D colll)
         yield return new WaitForSeconds(0.1f);
         HintBox.SetActive(false);
         introRunning = false;
+    }
+
+    public IEnumerator JumpAnimation()
+    {
+        Debug.Log("JUMP");
+        yield return new WaitForSeconds(0.01f);
+        pa.Play("Jump");
     }
 
 }
