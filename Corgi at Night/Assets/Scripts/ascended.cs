@@ -23,6 +23,7 @@ public class ascended : MonoBehaviour {
         if (ascensionStarted && gameObject.transform.position.y < -1.636f)
         {
             rb.velocity = new Vector2(0.0f, 1.0f);
+			gameObject.transform.eulerAngles = new Vector3 (0, 0, 0);
         }
         else if (ascensionStarted && !targetReached)
         {

@@ -495,7 +495,7 @@ void OnCollisionExit2D(Collision2D colll)
         StopCoroutine("IdleAnimate");
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.93f);
         if(isHeld)
         {
             isHeld = false;
