@@ -237,7 +237,6 @@ public class Pibble : MonoBehaviour {
                             QuinnAS.clip = jumpAudio;
                             idling = false;
                             StopCoroutine("IdleAnimate");
-                            QuinnAS.Play();
                             idlingtimerstarted = false;
                             rb.velocity = new Vector2(rb.velocity.x, jumpHeight * 1.5f);
                             StartCoroutine("JumpAnimation");
@@ -677,6 +676,9 @@ void OnCollisionExit2D(Collision2D colll)
     {
         Debug.Log("JUMP");
         yield return new WaitForSeconds(0.01f);
+		if (QuinnAS.clip == jumpAudio && QuinnAS.isPlaying == false) {
+			QuinnAS.Play ();
+		}
         pa.Play("Jump");
     }
 
