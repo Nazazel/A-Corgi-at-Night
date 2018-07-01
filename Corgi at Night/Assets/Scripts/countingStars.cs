@@ -32,7 +32,6 @@ public class countingStars : MonoBehaviour {
 		yield return new WaitForSeconds (0.75f);
 		sr.enabled = false;
 		yield return new WaitForSeconds (intervalBetweenStars);
-		sa.playbackTime = 0;
 		started = false;
 
 	}

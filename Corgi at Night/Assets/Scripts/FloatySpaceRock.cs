@@ -51,4 +51,13 @@ public class FloatySpaceRock : MonoBehaviour {
         ga.enabled = true;
         waittime = false;
     }
+
+	void OnTriggerEnter2D(Collider2D c)
+	{
+		if (c.gameObject.CompareTag ("Player") == true) {
+			Debug.Log("w");
+			player.GetComponent<Pibble> ().dead = true;
+			player.GetComponent<Pibble> ().SendMessage("Death");
+		}
+	}
 }

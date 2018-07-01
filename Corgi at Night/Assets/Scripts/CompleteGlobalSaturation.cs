@@ -119,4 +119,13 @@ public class CompleteGlobalSaturation : MonoBehaviour {
 		coroutineStarted = false;
 	}
 
+	void OnTriggerEnter2D(Collider2D c)
+	{
+		if (c.gameObject.CompareTag ("Player") == true) {
+			Debug.Log("w");
+			player.GetComponent<Pibble> ().dead = true;
+			player.GetComponent<Pibble> ().SendMessage("Death");
+		}
+	}
+
 }
