@@ -7459,7 +7459,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -148.46423, y: -0.425833}
+  m_Offset: {x: -148.47006, y: -0.425833}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7470,7 +7470,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7896821, y: 0.6983341}
+  m_Size: {x: 2.7780304, y: 0.6983341}
   m_EdgeRadius: 0
 --- !u!1 &1337782396
 GameObject:
@@ -11366,39 +11366,6 @@ Prefab:
     - target: {fileID: 1751179454951630, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
       propertyPath: m_Name
       value: Corgo
-      objectReference: {fileID: 0}
-    - target: {fileID: 114024339935026414, guid: aa078e85c8dd95b45a74c3a524e5a751,
-        type: 2}
-      propertyPath: sceneTesting
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114024339935026414, guid: aa078e85c8dd95b45a74c3a524e5a751,
-        type: 2}
-      propertyPath: hintSystemDisable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1069590737084570, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1751179454951630, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 50242549975996828, guid: aa078e85c8dd95b45a74c3a524e5a751,
-        type: 2}
-      propertyPath: m_AngularDrag
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 50242549975996828, guid: aa078e85c8dd95b45a74c3a524e5a751,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 8f75e1c9a6297f94a99d1615d5e71b38, type: 2}
-    - target: {fileID: 50242549975996828, guid: aa078e85c8dd95b45a74c3a524e5a751,
-        type: 2}
-      propertyPath: m_Simulated
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}

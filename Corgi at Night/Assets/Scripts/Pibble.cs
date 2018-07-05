@@ -478,7 +478,7 @@ void OnCollisionExit2D(Collision2D colll)
         {
             Debug.Log("Fall?");
             falling = true;
-            pa.Play("Land");
+            //pa.Play("Land");
         }
 
         gameObject.transform.parent = originalParent.transform;
