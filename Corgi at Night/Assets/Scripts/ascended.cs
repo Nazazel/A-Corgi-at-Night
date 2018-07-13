@@ -39,7 +39,7 @@ public class ascended : MonoBehaviour {
     void OnCollisionStay2D(Collision2D col)
     {
         
-        if (col.gameObject.CompareTag("Player") && col.gameObject.transform.position.x >= 150.3f && !ascensionStarted)
+        if (col.gameObject.CompareTag("Player") && col.gameObject.transform.position.x >= gameObject.transform.position.x - 0.1f && !ascensionStarted)
         {
             col.gameObject.GetComponent<Rigidbody2D>().sharedMaterial.friction=0;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
