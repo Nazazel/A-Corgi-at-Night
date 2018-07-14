@@ -17,7 +17,7 @@ public class Stomp : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.CompareTag ("DogCatcherJR")) {
+		if (col.gameObject.CompareTag ("DogCatcherJR") && player.GetComponent<Pibble>().dead == false) {
 			col.gameObject.SendMessage ("Die");
 			player.GetComponent<Pibble> ().StompBoop ();
 			Debug.Log ("Enemy Stomped");

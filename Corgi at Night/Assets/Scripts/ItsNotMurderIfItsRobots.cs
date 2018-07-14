@@ -15,6 +15,7 @@ public class ItsNotMurderIfItsRobots : MonoBehaviour {
 
     public void Die()
     {
+		
         if (health == 2)
         {
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -24,13 +25,13 @@ public class ItsNotMurderIfItsRobots : MonoBehaviour {
         else
         {
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            rover.SendMessage("Die");
+            rover.SendMessage("Die2");
         }
     }
 
     public IEnumerator stun()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
 }

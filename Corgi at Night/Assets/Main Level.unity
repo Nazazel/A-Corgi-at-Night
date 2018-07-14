@@ -53647,11 +53647,6 @@ Prefab:
       propertyPath: m_Name
       value: Corgo
       objectReference: {fileID: 0}
-    - target: {fileID: 50242549975996828, guid: aa078e85c8dd95b45a74c3a524e5a751,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 8f75e1c9a6297f94a99d1615d5e71b38, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
   m_IsPrefabParent: 0

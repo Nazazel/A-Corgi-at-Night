@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundSize: 4.33
-  paralaxSpeed: -0.05
+  paralaxSpeed: -0.1
 --- !u!1001 &77344330
 Prefab:
   m_ObjectHideFlags: 0
@@ -870,20 +870,6 @@ Prefab:
     - target: {fileID: 4252258432322418, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
       propertyPath: m_RootOrder
       value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 1043639132955918, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114024339935026414, guid: aa078e85c8dd95b45a74c3a524e5a751,
-        type: 2}
-      propertyPath: hintSystemDisable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114024339935026414, guid: aa078e85c8dd95b45a74c3a524e5a751,
-        type: 2}
-      propertyPath: sceneTesting
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1751179454951630, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
       propertyPath: m_Name

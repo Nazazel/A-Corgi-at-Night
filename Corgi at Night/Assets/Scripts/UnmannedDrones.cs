@@ -11,10 +11,12 @@ public class UnmannedDrones : MonoBehaviour {
     public Vector3 initSpawn;
     private bool waittime;
     private bool idle;
+	public bool pat;
 
     // Use this for initialization
     void Start()
     {
+		pat = false;
         player = GameObject.Find("QuinSpriteFinal_1");
         ga = gameObject.GetComponent<Animator>();
         initSpawn = gameObject.transform.position;
@@ -56,27 +58,43 @@ public class UnmannedDrones : MonoBehaviour {
                         ga.enabled = true;
                     }
                 }
-                if ((player.transform.position.x < gameObject.transform.position.x) && player.GetComponent<Pibble>().dead == false && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+//				if ((player.transform.position.x == gameObject.transform.position.x) && player.GetComponent<Pibble> ().dead == false && Mathf.Abs (player.transform.position.x - gameObject.transform.position.x) < 7) {
+//					DCJ.velocity = new Vector2 (0f, DCJ.velocity.y);
+//					ga.Play("RoverIdle");
+//				}
+				if ((player.transform.position.x < gameObject.transform.position.x) && player.GetComponent<Pibble>().dead == false && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) < 7)
                 {
-                    if (gameObject.transform.rotation.y == 0)
-                    {
-                        gameObject.transform.Rotate(Vector3.up, 180.0f);
-                        Debug.Log(gameObject.transform.rotation.y);
-                    }
-                    speed = -0.75f;
-                    DCJ.velocity = new Vector2(speed, DCJ.velocity.y);
+					if (gameObject.transform.rotation.y == 0 && pat == false) {
+						if (pat == false) {
+							StartCoroutine ("patrolSwitch");
+						}
+					}
+					if (gameObject.transform.rotation.y == 0) {
+						speed = 0.75f;
+						DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
+					} 
+					else {
+						speed = -0.75f;
+						DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
+					}
                 }
-                else if ((player.transform.position.x > gameObject.transform.position.x) && player.GetComponent<Pibble>().dead == false && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+				else if ((player.transform.position.x > gameObject.transform.position.x) && player.GetComponent<Pibble>().dead == false && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) < 7)
                 {
-                    if (gameObject.transform.rotation.y != 0)
-                    {
-                        gameObject.transform.Rotate(Vector3.up, 180.0f);
-                        Debug.Log(gameObject.transform.rotation.y);
-                    }
-                    speed = 0.75f;
-                    DCJ.velocity = new Vector2(speed, DCJ.velocity.y);
+					if (gameObject.transform.rotation.y != 0 && pat == false) {
+						if (pat == false) {
+							StartCoroutine ("patrolSwitch");
+						}
+					}
+					if (gameObject.transform.rotation.y == 0) {
+						speed = 0.75f;
+						DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
+					} 
+					else {
+						speed = -0.75f;
+						DCJ.velocity = new Vector2 (speed, DCJ.velocity.y);
+					}
                 }
-                else if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+				else if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) < 7)
                 {
                     DCJ.velocity = new Vector2(-speed, DCJ.velocity.y);
                 }
@@ -106,7 +124,16 @@ public class UnmannedDrones : MonoBehaviour {
         waittime = false;
     }
 
-    public IEnumerator Die()
+	public IEnumerator patrolSwitch()
+	{
+		pat = true;
+		yield return new WaitForSeconds (1.5f);
+		gameObject.transform.Rotate (Vector3.up, 180.0f);
+		Debug.Log (gameObject.transform.rotation.y);
+		pat = false;
+	}
+
+    public IEnumerator Die2()
     {
         Debug.Log("bye");
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
