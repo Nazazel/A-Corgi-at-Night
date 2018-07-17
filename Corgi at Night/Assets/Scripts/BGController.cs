@@ -29,7 +29,7 @@ public class BGController : MonoBehaviour {
 
 	public void nosoFinish()
 	{
-		moonBG.SetActive (true);
+		//moonBG.SetActive (true);
 	}
 
 	public void moonFinish()
