@@ -33,7 +33,6 @@ public class rocketMaaaaaaan : MonoBehaviour {
 		doorClose.SetActive (true);
 		fade.GetComponent<TransitionController>().FadeBegin();
 		yield return new WaitForSeconds(1.0f);
-		bgc.GetComponent<BGController> ().nosoFinish ();
 		player.transform.position = new Vector3(teleportExit.transform.position.x, teleportExit.transform.position.y + 0.1f, teleportExit.transform.position.z);
 		yield return new WaitForSeconds(3.0f);
 		rocket.GetComponent<SpaceTheFinalFrontier> ().showtime ();

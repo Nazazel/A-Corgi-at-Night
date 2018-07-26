@@ -18,6 +18,9 @@ public class TransitionController : MonoBehaviour {
 	public GameObject Fade12;
 	public GameObject Fade13;
 	public GameObject Fade14;
+	public GameObject Fade15;
+	public GameObject Fade16;
+	public GameObject Fade17;
 
     // Update is called once per frame
     public void FadeBegin()
@@ -37,6 +40,9 @@ public class TransitionController : MonoBehaviour {
 		Fade12.SetActive(true);
 		Fade13.SetActive(true);
 		Fade14.SetActive(true);
+		Fade15.SetActive(true);
+		Fade16.SetActive(true);
+		Fade17.SetActive(true);
         Debug.Log("Run Code");
         Fade1.GetComponent<TransitionScreenGrp>().FadeDiag();
         Fade2.GetComponent<TransitionScreenGrp>().FadeDiag();
@@ -52,6 +58,9 @@ public class TransitionController : MonoBehaviour {
 		Fade12.GetComponent<TransitionScreenGrp>().FadeDiag();
 		Fade13.GetComponent<TransitionScreenGrp>().FadeDiag();
 		Fade14.GetComponent<TransitionScreenGrp>().FadeDiag();
+		Fade15.GetComponent<TransitionScreenGrp>().FadeDiag();
+		Fade16.GetComponent<TransitionScreenGrp>().FadeDiag();
+		Fade17.GetComponent<TransitionScreenGrp>().FadeDiag();
         Debug.Log("Code Complete");
     }
 }
