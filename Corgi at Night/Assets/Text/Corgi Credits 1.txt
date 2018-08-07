@@ -12,13 +12,15 @@ Programmer:
 
 Ulises Perez
 
+Yixuan (Angela) Li
+
 
 
 Artists:
 
 Claudia O'Flaherty
 
-Yixan (Angela) Li
+Yixuan (Angela) Li
 
 Rachel Lee
 
@@ -26,10 +28,17 @@ Victoria Barinova
 
 
 
-Audio Editor:
+Audio Designer:
+
+Brandon Delehoy
+
+
+
+Writer: 
 
 Nazely Hartoonian
 
 
 
-All audio gathered from freesound.org
+
+Some audio gathered from freesound.org

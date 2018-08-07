@@ -1,10 +1,5 @@
-(for ninja star throwing cat) 
-Woah, this cat ain't like the others! He throws...shurikens?! 
-Better dodge those ninja stars or else it's over. 
-Remember, when near, you can press "E" to bark at these mean ol' cats to poof them away.
-
 (for enthusiastic carnival kid)
-Oh boy, this kid sure likes Quinn and his grip sure is strong for a child! 
+Oh boy, this little dude sure likes Quinn and his grip sure is strong for a kid!
 To free Quinn of the kid's grasp, repeatedly tap the left and right arrow keys!
 
 (for pigeon)
@@ -14,13 +9,25 @@ That pigeon just threw an egg that exploded. Try to avoid getting hit if you don
 Hm, I don't think lasers like cute, fluffy dogs..or is it the other way around? 
 Avoid lasers to prevent Quinn from getting hurt!
 
-(for asteriods)
-Dodge asteriods to avoid getting injured!
+(for asteroids)
+Dodge asteroids to avoid getting injured!
 
-(for dog catcher jr. scientist)
-You can't help but feel you've seen this guy somewhere before. 
-Hm, must be a coincidence...though his head does seem nice to stomp on.
-
-(for roombas)
+(for regular roombas)
 Is that a...knife wielding roomba? Well, I think you've seen it all. 
 Don't approach these nasty roomba's head on, try using them as platforms instead!
+
+(for C4 doombas)
+Oh my, is that C4? Hm, maybe it's best to avoid things that go kablooey!
+
+(for chainsaw doomba)
+Oh so it's chainsaws now? Geez, what's next, deadly fedoras? You know the drill, jump over the chainsaw wielding roomba to avoid getting hurt!
+
+(for flying doomba)
+Ok that's a flying roomba...with knives attached to its sides and a red hot flame coming out from its bottom. Hey it's dangerous but Quinn likes to live on the edge.
+Use these robo dudes as platforms to avoid getting zapped by the electric panels below!
+
+(For Wall-e)
+That doesn't look like a very friendly rover. Show him who's boss by stomping on him not once, but TWICE!
+
+(UFO)
+These aliens are out to get cute, stubby corgis! Watch out for their beams if you don't wanna get abducted!
