@@ -8,6 +8,7 @@ public class ButtonManager : MonoBehaviour
     private GameObject savetext;
     private GameObject enemylist;
     private bool hasBeenSet;
+	public GameObject controlsPage;
 
     void Start()
     {
@@ -75,6 +76,16 @@ public class ButtonManager : MonoBehaviour
 
 
     }
+
+	public void controls()
+	{
+		controlsPage.SetActive (true);
+	}
+
+	public void controlsExit()
+	{
+		controlsPage.SetActive (false);
+	}
 
     public void quitToMenu(string mainMenu)
     {
