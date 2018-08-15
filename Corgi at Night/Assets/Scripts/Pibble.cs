@@ -8,9 +8,12 @@ public class Pibble : MonoBehaviour {
     //Testing
     public bool sceneTesting;
     public bool hintSystemDisable;
-    
+
     //General
+    public bool gameOver;
 	public bool introRunning;
+    public bool outroRunning;
+    public bool outroFinished;
     public bool paused;
     private bool idling;
     private bool idlingtimerstarted;
@@ -148,6 +151,9 @@ public class Pibble : MonoBehaviour {
         dead = false;
         hidden = false;
         right = true;
+        outroRunning = false;
+        outroFinished = false;
+        gameOver = false;
         if(PlayerPrefs.HasKey("PlayerPos"))
         {
             spawnpoint = PlayerPrefsX.GetVector3("PlayerPos");
@@ -159,7 +165,7 @@ public class Pibble : MonoBehaviour {
     void Update()
     {
         //Debug.Log(gameObject.transform.position.x);
-        if (!paused)
+        if (!paused && !gameOver)
         {
             if (introRunning)
             {
@@ -183,6 +189,39 @@ public class Pibble : MonoBehaviour {
                         QuinnAS.Stop();
                         pa.Play("Stand");
                         gameObject.transform.position = new Vector3(-3.32f, -0.787f, 0.0f);
+                    }
+                }
+            }
+            else if (outroRunning)
+            {
+                if (gameObject.transform.position.x > -1144.0f)
+                {
+                    pa.Play("Walk");
+                    QuinnAS.clip = walkAudio;
+                    if (!QuinnAS.isPlaying)
+                    {
+                        QuinnAS.Play();
+                    }
+                    rb.velocity = new Vector2(-1.5f, rb.velocity.y);
+                }
+                else
+                {
+                    //Debug.Log(gameObject.transform.position.x);
+                    rb.velocity = new Vector2(0.0f, rb.velocity.y);
+                    if (gameObject.transform.position.x != -1144.0f)
+                    {
+                        QuinnAS.Stop();
+                        pa.Play("Stand");
+                        gameObject.transform.position = new Vector3(-1144.0f, gameObject.transform.position.y, 0.0f);
+                        StopCoroutine("IdleAnimate");
+                        gameOver = true;
+                    }
+                    else
+                    {
+                        QuinnAS.Stop();
+                        pa.Play("Stand");
+                        StopCoroutine("IdleAnimate");
+                        gameOver = true;
                     }
                 }
             }
@@ -680,6 +719,12 @@ void OnCollisionExit2D(Collision2D colll)
 			QuinnAS.Play ();
 		}
         pa.Play("Jump");
+    }
+
+    public IEnumerator End()
+    {
+        pa.Play("Hide");
+        yield return new WaitForSeconds(0.1f);
     }
 
 }

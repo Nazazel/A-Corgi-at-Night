@@ -36,7 +36,14 @@ public class Play : MonoBehaviour
     IEnumerator wait()
     {
         yield return new WaitForSeconds(1F);
-        SceneManager.LoadSceneAsync("Main Level");
+        if (SceneManager.GetActiveScene().name == "End")
+        {
+            SceneManager.LoadSceneAsync("Main Menu");
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync("Main Level");
+        }
     }
 
 	IEnumerator DelayedStart()

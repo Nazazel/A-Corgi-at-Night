@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: ec2f494eedb63944cb0a2101b2406f2f
+guid: b27c387f20d08534a824e1770b92e0f2
+timeCreated: 1533774393
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: vet_spritesheet_0
-    21300002: vet_spritesheet_1
-    21300004: vet_spritesheet_2
+    21300000: ui_hintbox_menutext_v2_1
+    21300002: ui_hintbox_menutext_v2_2
+    21300004: ui_hintbox_menutext_v2_3
+    21300006: ui_hintbox_menutext_v2_4
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -81,13 +84,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vet_spritesheet_0
+      name: ui_hintbox_menutext_v2_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 103
-        width: 27
-        height: 48
+        x: 13
+        y: 84
+        width: 144
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -95,13 +98,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: vet_spritesheet_1
+      name: ui_hintbox_menutext_v2_2
       rect:
         serializedVersion: 2
-        x: 1
-        y: 52
-        width: 27
-        height: 48
+        x: 13
+        y: 59
+        width: 132
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -109,13 +112,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: vet_spritesheet_2
+      name: ui_hintbox_menutext_v2_3
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 27
-        height: 48
+        x: 13
+        y: 34
+        width: 115
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_hintbox_menutext_v2_4
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 9
+        width: 137
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
