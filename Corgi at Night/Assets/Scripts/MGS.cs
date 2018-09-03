@@ -9,27 +9,31 @@ public class MGS : MonoBehaviour {
 	public AudioClip bushExit2;
 	public AudioClip bushEnter;
 	public AudioSource ba;
-	private bool entryCalled;
-	private bool exitCalled;
+	public bool entryCalled;
+	public bool exitCalled;
+    public bool inBushRange;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("QuinSpriteFinal_1");
 		ba = gameObject.GetComponent<AudioSource> ();
+        inBushRange = false;
+        entryCalled = false;
+        exitCalled = false;
 	}
 
 	void Update()
 	{
-		if (player.GetComponent<Pibble> ().hideable == true && player.GetComponent<Pibble> ().hidden == true && entryCalled == false) {
+		if (player.GetComponent<Pibble> ().hidden == true && entryCalled == false && inBushRange == false) {
 			entryCalled = true;
 			exitCalled = false;
 			if (gameObject.tag == "Bush") {
 				ba.clip = bushEnter;
 				ba.Play ();
 			}
-				
+            inBushRange = true;	
 		}
-		else if (player.GetComponent<Pibble> ().hideable == true && player.GetComponent<Pibble> ().hidden == false && exitCalled == false && entryCalled == true) {
+		else if (player.GetComponent<Pibble> ().hidden == false && exitCalled == false && entryCalled == true && inBushRange == true) {
 			entryCalled = false;
 			exitCalled = true;
 			if (gameObject.tag == "Bush") {
@@ -42,6 +46,7 @@ public class MGS : MonoBehaviour {
 					ba.Play ();
 				}
 			}
+            inBushRange = false;
 		}
 	}
 
@@ -50,6 +55,7 @@ public class MGS : MonoBehaviour {
 		if (coll.gameObject.CompareTag ("Player")) {
 			Debug.Log ("???");
 			player.GetComponent<Pibble>().hideable = true;
+            inBushRange = true;
 		}
 	}
 
@@ -57,6 +63,7 @@ public class MGS : MonoBehaviour {
 	{
 		if (col.gameObject.CompareTag ("Player")) {
 			player.GetComponent<Pibble>().hideable = false;
+            inBushRange = false;
 		}
 	}
 }

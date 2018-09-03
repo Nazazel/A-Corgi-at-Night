@@ -70,6 +70,13 @@ public class Pibble : MonoBehaviour {
     public bool firstPatrol;
     public bool firstDCJ;
     public bool firstNinCat;
+    public bool firstDoomba;
+    public bool firstRover;
+    public bool firstKid;
+    public bool firstBirb;
+    public bool firstUFO;
+    public bool firstLaser;
+    public bool firstAsteroid;
     public bool release;
     public GameObject HintBox;
     public Text hintText;
@@ -111,19 +118,33 @@ public class Pibble : MonoBehaviour {
             firstDCJ = PlayerPrefsX.GetBool("HintDCJ");
             firstPatrol = PlayerPrefsX.GetBool("HintDC");
             firstNinCat = PlayerPrefsX.GetBool("HintNC");
+            firstDoomba = PlayerPrefsX.GetBool("HintDoom");
+            firstRover = PlayerPrefsX.GetBool("HintRov");
+            firstKid = PlayerPrefsX.GetBool("HintKid");
+            firstBirb = PlayerPrefsX.GetBool("HintBirb");
+            firstUFO = PlayerPrefsX.GetBool("HintUFO");
+            firstLaser = PlayerPrefsX.GetBool("HintLas");
+            firstAsteroid = PlayerPrefsX.GetBool("HintAst");
         }
         else
         {
             firstPatrol = true;
             firstDCJ = true;
             firstNinCat = true;
+            firstDoomba = true;
+            firstRover = true;
+            firstKid = true;
+            firstBirb = true;
+            firstUFO = true;
+            firstLaser = true;
+            firstAsteroid = true;
         }
         release = true;
         barkQ = 0;
         cooldown = false;
 		falling = false;
         mainListener = GameObject.Find("AudioListener");
-        GameObject.DontDestroyOnLoad(GameObject.Find("Corgo"));
+        //GameObject.DontDestroyOnLoad(GameObject.Find("Corgo"));
         mainCam = GameObject.Find("Main Camera");
         attackBox = GameObject.Find("AttackBox");
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -648,8 +669,58 @@ void OnCollisionExit2D(Collision2D colll)
         StartCoroutine("ninCatDiag");
     }
 
+    public void firstBirbs()
+    {
+        firstBirb = false;
+        release = false;
+        StartCoroutine("birbDiag");
+    }
+
+    public void firstUFOs()
+    {
+        firstUFO = false;
+        release = false;
+        StartCoroutine("UFODiag");
+    }
+
+    public void firstRovs()
+    {
+        firstRover = false;
+        release = false;
+        StartCoroutine("RovDiag");
+    }
+
+    public void firstDooms()
+    {
+        firstDoomba = false;
+        release = false;
+        StartCoroutine("DoomDiag");
+    }
+
+    public void firstKids()
+    {
+        firstKid = false;
+        release = false;
+        StartCoroutine("KidDiag");
+    }
+
+    public void firstLasers()
+    {
+        firstLaser = false;
+        release = false;
+        StartCoroutine("LasDiag");
+    }
+
+    public void firstAsteroids()
+    {
+        firstAsteroid = false;
+        release = false;
+        StartCoroutine("AstDiag");
+    }
+
     public IEnumerator patrolCatcherDiag()
     {
+        mainListener.SetActive(false);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -657,6 +728,7 @@ void OnCollisionExit2D(Collision2D colll)
         hintText.text = "Better watch out for the dog catchers roaming around the streets! Avoid their flashlight by hiding in nearby shrubs or cardboard boxes by pressing the \"Q\" key when close to the item of interest.";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
+        mainListener.SetActive(true);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
@@ -665,6 +737,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator dcjDiag()
     {
+        mainListener.SetActive(false);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -672,6 +745,7 @@ void OnCollisionExit2D(Collision2D colll)
         hintText.text = "Looks like dog catching runs in the family. Jump on top of the jr. dog catchers to avoid losing!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
+        mainListener.SetActive(true);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
@@ -680,6 +754,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator ninCatDiag()
     {
+        mainListener.SetActive(false);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -687,6 +762,129 @@ void OnCollisionExit2D(Collision2D colll)
         hintText.text = "Uh-oh, looks like a cat! Not just any cat-- a ninja cat! Quick, use the \"E\" key to bark and scare him away!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
+        mainListener.SetActive(true);
+        pa.enabled = true;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        hintActive = false;
+        HintBox.SetActive(false);
+    }
+
+    public IEnumerator birbDiag()
+    {
+        mainListener.SetActive(false);
+        pa.enabled = false;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        hintActive = true;
+        HintBox.SetActive(true);
+        hintText.text = "That pigeon just threw an egg that exploded. Try to avoid getting hit if you don't wanna get scrambled.";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.5f);
+        mainListener.SetActive(true);
+        pa.enabled = true;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        hintActive = false;
+        HintBox.SetActive(false);
+    }
+
+    public IEnumerator UFODiag()
+    {
+        mainListener.SetActive(false);
+        pa.enabled = false;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        hintActive = true;
+        HintBox.SetActive(true);
+        hintText.text = "These aliens are out to get cute, stubby corgis! Watch out for their beams if you don't wanna get abducted!";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.5f);
+        mainListener.SetActive(true);
+        pa.enabled = true;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        hintActive = false;
+        HintBox.SetActive(false);
+    }
+
+    public IEnumerator KidDiag()
+    {
+        mainListener.SetActive(false);
+        pa.enabled = false;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        hintActive = true;
+        HintBox.SetActive(true);
+        hintText.text = "Oh boy, this little dude sure likes Quinn and his grip sure is strong for a kid!\n" +
+        "To free Quinn of the kid's grasp, repeatedly tap the left and right arrow keys!";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.5f);
+        mainListener.SetActive(true);
+        pa.enabled = true;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        hintActive = false;
+        HintBox.SetActive(false);
+    }
+
+    public IEnumerator DoomDiag()
+    {
+        mainListener.SetActive(false);
+        pa.enabled = false;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        hintActive = true;
+        HintBox.SetActive(true);
+        hintText.text = "Is that a...knife wielding roomba? Well, I think you've seen it all.\n" + 
+        "Don't approach these nasty roomba's head on, try using them as platforms instead! \nUnless they come strapped with bombs or chainsaws!";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.5f);
+        mainListener.SetActive(true);
+        pa.enabled = true;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        hintActive = false;
+        HintBox.SetActive(false);
+    }
+
+    public IEnumerator RovDiag()
+    {
+        mainListener.SetActive(false);
+        pa.enabled = false;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        hintActive = true;
+        HintBox.SetActive(true);
+        hintText.text = "That doesn't look like a very friendly rover. Show him who's boss by stomping on him not once, but TWICE!";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.5f);
+        mainListener.SetActive(true);
+        pa.enabled = true;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        hintActive = false;
+        HintBox.SetActive(false);
+    }
+
+    public IEnumerator LasDiag()
+    {
+        mainListener.SetActive(false);
+        pa.enabled = false;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        hintActive = true;
+        HintBox.SetActive(true);
+        hintText.text = "Hm, I don't think lasers like cute, fluffy dogs..or is it the other way around?\n" + 
+        "Avoid lasers to prevent Quinn from getting hurt!";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.5f);
+        mainListener.SetActive(true);
+        pa.enabled = true;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        hintActive = false;
+        HintBox.SetActive(false);
+    }
+
+    public IEnumerator AstDiag()
+    {
+        mainListener.SetActive(false);
+        pa.enabled = false;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        hintActive = true;
+        HintBox.SetActive(true);
+        hintText.text = "Dodge asteroids to avoid getting injured!";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.5f);
+        mainListener.SetActive(true);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
