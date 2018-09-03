@@ -38,8 +38,7 @@ public class CompleteGlobalSaturation : MonoBehaviour {
 		beaming = true;
 		coroutineStarted = false;
 		speed = -1.25f;
-		ga.Play("RoombaFloat");
-
+        //ga.Play("RoombaFloat");
 	}
 
 	// Update is called once per frame

@@ -41,7 +41,7 @@ public class UnmannedDrones : MonoBehaviour {
             {
                 if (idle == true)
                 {
-                    ga.Play("DCJWalk");
+                    ga.Play("WAAAAALL-EEEEEE");
                 }
                 if (player.GetComponent<Pibble>().dead == true)
                 {

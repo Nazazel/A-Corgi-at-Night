@@ -14,6 +14,7 @@ public class BirbBomber : MonoBehaviour {
     private bool waittime;
     public bool eggDropping;
     public GameObject egg;
+    public GameObject redX;
 
     // Use this for initialization
     void Start()
@@ -112,6 +113,7 @@ public class BirbBomber : MonoBehaviour {
 
     public IEnumerator eggsAhoy()
     {
+        Instantiate(redX, new Vector3(transform.position.x, -1.05f, transform.position.z), transform.rotation);
         Instantiate(egg, transform.position,transform.rotation);
         yield return new WaitForSeconds(1.0f);
         eggDropping = false;

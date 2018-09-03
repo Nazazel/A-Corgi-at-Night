@@ -17,7 +17,7 @@ public class Hints : MonoBehaviour {
         {
             DC = GameObject.Find("Dog Catcher");
             UFO = GameObject.Find("UFO");
-            BB = GameObject.Find("Birb Bomber");
+            BB = GameObject.Find("Birb");
             las = GameObject.Find("Laser");
         }
 	}
@@ -63,22 +63,22 @@ public class Hints : MonoBehaviour {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstDCJs();
             }
-            else if (col.gameObject.CompareTag("Doomba") && corgo.firstDoomba == true)
+            else if (col.gameObject.name == "Doomba Fly V" && corgo.firstDoomba == true)
             {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstDooms();
             }
-            else if (col.gameObject.CompareTag("Rover") && corgo.firstRover == true)
+            else if (col.gameObject.name == "Rover" && corgo.firstRover == true)
             {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstRovs();
             }
-            else if (col.gameObject.CompareTag("Kid") && corgo.firstKid == true)
+            else if (col.gameObject.name == "Enthusiastic Kid" && corgo.firstKid == true)
             {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstKids();
             }
-            else if (col.gameObject.CompareTag("Asteroid") && corgo.firstAsteroid == true)
+            else if (col.gameObject.name == "Asteroid" && corgo.firstAsteroid == true)
             {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstAsteroids();
