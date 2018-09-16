@@ -37,12 +37,12 @@ public class Hints : MonoBehaviour {
                 //DC.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstPatrolCatcher();
             }
-            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - BB.transform.position.x) <= 3.0) && corgo.firstBirb == true)
+            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - BB.transform.position.x) <= 2.0) && corgo.firstBirb == true)
             {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstBirbs();
             }
-            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - UFO.transform.position.x) <= 3.0) && corgo.firstUFO == true)
+            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - UFO.transform.position.x) <= 2.0) && corgo.firstUFO == true)
             {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstUFOs();

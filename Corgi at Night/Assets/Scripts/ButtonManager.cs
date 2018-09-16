@@ -47,13 +47,20 @@ public class ButtonManager : MonoBehaviour
 
     public void load(string newGameLevel)
     {
-        if (PlayerPrefs.HasKey("PlayerPos"))
+        if (newGameLevel == "Credits")
         {
             SceneManager.LoadScene(newGameLevel);
         }
         else
         {
-            StartCoroutine("NoSave");
+            if (PlayerPrefs.HasKey("PlayerPos"))
+            {
+                SceneManager.LoadScene(newGameLevel);
+            }
+            else
+            {
+                StartCoroutine("NoSave");
+            }
         }
     }
 

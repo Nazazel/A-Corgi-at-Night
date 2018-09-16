@@ -44,7 +44,12 @@ public class CompleteGlobalSaturation : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		if (player.GetComponent<Pibble>().dead == true)
+        if (player.GetComponent<Pibble>().dead == false && ga.enabled == false)
+        {
+            ga.enabled = true;
+            DCJ.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        }
+        if (player.GetComponent<Pibble>().dead == true)
 		{
 			if (waittime == false)
 			{

@@ -929,7 +929,16 @@ void OnCollisionExit2D(Collision2D colll)
         yield return new WaitForSeconds(3.0f);
         pa.Play("Stand");
         HintBox.SetActive(true);
-        hintText.text = "Looks like this pupper lost his way! Help Quinn find his way home!";
+        hintText.text = "Oh no! Poor little pup! It seems he has lost his way!";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.1f);
+        hintText.text = "His owners called for him to stay, but the corgi didn't have it in him to ignore the delicously cheesey scent of a freshly made pizza!";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.1f);
+        hintText.text = "Mamma Mia! Help Quinn find his way back home to his owners.";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.1f);
+        hintText.text = "If you at any point want to save your progress, take a look at the controls, or exit to the main menu, all these can be done via the pause menu(triggered by the ESC key).";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.1f);
         HintBox.SetActive(false);

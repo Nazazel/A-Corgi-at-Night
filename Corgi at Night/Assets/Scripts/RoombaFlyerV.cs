@@ -41,44 +41,57 @@ public class RoombaFlyerV : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<Pibble>().dead == true)
+        if (player.GetComponent<Pibble>().hintActive == false && player.GetComponent<Pibble>().paused == false)
         {
-            if (waittime == false)
+            if (player.GetComponent<Pibble>().dead == false && ga.enabled == false)
             {
-                waittime = true;
-                StopAllCoroutines();
-                StartCoroutine("Death");
+                ga.enabled = true;
+                DCJ.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             }
-        }
-        if (!player.GetComponent<Pibble>().dead)
-        {
-            if ((gameObject.transform.position.y <= originPos - patrolArea) && right == false)
+            if (player.GetComponent<Pibble>().dead == true)
             {
-                //Debug.Log ("Turn Up");
-                ga.Play("RoombaFloat");
-                right = true;
-                DCJ.velocity = new Vector2(0.0f, 0.5f);
-            }
-            else if ((gameObject.transform.position.y >= originPos + patrolArea) && right == true)
-            {
-                //Debug.Log ("Turn Down");
-                ga.Play("RoombaFloat");
-                right = false;
-                DCJ.velocity = new Vector2(0.0f, -0.5f);
-            }
-            else
-            {
-                if (right)
+                if (waittime == false)
                 {
-                    //Debug.Log ("Moving Up");
+                    waittime = true;
+                    StopAllCoroutines();
+                    StartCoroutine("Death");
+                }
+            }
+            if (!player.GetComponent<Pibble>().dead)
+            {
+                if ((gameObject.transform.position.y <= originPos - patrolArea) && right == false)
+                {
+                    //Debug.Log ("Turn Up");
+                    ga.Play("RoombaFloat");
+                    right = true;
                     DCJ.velocity = new Vector2(0.0f, 0.5f);
+                }
+                else if ((gameObject.transform.position.y >= originPos + patrolArea) && right == true)
+                {
+                    //Debug.Log ("Turn Down");
+                    ga.Play("RoombaFloat");
+                    right = false;
+                    DCJ.velocity = new Vector2(0.0f, -0.5f);
                 }
                 else
                 {
-                    //Debug.Log ("Moving Down");
-                    DCJ.velocity = new Vector2(0.0f, -0.5f);
+                    if (right)
+                    {
+                        //Debug.Log ("Moving Up");
+                        DCJ.velocity = new Vector2(0.0f, 0.5f);
+                    }
+                    else
+                    {
+                        //Debug.Log ("Moving Down");
+                        DCJ.velocity = new Vector2(0.0f, -0.5f);
+                    }
                 }
             }
+        }
+        else
+        {
+            ga.enabled = false;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
     }
 

@@ -81,13 +81,9 @@ public class BGController : MonoBehaviour {
         carnivalBG.SetActive(false);
         moonBG.SetActive (true);
         cityActive = false;
-        carnivalActive = true;
+        carnivalActive = false;
         nosoActive = false;
         moonActive = true;
     }
 
-	public void moonFinish()
-	{
-
-	}
 }
