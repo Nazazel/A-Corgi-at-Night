@@ -9,6 +9,7 @@ public class ButtonManager : MonoBehaviour
     private GameObject enemylist;
     private bool hasBeenSet;
 	public GameObject controlsPage;
+    public GameObject bgcontroller;
 
     void Start()
     {
@@ -17,6 +18,10 @@ public class ButtonManager : MonoBehaviour
             savetext = GameObject.Find("SAVEFILE");
             savetext.SetActive(false);
             hasBeenSet = true;
+        }
+        else if (SceneManager.GetActiveScene().name == "Main Level")
+        {
+            bgcontroller = GameObject.Find("BGController");
         }
         hasBeenSet = false;
     }
@@ -81,8 +86,10 @@ public class ButtonManager : MonoBehaviour
             Debug.Log(t.name);
             PlayerPrefs.SetString(t.name, t.name);
         }
-
-
+        PlayerPrefsX.SetBool("cityBG", bgcontroller.GetComponent<BGController>().cityActive);
+        PlayerPrefsX.SetBool("carnivalBG", bgcontroller.GetComponent<BGController>().carnivalActive);
+        PlayerPrefsX.SetBool("nosoBG", bgcontroller.GetComponent<BGController>().nosoActive);
+        PlayerPrefsX.SetBool("moonBG", bgcontroller.GetComponent<BGController>().moonActive);
     }
 
 	public void controls()

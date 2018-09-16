@@ -47,17 +47,17 @@ public class Hints : MonoBehaviour {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstUFOs();
             }
-            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - las.transform.position.x) <= 3.0) && corgo.firstLaser == true)
+            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - las.transform.position.x) <= 2.0) && corgo.firstLaser == true)
             {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstLasers();
             }
-            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - wormhole.transform.position.x) <= 3.0) && corgo.firstWormhole == true)
+            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - wormhole.transform.position.x) <= 1.5) && corgo.firstWormhole == true)
             {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstWormholes();
             }
-            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - doom.transform.position.x) <= 3.0) && corgo.firstDoomba == true)
+            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - doom.transform.position.x) <= 2.0) && corgo.firstDoomba == true)
             {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstDooms();

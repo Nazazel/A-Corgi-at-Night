@@ -6023,6 +6023,10 @@ MonoBehaviour:
   cityBG: {fileID: 870026760}
   carnivalBG: {fileID: 227688599}
   moonBG: {fileID: 1005788817}
+  cityActive: 0
+  carnivalActive: 0
+  nosoActive: 0
+  moonActive: 0
 --- !u!4 &142357584
 Transform:
   m_ObjectHideFlags: 0
@@ -76861,7 +76865,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4252258432322418, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.611
+      value: -0.84
       objectReference: {fileID: 0}
     - target: {fileID: 4252258432322418, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
       propertyPath: m_LocalPosition.z
