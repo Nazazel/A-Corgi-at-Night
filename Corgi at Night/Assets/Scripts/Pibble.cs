@@ -908,7 +908,7 @@ void OnCollisionExit2D(Collision2D colll)
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
         HintBox.SetActive(true);
-        hintText.text = "Uh... Press R?";
+        hintText.text = "Woah, a vortex! Where does it lead? Find out by pressing the \"R\" key.";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
         mainListener.SetActive(true);
