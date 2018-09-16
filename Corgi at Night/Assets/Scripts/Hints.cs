@@ -8,7 +8,10 @@ public class Hints : MonoBehaviour {
 	private GameObject DC;
     private GameObject BB;
     private GameObject UFO;
-    private GameObject las;
+    public GameObject las;
+    private GameObject wormhole;
+    private GameObject doom;
+    private GameObject rock;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +22,9 @@ public class Hints : MonoBehaviour {
             UFO = GameObject.Find("UFO");
             BB = GameObject.Find("Birb");
             las = GameObject.Find("Laser");
+            wormhole = GameObject.Find("First Wormhole");
+            doom = GameObject.Find("Doobma Fly V");
+            rock = GameObject.Find("Asteroid");
         }
 	}
 	
@@ -46,6 +52,21 @@ public class Hints : MonoBehaviour {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstLasers();
             }
+            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - wormhole.transform.position.x) <= 3.0) && corgo.firstWormhole == true)
+            {
+                //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                corgo.firstWormholes();
+            }
+            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - doom.transform.position.x) <= 3.0) && corgo.firstDoomba == true)
+            {
+                //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                corgo.firstDooms();
+            }
+            else if ((Mathf.Abs(corgo.gameObject.transform.position.x - rock.transform.position.x) <= 3.0) && corgo.firstAsteroid == true)
+            {
+                //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                corgo.firstAsteroids();
+            }
         }
 	}
 
@@ -63,25 +84,16 @@ public class Hints : MonoBehaviour {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstDCJs();
             }
-            else if (col.gameObject.name == "Doomba Fly V" && corgo.firstDoomba == true)
-            {
-                //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-                corgo.firstDooms();
-            }
+
             else if (col.gameObject.name == "Rover" && corgo.firstRover == true)
             {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstRovs();
             }
-            else if (col.gameObject.name == "Enthusiastic Kid" && corgo.firstKid == true)
+            else if (col.gameObject.name == "EnthusiasticKid" && corgo.firstKid == true)
             {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstKids();
-            }
-            else if (col.gameObject.name == "Asteroid" && corgo.firstAsteroid == true)
-            {
-                //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-                corgo.firstAsteroids();
             }
 
         }

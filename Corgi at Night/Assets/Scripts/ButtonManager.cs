@@ -72,6 +72,9 @@ public class ButtonManager : MonoBehaviour
         PlayerPrefsX.SetBool("HintKid", player.GetComponent<Pibble>().firstKid);
         PlayerPrefsX.SetBool("HintBirb", player.GetComponent<Pibble>().firstBirb);
         PlayerPrefsX.SetBool("HintUFO", player.GetComponent<Pibble>().firstUFO);
+        PlayerPrefsX.SetBool("HintLas", player.GetComponent<Pibble>().firstLaser);
+        PlayerPrefsX.SetBool("HintAst", player.GetComponent<Pibble>().firstAsteroid);
+        PlayerPrefsX.SetBool("HintWorm", player.GetComponent<Pibble>().firstWormhole);
         enemylist = GameObject.Find("Enemies");
         foreach (Transform t in enemylist.transform)
         {

@@ -77,6 +77,7 @@ public class Pibble : MonoBehaviour {
     public bool firstUFO;
     public bool firstLaser;
     public bool firstAsteroid;
+    public bool firstWormhole;
     public bool release;
     public GameObject HintBox;
     public Text hintText;
@@ -125,6 +126,7 @@ public class Pibble : MonoBehaviour {
             firstUFO = PlayerPrefsX.GetBool("HintUFO");
             firstLaser = PlayerPrefsX.GetBool("HintLas");
             firstAsteroid = PlayerPrefsX.GetBool("HintAst");
+            firstWormhole = PlayerPrefsX.GetBool("HintWorm");
         }
         else
         {
@@ -138,6 +140,7 @@ public class Pibble : MonoBehaviour {
             firstUFO = true;
             firstLaser = true;
             firstAsteroid = true;
+            firstWormhole = true;
         }
         release = true;
         barkQ = 0;
@@ -718,6 +721,13 @@ void OnCollisionExit2D(Collision2D colll)
         StartCoroutine("AstDiag");
     }
 
+    public void firstWormholes()
+    {
+        firstWormhole = false;
+        release = false;
+        StartCoroutine("WormDiag");
+    }
+
     public IEnumerator patrolCatcherDiag()
     {
         mainListener.SetActive(false);
@@ -882,6 +892,23 @@ void OnCollisionExit2D(Collision2D colll)
         hintActive = true;
         HintBox.SetActive(true);
         hintText.text = "Dodge asteroids to avoid getting injured!";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitForSeconds(0.5f);
+        mainListener.SetActive(true);
+        pa.enabled = true;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        hintActive = false;
+        HintBox.SetActive(false);
+    }
+
+    public IEnumerator WormDiag()
+    {
+        mainListener.SetActive(false);
+        pa.enabled = false;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        hintActive = true;
+        HintBox.SetActive(true);
+        hintText.text = "Uh... Press R?";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
         mainListener.SetActive(true);

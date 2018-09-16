@@ -88,9 +88,11 @@ public class Credits : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         theText.text = "Artists:\n\nClaudia O'Flaherty\n\nYixuan (Angela) Li \n\nRachel Lee\n\nVictoria Barinova";
         yield return new WaitForSeconds(3.0f);
-        theText.text = "Audio Editor:\n\nNazely Hartoonian";
+        theText.text = "Audio Designer:\n\nBrandon Delehoy";
         yield return new WaitForSeconds(3.0f);
-        theText.text = "All audio downloaded from Freesound.org";
+        theText.text = "Writer:\n\nNaz Hartoonian";
+        yield return new WaitForSeconds(3.0f);
+        theText.text = "Some audio gathered from Freesound.org";
         yield return new WaitForSeconds(3.0f);
         theText.text = " ";
         FadeImg = GameObject.Find("Fade").GetComponent<Image>();

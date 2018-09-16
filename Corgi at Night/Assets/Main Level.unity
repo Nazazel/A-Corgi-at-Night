@@ -404,7 +404,7 @@ Transform:
   - {fileID: 1480360159}
   - {fileID: 31672393}
   m_Father: {fileID: 1280955048}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &10143904 stripped
 Transform:
@@ -38742,7 +38742,7 @@ Transform:
   - {fileID: 22507563}
   - {fileID: 67388812}
   m_Father: {fileID: 1280955048}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1010751976
 Prefab:
@@ -48916,11 +48916,11 @@ Transform:
   - {fileID: 282589948}
   - {fileID: 945614613}
   - {fileID: 832461670}
-  - {fileID: 1023736585}
   - {fileID: 7740292}
   - {fileID: 1736011982}
   - {fileID: 1005788818}
   - {fileID: 1780449268}
+  - {fileID: 1023736585}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60124,6 +60124,10 @@ Prefab:
       propertyPath: teleportExit
       value: 
       objectReference: {fileID: 97673247}
+    - target: {fileID: 1989584565362012, guid: 23bbf02249f1bf34b8eb35110560d7cf, type: 2}
+      propertyPath: m_Name
+      value: First Wormhole
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23bbf02249f1bf34b8eb35110560d7cf, type: 2}
   m_IsPrefabParent: 0
@@ -67864,7 +67868,7 @@ Transform:
   - {fileID: 730830918}
   - {fileID: 1459931502}
   m_Father: {fileID: 1280955048}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1736652389
 Prefab:
@@ -69603,7 +69607,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1280955048}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1783017363 stripped
 Transform:
