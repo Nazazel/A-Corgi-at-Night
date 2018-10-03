@@ -91,6 +91,7 @@ public class RoombaFlyerV : MonoBehaviour
         else
         {
             ga.enabled = false;
+            DCJ.velocity = new Vector2(0.0f, 0.0f);
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
     }

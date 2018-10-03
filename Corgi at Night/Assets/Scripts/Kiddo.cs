@@ -40,28 +40,42 @@ public class Kiddo : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<Pibble>().dead == true)
+        if (player.GetComponent<Pibble>().hintActive == false && player.GetComponent<Pibble>().paused == false)
         {
-            if (waittime == false)
+            if (player.GetComponent<Pibble>().dead == false && ga.enabled == false)
             {
-                waittime = true;
-                StopAllCoroutines();
-                StartCoroutine("Death");
+                ga.enabled = true;
+                DCJ.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            }
+            if (player.GetComponent<Pibble>().dead == true)
+            {
+                if (waittime == false)
+                {
+                    waittime = true;
+                    StopAllCoroutines();
+                    StartCoroutine("Death");
+                }
+            }
+            if (!holding && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+            {
+                DCJ.velocity = new Vector2(speed, DCJ.velocity.y);
+            }
+            else if (holding)
+            {
+                player.GetComponent<Animator>().Play("SitR");
+                if (!holdbreak)
+                {
+                    ga.Play("letitgoletitgoooo");
+                    holdbreak = true;
+                    StartCoroutine("hold");
+                }
             }
         }
-        if (!holding && Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+        else
         {
-            DCJ.velocity = new Vector2(speed, DCJ.velocity.y);
-        }
-        else if (holding)
-        {
-            player.GetComponent<Animator>().Play("SitR");
-            if (!holdbreak)
-            {
-                ga.Play("letitgoletitgoooo");
-                holdbreak = true;
-                StartCoroutine("hold");
-            }
+            ga.enabled = false;
+            DCJ.velocity = new Vector2(0.0f, 0.0f);
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
     }
 
