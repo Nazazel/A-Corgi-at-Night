@@ -4,17 +4,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using UnityEngine.Experimental.Audio;
 
 public class Play : MonoBehaviour
 {
 	
 	private Text finScore;
 	public VideoPlayer movAudio;
+    public AudioSource vidAudio;
     public bool started;
 	public bool delayed;
 
 	void Start()
 	{
+        //Debug.Log(movAudio.GetComponent<AudioSource>().clip.name);
+        vidAudio.clip = movAudio.GetComponent<AudioSource>().clip;
+        movAudio.audioOutputMode = VideoAudioOutputMode.None;
+        movAudio.Play();
+        vidAudio.Play();
 		delayed = false;
 		StartCoroutine ("DelayedStart");
 	}
