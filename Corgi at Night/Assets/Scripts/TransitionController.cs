@@ -67,13 +67,7 @@ public class TransitionController : MonoBehaviour {
 		Fade17.GetComponent<TransitionScreenGrp>().FadeDiag();
         Fade18.GetComponent<TransitionScreenGrp>().FadeDiag();
         Debug.Log("Code Complete");
-        musicManager.GetComponent<BGController>().FadeOut(3.0f);
-        StartCoroutine("fadeBack");
+        musicManager.GetComponent<BGController>().initiateFO();
     }
 
-    public IEnumerator fadeBack()
-    {
-        yield return new WaitForSeconds(3.1f);
-        musicManager.GetComponent<BGController>().FadeIn(2.0f);
-    }
 }

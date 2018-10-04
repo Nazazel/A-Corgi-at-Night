@@ -34,25 +34,25 @@ public class BGController : MonoBehaviour {
                 cityBG.SetActive(true);
                 carnivalBG.SetActive(false);
                 moonBG.SetActive(false);
-                FadeIn(2.0f);
+                StartCoroutine(FadeIn(1.0f));
             }
             else if (carnivalActive)
             {
                 levelMusic.clip = carnivalMusic;
                 cityFinish();
-                FadeIn(2.0f);
+                StartCoroutine(FadeIn(1.0f));
             }
             else if (nosoActive)
             {
                 levelMusic.clip = nosoMusic;
                 carnivalFinish();
-                FadeIn(2.0f);
+                StartCoroutine(FadeIn(1.0f));
             }
             else if (moonActive)
             {
                 levelMusic.clip = moonMusic;
                 nosoFinish();
-                FadeIn(2.0f);
+                StartCoroutine(FadeIn(1.0f));
             }
         }
         else
@@ -65,7 +65,7 @@ public class BGController : MonoBehaviour {
             cityBG.SetActive(true);
             carnivalBG.SetActive(false);
             moonBG.SetActive(false);
-            FadeIn(2.0f);
+            StartCoroutine(FadeIn(1.0f));
         }
 	}
 	
@@ -80,6 +80,7 @@ public class BGController : MonoBehaviour {
         carnivalActive = true;
         nosoActive = false;
         moonActive = false;
+        //StartCoroutine(FadeIn(2.0f));
     }
 
 	public void carnivalFinish()
@@ -92,6 +93,7 @@ public class BGController : MonoBehaviour {
         carnivalActive = false;
         nosoActive = true;
         moonActive = false;
+        //StartCoroutine(FadeIn(2.0f));
     }
 
 	public void nosoFinish()
@@ -104,11 +106,15 @@ public class BGController : MonoBehaviour {
         carnivalActive = false;
         nosoActive = false;
         moonActive = true;
+        //StartCoroutine(FadeIn(2.0f));
     }
 
     public IEnumerator FadeOut(float FadeTime)
     {
-        float startVolume = levelMusic.volume;
+        StopCoroutine("FadeIn");
+        //float startVolume = levelMusic.volume;
+        float startVolume = 0.2f;
+        levelMusic.volume = 0.5f;
 
         while (levelMusic.volume > 0)
         {
@@ -119,10 +125,14 @@ public class BGController : MonoBehaviour {
 
         levelMusic.Stop();
         levelMusic.volume = startVolume;
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(FadeIn(1.0f));
     }
 
     public IEnumerator FadeIn(float FadeTime)
     {
+        StopCoroutine("FadeOut");
+        Debug.Log("whatvolume");
         float startVolume = 0.2f;
 
         levelMusic.volume = 0;
@@ -135,7 +145,19 @@ public class BGController : MonoBehaviour {
             yield return null;
         }
 
+        
         levelMusic.volume = 0.5f;
     }
+
+    public void initiateFO()
+    {
+        StartCoroutine(FadeOut(1.0f));
+    }
+
+    //public void initiateFI()
+    //{
+    //    StopCoroutine("FadeOut");
+    //    StartCoroutine(FadeIn(2.0f));
+    //}
 
 }
