@@ -49,7 +49,7 @@ public class SpaceTheFinalFrontier : MonoBehaviour {
 		yield return new WaitForSeconds (1.0f);
 		sky.GetComponent<skyMovement> ().liftoffStop ();
 		stars.GetComponent<starMovement> ().liftoffStop ();
-		yield return new WaitForSeconds (25.0f);
+		yield return new WaitForSeconds (15.0f);
 		fade.GetComponent<TransitionController>().FadeBegin();
 		yield return new WaitForSeconds(1.0f);
 		bgc.GetComponent<BGController> ().nosoFinish ();
