@@ -14,6 +14,8 @@ public class Kiddo : MonoBehaviour {
     public bool holding;
     private bool holdbreak;
     private bool switching;
+    public AudioClip kidLaugh;
+    public AudioClip kidDeathSound;
 
     // Use this for initialization
     void Start()
@@ -28,6 +30,7 @@ public class Kiddo : MonoBehaviour {
         switching = false;
         speed = -1.25f;
         Debug.Log(gameObject.GetComponent<SpriteRenderer>().flipX);
+        gameObject.GetComponent<AudioSource>().Play();
         if (PlayerPrefs.HasKey("PlayerPos"))
         {
             if (!PlayerPrefs.HasKey(gameObject.name))
@@ -96,11 +99,13 @@ public class Kiddo : MonoBehaviour {
 
     public IEnumerator Death()
     {
+        gameObject.GetComponent<AudioSource>().Stop();
         StopCoroutine("hold");
         ga.enabled = false;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         yield return new WaitForSeconds(3.0f);
+        gameObject.GetComponent<AudioSource>().Play();
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
         gameObject.transform.position = initSpawn;
         ga.enabled = true;
@@ -112,9 +117,16 @@ public class Kiddo : MonoBehaviour {
 
     public IEnumerator Die()
     {
+        if(gameObject.GetComponent<AudioSource>().isPlaying)
+        {
+            gameObject.GetComponent<AudioSource>().Stop();
+            gameObject.GetComponent<AudioSource>().loop = false;
+        }
         DCJ.constraints = RigidbodyConstraints2D.FreezeAll;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         ga.Play("thenperish");
+        gameObject.GetComponent<AudioSource>().clip = kidDeathSound;
+        gameObject.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(0.7f);
         Destroy(gameObject);
     }

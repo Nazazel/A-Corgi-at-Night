@@ -29,10 +29,12 @@ public class Laser : MonoBehaviour {
         laserBottom.GetComponent<Animator>().Play("LaserStartup");
         laserTop.GetComponent<Animator>().Play("LaserStartup");
         yield return new WaitForSeconds(0.25f);
+        gameObject.GetComponent<AudioSource>().Play();
         laserBottom.GetComponent<Animator>().Play("BeamMeUpScotty");
         laserTop.GetComponent<Animator>().Play("BeamMeUpScotty");
         laserBottom.GetComponent<BoxCollider2D>().enabled = true;
         yield return new WaitForSeconds(3.0f);
+        gameObject.GetComponent<AudioSource>().Stop();
         laserBottom.GetComponent<Animator>().Play("LaserWindDown");
         laserTop.GetComponent<Animator>().Play("LaserWindDown");
         yield return new WaitForSeconds(0.25f);

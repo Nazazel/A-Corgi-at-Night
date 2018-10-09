@@ -39,6 +39,7 @@ public class eggBomb : MonoBehaviour {
         if (coll.gameObject.CompareTag("Floor"))
         {
             shellsplosion.radius = shellsplosion.radius * 1.5f;
+            gameObject.GetComponent<AudioSource>().Play();
             StartCoroutine("deathLinger");
             eggAnim.Play("boom");
         }

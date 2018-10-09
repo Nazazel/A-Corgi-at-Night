@@ -18,8 +18,6 @@ public class Play : MonoBehaviour
 	void Start()
 	{
         //Debug.Log(movAudio.GetComponent<AudioSource>().clip.name);
-        vidAudio.clip = movAudio.GetComponent<AudioSource>().clip;
-        movAudio.audioOutputMode = VideoAudioOutputMode.None;
         movAudio.Play();
         vidAudio.Play();
 		delayed = false;

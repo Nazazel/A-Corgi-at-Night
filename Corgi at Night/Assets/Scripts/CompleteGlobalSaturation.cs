@@ -112,11 +112,13 @@ public class CompleteGlobalSaturation : MonoBehaviour {
 
 	public IEnumerator Beam()
 	{
+        gameObject.GetComponent<AudioSource>().Play();
 		ga.Play ("Abduct");
 		yield return new WaitForSeconds (0.33f);
 		gameObject.GetComponent<PolygonCollider2D> ().enabled = true;
 		ga.Play("beamMeScotty");
 		yield return new WaitForSeconds (5.0f);
+        gameObject.GetComponent<AudioSource>().Stop();
 		gameObject.GetComponent<PolygonCollider2D> ().enabled = false;
 		ga.Play("Flying");
 		yield return new WaitForSeconds (10.0f);
