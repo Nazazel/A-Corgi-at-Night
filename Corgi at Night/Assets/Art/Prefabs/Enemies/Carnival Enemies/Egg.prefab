@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1700284767343132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.208716, y: -0.6189125, z: 0}
+  m_LocalPosition: {x: 0, y: 0.86983263, z: 0}
   m_LocalScale: {x: 1.3790535, y: 1.3790537, z: 1.3790537}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,18 +91,18 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 210724a8259c55945bc9eb7012122c97, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 0
+  MaxDistance: 7
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -135,7 +135,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -204,6 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5406f17b5c58374ab0cdb88662b43ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eggSource: {fileID: 82926365500092668}
+  egg: {fileID: 8300000, guid: 210724a8259c55945bc9eb7012122c97, type: 3}
 --- !u!212 &212260724315184992
 SpriteRenderer:
   m_ObjectHideFlags: 1

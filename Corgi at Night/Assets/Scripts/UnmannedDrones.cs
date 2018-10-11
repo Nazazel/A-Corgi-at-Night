@@ -12,6 +12,8 @@ public class UnmannedDrones : MonoBehaviour {
     private bool waittime;
     private bool idle;
 	public bool pat;
+    public AudioClip roverWalk;
+    public AudioClip roverDeathSound;
 
     // Use this for initialization
     void Start()
@@ -23,6 +25,7 @@ public class UnmannedDrones : MonoBehaviour {
         DCJ = gameObject.GetComponent<Rigidbody2D>();
         waittime = false;
         idle = false;
+        gameObject.GetComponent<AudioSource>().Play();
         if (PlayerPrefs.HasKey("PlayerPos"))
         {
             if (!PlayerPrefs.HasKey(gameObject.name))
@@ -135,10 +138,17 @@ public class UnmannedDrones : MonoBehaviour {
 
     public IEnumerator Die2()
     {
+        if (gameObject.GetComponent<AudioSource>().isPlaying)
+        {
+            gameObject.GetComponent<AudioSource>().Stop();
+            gameObject.GetComponent<AudioSource>().loop = false;
+        }
         Debug.Log("bye");
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         ga.Play("WallEDeathHDin1080p");
+        gameObject.GetComponent<AudioSource>().clip = roverDeathSound;
+        gameObject.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(0.7f);
         Destroy(gameObject);
     }

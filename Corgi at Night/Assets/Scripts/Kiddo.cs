@@ -121,6 +121,7 @@ public class Kiddo : MonoBehaviour {
         {
             gameObject.GetComponent<AudioSource>().Stop();
             gameObject.GetComponent<AudioSource>().loop = false;
+            gameObject.GetComponent<AudioSource>().volume = 0.25f;
         }
         DCJ.constraints = RigidbodyConstraints2D.FreezeAll;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;

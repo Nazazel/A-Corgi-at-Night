@@ -8,6 +8,8 @@ public class eggBomb : MonoBehaviour {
     private Animator eggAnim;
     private GameObject player;
     private bool started;
+    public AudioSource eggSource;
+    public AudioClip egg;
 
     // Update is called once per frame
     void Start () {
@@ -39,8 +41,13 @@ public class eggBomb : MonoBehaviour {
         if (coll.gameObject.CompareTag("Floor"))
         {
             shellsplosion.radius = shellsplosion.radius * 1.5f;
-            gameObject.GetComponent<AudioSource>().Play();
             StartCoroutine("deathLinger");
+            if(!eggSource.isPlaying)
+            {
+                Debug.Log("egggggg");
+                eggSource.clip = egg;
+                eggSource.Play();
+            }
             eggAnim.Play("boom");
         }
     }

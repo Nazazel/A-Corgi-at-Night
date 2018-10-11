@@ -9,6 +9,8 @@ public class Boom : MonoBehaviour
     public GameObject doom;
     public Animator doomAnim;
     public Vector3 initSpawn;
+    public AudioClip boomba;
+    public AudioClip boombaBoom;
 
     // Use this for initialization
     void Start()
@@ -33,6 +35,7 @@ public class Boom : MonoBehaviour
         if (coll.gameObject.CompareTag("Player") && player.GetComponent<Pibble>().dead == false)
         {
             StopCoroutine("SelfDestructSequenceInitiated");
+            gameObject.GetComponent<AudioSource>().Stop();
         }
     }
 
@@ -49,7 +52,13 @@ public class Boom : MonoBehaviour
 
     public IEnumerator SelfDestructSequenceInitiated()
     {
+        gameObject.GetComponent<AudioSource>().loop = true;
+        gameObject.GetComponent<AudioSource>().clip = boomba;
+        gameObject.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(2.0f);
+        gameObject.GetComponent<AudioSource>().loop = false;
+        gameObject.GetComponent<AudioSource>().clip = boombaBoom;
+        gameObject.GetComponent<AudioSource>().Play();
         player.GetComponent<Pibble>().dead = true;
         player.GetComponent<Pibble>().StartCoroutine("Death");
         doomAnim.Play("Boomba");
