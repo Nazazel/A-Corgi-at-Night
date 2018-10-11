@@ -35,8 +35,9 @@ public class Pibble : MonoBehaviour {
     public GameObject mainCam;
 
     //Audio Stuff
-    private GameObject mainListener;
+    private AudioListener mainListener;
     private AudioSource QuinnAS;
+    private mutePls silencer;
     private int barkQ;
     public AudioClip barkAudio1;
     public AudioClip barkAudio2;
@@ -146,7 +147,7 @@ public class Pibble : MonoBehaviour {
         barkQ = 0;
         cooldown = false;
 		falling = false;
-        mainListener = GameObject.Find("AudioListener");
+        silencer = GameObject.Find("MuteManager").GetComponent<mutePls>();
         //GameObject.DontDestroyOnLoad(GameObject.Find("Corgo"));
         mainCam = GameObject.Find("Main Camera");
         attackBox = GameObject.Find("AttackBox");
@@ -342,7 +343,7 @@ public class Pibble : MonoBehaviour {
                                 mainCam.transform.localPosition = new Vector3(0.0f, 0.36f, 10.0f);
                                 mainCam.transform.Rotate(Vector3.up, 180.0f);
                                 gameObject.transform.Rotate(Vector3.up, 180.0f);
-                                mainListener.transform.Rotate(Vector3.up, 180.0f);
+                                //mainListener.transform.Rotate(Vector3.up, 180.0f);
                             }
                             if ((rb.velocity.x > 0.0f) && (rb.velocity.y != 0.0f))
                             {
@@ -400,7 +401,7 @@ public class Pibble : MonoBehaviour {
                                 mainCam.transform.localPosition = new Vector3(0.0f, 0.36f, -10.0f);
                                 mainCam.transform.Rotate(Vector3.up, 180.0f);
                                 gameObject.transform.Rotate(Vector3.up, 180.0f);
-                                mainListener.transform.Rotate(Vector3.up, 180.0f);
+                                //mainListener.transform.Rotate(Vector3.up, 180.0f);
                             }
                             if ((rb.velocity.x < 0.0f) && (rb.velocity.y != 0.0f))
                             {
@@ -730,7 +731,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator patrolCatcherDiag()
     {
-        mainListener.SetActive(false);
+        silencer.SetAudioMute(true);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -738,7 +739,7 @@ void OnCollisionExit2D(Collision2D colll)
         hintText.text = "Better watch out for the dog catchers roaming around the streets! Avoid their flashlight by hiding in nearby shrubs or cardboard boxes by pressing the \"Q\" key when close to the item of interest.";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
-        mainListener.SetActive(true);
+        silencer.SetAudioMute(false);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
@@ -747,7 +748,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator dcjDiag()
     {
-        mainListener.SetActive(false);
+        silencer.SetAudioMute(true);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -755,7 +756,7 @@ void OnCollisionExit2D(Collision2D colll)
         hintText.text = "Looks like dog catching runs in the family. Jump on top of the jr. dog catchers to avoid losing!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
-        mainListener.SetActive(true);
+        silencer.SetAudioMute(false);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
@@ -764,7 +765,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator ninCatDiag()
     {
-        mainListener.SetActive(false);
+        silencer.SetAudioMute(true);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -772,7 +773,7 @@ void OnCollisionExit2D(Collision2D colll)
         hintText.text = "Uh-oh, looks like a cat! Not just any cat-- a ninja cat! Quick, use the \"E\" key to bark and scare him away!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
-        mainListener.SetActive(true);
+        silencer.SetAudioMute(false);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
@@ -781,7 +782,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator birbDiag()
     {
-        mainListener.SetActive(false);
+        silencer.SetAudioMute(true);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -789,7 +790,7 @@ void OnCollisionExit2D(Collision2D colll)
         hintText.text = "That pigeon just threw an egg that exploded. Try to avoid getting hit if you don't wanna get scrambled.";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
-        mainListener.SetActive(true);
+        silencer.SetAudioMute(false);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
@@ -798,7 +799,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator UFODiag()
     {
-        mainListener.SetActive(false);
+        silencer.SetAudioMute(true);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -806,7 +807,7 @@ void OnCollisionExit2D(Collision2D colll)
         hintText.text = "These aliens are out to get cute, stubby corgis! Watch out for their beams if you don't wanna get abducted!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
-        mainListener.SetActive(true);
+        silencer.SetAudioMute(false);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
@@ -815,7 +816,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator KidDiag()
     {
-        mainListener.SetActive(false);
+        silencer.SetAudioMute(true);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -824,7 +825,7 @@ void OnCollisionExit2D(Collision2D colll)
         "To free Quinn of the kid's grasp, repeatedly tap the left and right arrow keys!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
-        mainListener.SetActive(true);
+        silencer.SetAudioMute(false);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
@@ -833,7 +834,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator DoomDiag()
     {
-        mainListener.SetActive(false);
+        silencer.SetAudioMute(true);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -842,7 +843,7 @@ void OnCollisionExit2D(Collision2D colll)
         "Don't approach these nasty roomba's head on, try using them as platforms instead! \nUnless they come strapped with bombs or chainsaws!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
-        mainListener.SetActive(true);
+        silencer.SetAudioMute(false);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
@@ -851,7 +852,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator RovDiag()
     {
-        mainListener.SetActive(false);
+        silencer.SetAudioMute(true);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -859,7 +860,7 @@ void OnCollisionExit2D(Collision2D colll)
         hintText.text = "That doesn't look like a very friendly rover. Show him who's boss by stomping on him not once, but TWICE!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
-        mainListener.SetActive(true);
+        silencer.SetAudioMute(false);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
@@ -868,7 +869,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator LasDiag()
     {
-        mainListener.SetActive(false);
+        silencer.SetAudioMute(true);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -877,7 +878,7 @@ void OnCollisionExit2D(Collision2D colll)
         "Avoid lasers to prevent Quinn from getting hurt!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
-        mainListener.SetActive(true);
+        silencer.SetAudioMute(false);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
@@ -886,7 +887,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator AstDiag()
     {
-        mainListener.SetActive(false);
+        silencer.SetAudioMute(true);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -894,7 +895,7 @@ void OnCollisionExit2D(Collision2D colll)
         hintText.text = "Dodge asteroids to avoid getting injured!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
-        mainListener.SetActive(true);
+        silencer.SetAudioMute(false);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
@@ -903,7 +904,7 @@ void OnCollisionExit2D(Collision2D colll)
 
     public IEnumerator WormDiag()
     {
-        mainListener.SetActive(false);
+        silencer.SetAudioMute(true);
         pa.enabled = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         hintActive = true;
@@ -911,7 +912,7 @@ void OnCollisionExit2D(Collision2D colll)
         hintText.text = "Woah, a vortex! Where does it lead? Find out by pressing the \"R\" key.";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
-        mainListener.SetActive(true);
+        silencer.SetAudioMute(false);
         pa.enabled = true;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         hintActive = false;
