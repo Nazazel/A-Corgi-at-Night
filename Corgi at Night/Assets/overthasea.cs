@@ -5,10 +5,12 @@ using UnityEngine;
 public class overthasea : MonoBehaviour {
 
     public GameObject bgc;
+    public bool started;
 
     // Use this for initialization
     void Start()
     {
+        started = false;
         bgc = GameObject.Find("BGController");
     }
 
@@ -16,8 +18,18 @@ public class overthasea : MonoBehaviour {
     {
         if (col.CompareTag("Player"))
         {
-            bgc.GetComponent<BGController>().FadeIn(1.0f);
-            Destroy(gameObject);
+            if (!started)
+            {
+                started = true;
+                StartCoroutine("plsEnd");
+            }
         }
+    }
+
+    public IEnumerator plsEnd()
+    {
+        yield return new WaitForSeconds(1.0f);
+        bgc.GetComponent<BGController>().FadeIn(1.0f);
+        Destroy(gameObject);
     }
 }

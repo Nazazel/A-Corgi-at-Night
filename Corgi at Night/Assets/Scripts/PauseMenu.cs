@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour {
 
     private GameObject player;
     private GameObject pauseText;
+    public GameObject controlsPage;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,10 @@ public class PauseMenu : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && player.GetComponent<Pibble>().paused == true)
         {
+            if (controlsPage.activeSelf == true)
+            {
+                controlsPage.SetActive(false);
+            }
             player.GetComponent<Pibble>().paused = false;
             pauseText.SetActive(false);
             player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
