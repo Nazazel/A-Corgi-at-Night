@@ -79,7 +79,7 @@ public class Hints : MonoBehaviour {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstNinCats();
             }
-            else if (col.gameObject.CompareTag("DogCatcherJR") && corgo.firstDCJ == true)
+            else if (col.gameObject.name == "Dog Catcher Jr(2)" && corgo.firstDCJ == true)
             {
                 //col.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 corgo.firstDCJs();

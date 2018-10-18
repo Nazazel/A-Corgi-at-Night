@@ -66,6 +66,16 @@ public class ButtonManager : MonoBehaviour
 
     public void save()
     {
+        enemylist = GameObject.Find("Enemies");
+        if (!PlayerPrefs.HasKey("PlayerPos"))
+        {
+            foreach (Transform t in enemylist.transform)
+            {
+                Debug.Log(t.name);
+                PlayerPrefs.SetString(t.name, t.name);
+
+            }
+        }
         player = GameObject.Find("QuinSpriteFinal_1");
 		PlayerPrefsX.SetVector3("PlayerPos", new Vector3(player.GetComponent<Pibble>().spawnpoint.x, player.GetComponent<Pibble>().spawnpoint.y, player.GetComponent<Pibble>().spawnpoint.z));
         if (player.GetComponent<Pibble>().introRunning)
@@ -87,12 +97,7 @@ public class ButtonManager : MonoBehaviour
         PlayerPrefsX.SetBool("HintLas", player.GetComponent<Pibble>().firstLaser);
         PlayerPrefsX.SetBool("HintAst", player.GetComponent<Pibble>().firstAsteroid);
         PlayerPrefsX.SetBool("HintWorm", player.GetComponent<Pibble>().firstWormhole);
-        enemylist = GameObject.Find("Enemies");
-        foreach (Transform t in enemylist.transform)
-        {
-            Debug.Log(t.name);
-            PlayerPrefs.SetString(t.name, t.name);
-        }
+    
         PlayerPrefsX.SetBool("cityBG", bgcontroller.GetComponent<BGController>().cityActive);
         PlayerPrefsX.SetBool("carnivalBG", bgcontroller.GetComponent<BGController>().carnivalActive);
         PlayerPrefsX.SetBool("nosoBG", bgcontroller.GetComponent<BGController>().nosoActive);
@@ -113,6 +118,12 @@ public class ButtonManager : MonoBehaviour
     {
         Destroy(GameObject.Find("Test Corgo"));
         SceneManager.LoadScene(mainMenu);
+    }
+
+    public void quit()
+    {
+        Debug.Log("Peace out");
+        Application.Quit();
     }
 
     public IEnumerator NoSave()

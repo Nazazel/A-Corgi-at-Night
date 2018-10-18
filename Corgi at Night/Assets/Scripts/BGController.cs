@@ -154,6 +154,11 @@ public class BGController : MonoBehaviour {
         StartCoroutine(FadeOut(1.0f));
     }
 
+    public void initiateNOSO()
+    {
+        StartCoroutine(FadeOut(2.0f));
+    }
+
     //public void initiateFI()
     //{
     //    StopCoroutine("FadeOut");

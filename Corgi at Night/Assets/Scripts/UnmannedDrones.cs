@@ -138,6 +138,10 @@ public class UnmannedDrones : MonoBehaviour {
 
     public IEnumerator Die2()
     {
+        if (PlayerPrefs.HasKey("PlayerPos"))
+        {
+            PlayerPrefs.DeleteKey(gameObject.name);
+        }
         if (gameObject.GetComponent<AudioSource>().isPlaying)
         {
             gameObject.GetComponent<AudioSource>().Stop();

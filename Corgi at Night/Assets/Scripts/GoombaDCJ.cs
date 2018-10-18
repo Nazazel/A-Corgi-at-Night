@@ -104,7 +104,11 @@ public class GoombaDCJ : MonoBehaviour {
 
 	public IEnumerator Die()
 	{
-		gameObject.GetComponent<BoxCollider2D> ().enabled = false;
+        if (PlayerPrefs.HasKey("PlayerPos"))
+        {
+            PlayerPrefs.DeleteKey(gameObject.name);
+        }
+        gameObject.GetComponent<BoxCollider2D> ().enabled = false;
 		ga.Play("DCJDie");
 		yield return new WaitForSeconds (0.7f);
 		Destroy (gameObject);

@@ -933,7 +933,7 @@ void OnCollisionExit2D(Collision2D colll)
         hintText.text = "Oh no! Poor little pup! It seems he has lost his way!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.1f);
-        hintText.text = "His owners called for him to stay, but the corgi didn't have it in him to ignore the delicously cheesy scent of a freshly made pizza!";
+        hintText.text = "His owners called for him to stay, but the corgi didn't have it in him to ignore the deliciously cheesy scent of a freshly made pizza!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.1f);
         hintText.text = "Mamma Mia! Help Quinn find his way back home to his owners.";

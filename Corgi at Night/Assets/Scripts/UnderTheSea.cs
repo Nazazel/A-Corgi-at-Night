@@ -28,7 +28,7 @@ public class UnderTheSea : MonoBehaviour {
     public IEnumerator plsEnd()
     {
         bgc.GetComponent<BGController>().initiateFO();
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.1f);
         bgc.GetComponent<BGController>().carnivalFinish();
         Destroy(gameObject);
     }

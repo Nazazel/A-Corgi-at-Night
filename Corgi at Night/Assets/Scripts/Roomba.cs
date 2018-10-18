@@ -31,18 +31,32 @@ public class Roomba : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (player.GetComponent<Pibble>().dead == true)
+        if (player.GetComponent<Pibble>().hintActive == false && player.GetComponent<Pibble>().paused == false)
         {
-            if (waittime == false)
+            if (player.GetComponent<Pibble>().dead == false && ga.enabled == false)
             {
-                waittime = true;
-                StopAllCoroutines();
-                StartCoroutine("Death");
+                ga.enabled = true;
+                DCJ.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
+            if (player.GetComponent<Pibble>().dead == true)
+            {
+                if (waittime == false)
+                {
+                    waittime = true;
+                    StopAllCoroutines();
+                    StartCoroutine("Death");
+                }
+            }
+            if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+            {
+                DCJ.velocity = new Vector2(speed, DCJ.velocity.y);
             }
         }
-        if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= 7)
+        else
         {
-            DCJ.velocity = new Vector2(speed, DCJ.velocity.y);
+            ga.enabled = false;
+            DCJ.velocity = new Vector2(0.0f, 0.0f);
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
     }
 

@@ -135,7 +135,11 @@ public class NinjaCatto : MonoBehaviour {
 
 	public IEnumerator Die()
 	{
-		catColl.enabled = false;
+        if (PlayerPrefs.HasKey("PlayerPos"))
+        {
+            PlayerPrefs.DeleteKey(gameObject.name);
+        }
+        catColl.enabled = false;
 		caDS.Play ();
 		ca.Play ("CatPoof");
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);

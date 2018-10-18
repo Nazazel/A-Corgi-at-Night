@@ -44,57 +44,70 @@ public class CompleteGlobalSaturation : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-        if (player.GetComponent<Pibble>().dead == false && ga.enabled == false)
+        if (player.GetComponent<Pibble>().hintActive == false && player.GetComponent<Pibble>().paused == false)
         {
-            ga.enabled = true;
-            DCJ.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            if (player.GetComponent<Pibble>().dead == false && ga.enabled == false)
+            {
+                ga.enabled = true;
+                DCJ.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                StartCoroutine("Beam");
+            }
+            if (player.GetComponent<Pibble>().dead == true)
+            {
+                if (waittime == false)
+                {
+                    waittime = true;
+                    StopAllCoroutines();
+                    StartCoroutine("Death");
+                }
+            }
+            if (!player.GetComponent<Pibble>().dead)
+            {
+                if ((gameObject.transform.position.x <= originPos - patrolArea) && right == false)
+                {
+                    //Debug.Log ("Turn Up");
+                    right = true;
+                    DCJ.velocity = new Vector2(0.5f, 0.0f);
+                }
+                else if ((gameObject.transform.position.x >= originPos + patrolArea) && right == true)
+                {
+                    //Debug.Log ("Turn Down");
+                    right = false;
+                    DCJ.velocity = new Vector2(-0.5f, 0.0f);
+                }
+                else
+                {
+                    if (right)
+                    {
+                        //Debug.Log ("Moving Up");
+                        if (!coroutineStarted)
+                        {
+                            coroutineStarted = true;
+                            StartCoroutine("Beam");
+                        }
+                        DCJ.velocity = new Vector2(0.5f, 0.0f);
+                    }
+                    else
+                    {
+                        //Debug.Log ("Moving Down");
+                        if (!coroutineStarted)
+                        {
+                            coroutineStarted = true;
+                            StartCoroutine("Beam");
+                        }
+                        DCJ.velocity = new Vector2(-0.5f, 0.0f);
+                    }
+                }
+            }
         }
-        if (player.GetComponent<Pibble>().dead == true)
-		{
-			if (waittime == false)
-			{
-				waittime = true;
-				StopAllCoroutines();
-				StartCoroutine("Death");
-			}
-		}
-		if (!player.GetComponent<Pibble>().dead)
-		{
-			if ((gameObject.transform.position.x <= originPos - patrolArea) && right == false)
-			{
-				//Debug.Log ("Turn Up");
-				right = true;
-				DCJ.velocity = new Vector2(0.5f, 0.0f);
-			}
-			else if ((gameObject.transform.position.x >= originPos + patrolArea) && right == true)
-			{
-				//Debug.Log ("Turn Down");
-				right = false;
-				DCJ.velocity = new Vector2(-0.5f, 0.0f);
-			}
-			else
-			{
-				if (right)
-				{
-					//Debug.Log ("Moving Up");
-					if (!coroutineStarted) {
-						coroutineStarted = true;
-						StartCoroutine ("Beam");
-					}
-					DCJ.velocity = new Vector2(0.5f, 0.0f);
-				}
-				else
-				{
-					//Debug.Log ("Moving Down");
-					if (!coroutineStarted) {
-						coroutineStarted = true;
-						StartCoroutine ("Beam");
-					}
-					DCJ.velocity = new Vector2(-0.5f, 0.0f);
-				}
-			}
-		}
-	}
+        else
+        {
+            ga.enabled = false;
+            DCJ.velocity = new Vector2(0.0f, 0.0f);
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            StopCoroutine("Beam");
+        }
+    }
 
 	public IEnumerator Death()
 	{

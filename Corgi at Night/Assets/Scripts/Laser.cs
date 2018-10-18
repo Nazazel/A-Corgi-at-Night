@@ -7,18 +7,36 @@ public class Laser : MonoBehaviour {
     public bool laserCooldown;
     public GameObject laserBottom;
     public GameObject laserTop;
+    private GameObject player;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         laserCooldown = false;
-	}
+        player = GameObject.Find("QuinSpriteFinal_1");
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if(!laserCooldown)
+        if (player.GetComponent<Pibble>().hintActive == false && player.GetComponent<Pibble>().paused == false)
         {
-            StartCoroutine("FirinMahLaser");
-            laserCooldown = true;
+            if (player.GetComponent<Pibble>().dead == false && laserTop.GetComponent<Animator>().enabled == false && laserBottom.GetComponent<Animator>().enabled == false)
+            {
+                laserBottom.GetComponent<Animator>().enabled = true;
+                laserTop.GetComponent<Animator>().enabled = true;
+                StartCoroutine("FirinMahLaser");
+            }
+            if (!laserCooldown)
+            {
+                StartCoroutine("FirinMahLaser");
+                laserCooldown = true;
+            }
+        }
+        else
+        {
+            laserTop.GetComponent<Animator>().enabled = false;
+            laserBottom.GetComponent<Animator>().enabled = false;
+            StopCoroutine("FirinMahLaser");
+            laserCooldown = false;
         }
 	}
 

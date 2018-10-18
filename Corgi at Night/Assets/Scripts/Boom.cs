@@ -59,8 +59,10 @@ public class Boom : MonoBehaviour
         gameObject.GetComponent<AudioSource>().loop = false;
         gameObject.GetComponent<AudioSource>().clip = boombaBoom;
         gameObject.GetComponent<AudioSource>().Play();
-        player.GetComponent<Pibble>().dead = true;
-        player.GetComponent<Pibble>().StartCoroutine("Death");
+        if (player.GetComponent<Pibble>().dead == false) {
+            player.GetComponent<Pibble>().dead = true;
+            player.GetComponent<Pibble>().StartCoroutine("Death");
+        }
         doomAnim.Play("Boomba");
         StartCoroutine("Death");
     }

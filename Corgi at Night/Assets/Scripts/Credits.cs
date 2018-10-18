@@ -90,7 +90,7 @@ public class Credits : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         theText.text = "Audio Designer:\n\nBrandon Delehoy";
         yield return new WaitForSeconds(3.0f);
-        theText.text = "Writer:\n\nNaz Hartoonian";
+        theText.text = "Writer:\n\nNazely Hartoonian";
         yield return new WaitForSeconds(3.0f);
         theText.text = "Some audio gathered from Freesound.org";
         yield return new WaitForSeconds(3.0f);

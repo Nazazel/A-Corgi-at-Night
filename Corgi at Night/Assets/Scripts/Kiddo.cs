@@ -117,7 +117,11 @@ public class Kiddo : MonoBehaviour {
 
     public IEnumerator Die()
     {
-        if(gameObject.GetComponent<AudioSource>().isPlaying)
+        if (PlayerPrefs.HasKey("PlayerPos"))
+        {
+            PlayerPrefs.DeleteKey(gameObject.name);
+        }
+        if (gameObject.GetComponent<AudioSource>().isPlaying)
         {
             gameObject.GetComponent<AudioSource>().Stop();
             gameObject.GetComponent<AudioSource>().loop = false;
