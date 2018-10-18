@@ -86800,7 +86800,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4252258432322418, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1004.9
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4252258432322418, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
       propertyPath: m_LocalPosition.y
@@ -86856,7 +86856,7 @@ Prefab:
     - target: {fileID: 114024339935026414, guid: aa078e85c8dd95b45a74c3a524e5a751,
         type: 2}
       propertyPath: sceneTesting
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114024339935026414, guid: aa078e85c8dd95b45a74c3a524e5a751,
         type: 2}
