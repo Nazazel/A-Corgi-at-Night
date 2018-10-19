@@ -17,6 +17,7 @@ public class MenuAnimationController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Cursor.visible = true;
         StartCoroutine("MenuSequence");
         StartCoroutine("CheatSequence");
 	}

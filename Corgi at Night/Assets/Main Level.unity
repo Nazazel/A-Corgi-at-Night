@@ -16438,6 +16438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlsPage: {fileID: 927847833}
+  pauseCursor: 0
 --- !u!4 &361795268
 Transform:
   m_ObjectHideFlags: 0
@@ -86884,7 +86885,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4252258432322418, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -786.3
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4252258432322418, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
       propertyPath: m_LocalPosition.y
@@ -86940,7 +86941,7 @@ Prefab:
     - target: {fileID: 114024339935026414, guid: aa078e85c8dd95b45a74c3a524e5a751,
         type: 2}
       propertyPath: sceneTesting
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114024339935026414, guid: aa078e85c8dd95b45a74c3a524e5a751,
         type: 2}
@@ -86961,6 +86962,16 @@ Prefab:
       propertyPath: m_Volume
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114024339935026414, guid: aa078e85c8dd95b45a74c3a524e5a751,
+        type: 2}
+      propertyPath: walkAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: fee8aa39251e58c41a101d14dd7680db, type: 3}
+    - target: {fileID: 114024339935026414, guid: aa078e85c8dd95b45a74c3a524e5a751,
+        type: 2}
+      propertyPath: runAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 48802880ddd60b54c9419ee4f27ec069, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa078e85c8dd95b45a74c3a524e5a751, type: 2}
   m_IsPrefabAsset: 0
