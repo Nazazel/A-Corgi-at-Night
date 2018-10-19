@@ -503,7 +503,7 @@ public class Pibble : MonoBehaviour {
 
     void OnCollisionStay2D(Collision2D coll)
     {
-		if (coll.gameObject.CompareTag("Floor") && jumping == true)
+		if (coll.collider.CompareTag("Floor") && jumping == true)
 		{
 			//Debug.Log(gameObject.transform.position.y);
 			falling = false;
@@ -511,7 +511,7 @@ public class Pibble : MonoBehaviour {
 			landing = false;
 			//pa.Play("Stand");
 		}
-		else if (coll.gameObject.CompareTag("Floor") && falling == true)
+		else if (coll.collider.CompareTag("Floor") && falling == true)
 		{
 			//Debug.Log(gameObject.transform.position.y);
 			falling = false;
@@ -840,7 +840,7 @@ void OnCollisionExit2D(Collision2D colll)
         hintActive = true;
         HintBox.SetActive(true);
         hintText.text = "Is that a...knife wielding roomba? Well, I think you've seen it all.\n" + 
-        "Don't approach these nasty roomba's head on, try using them as platforms instead! \nUnless they come strapped with bombs or chainsaws!";
+        "Don't approach these nasty roombas head on, try using them as platforms instead! \nUnless they come strapped with bombs or chainsaws!";
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return new WaitForSeconds(0.5f);
         silencer.SetAudioMute(false);

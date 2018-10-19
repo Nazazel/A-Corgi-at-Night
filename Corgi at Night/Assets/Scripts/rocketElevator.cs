@@ -53,10 +53,10 @@ public class rocketElevator : MonoBehaviour {
 	void OnCollisionStay2D(Collision2D col)
 	{
 		Debug.Log (col.gameObject.name);
-		rb.gravityScale = 0;
 		if (col.gameObject.CompareTag("Player") && inTrigger && !ascensionStarted)
 		{
-			col.gameObject.GetComponent<Rigidbody2D>().sharedMaterial.friction=0;
+            rb.gravityScale = 0;
+            col.gameObject.GetComponent<Rigidbody2D>().sharedMaterial.friction=0;
 			ascensionStarted = true;
 			rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
 		}

@@ -17,6 +17,7 @@ public class Play : MonoBehaviour
 
 	void Start()
 	{
+        Cursor.visible = false;
         //Debug.Log(movAudio.GetComponent<AudioSource>().clip.name);
         movAudio.Play();
         vidAudio.Play();
@@ -53,7 +54,7 @@ public class Play : MonoBehaviour
 
 	IEnumerator DelayedStart()
 	{
-		yield return new WaitForSeconds(1F);
+		yield return new WaitForSeconds(5f);
 		delayed = true;
 	}
 

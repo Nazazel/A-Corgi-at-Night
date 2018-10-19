@@ -136,7 +136,12 @@ public class UnmannedDrones : MonoBehaviour {
 		pat = false;
 	}
 
-    public IEnumerator Die2()
+    public void Die2()
+    {
+        StartCoroutine("GuessIllDie");
+    }
+
+    public IEnumerator GuessIllDie()
     {
         if (PlayerPrefs.HasKey("PlayerPos"))
         {
