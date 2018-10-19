@@ -74520,6 +74520,7 @@ Transform:
   - {fileID: 2053239216}
   - {fileID: 55147074}
   - {fileID: 1126138059}
+  - {fileID: 1988794581}
   m_Father: {fileID: 1148438108}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -87726,6 +87727,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4390268035346822, guid: 21a74ae8921cae44987145127e885a8e,
     type: 2}
   m_PrefabInternal: {fileID: 1988403635}
+--- !u!1 &1988794580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988794581}
+  - component: {fileID: 1988794582}
+  m_Layer: 0
+  m_Name: GameObject (3)
+  m_TagString: Floor
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1988794581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1988794580}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.8493652, y: -3.0701728, z: 0.32755905}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1706277915}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1988794582
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1988794580}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.11035156, y: 0.659076}
+      - {x: -0.15905762, y: 0.64614725}
+      - {x: -0.18066406, y: 0.59665513}
+      - {x: 0.12365723, y: 0.6083739}
 --- !u!1001 &1988848347
 Prefab:
   m_ObjectHideFlags: 0
@@ -90723,8 +90781,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.11035156, y: 0.659076}
-      - {x: -0.15905762, y: 0.64614725}
+    - - {x: 0.1237793, y: 0.6105046}
+      - {x: -0.17919922, y: 0.6026006}
       - {x: -0.23535156, y: 0.462049}
       - {x: -0.36328125, y: -0.18704414}
       - {x: -0.05895996, y: -0.21460819}
