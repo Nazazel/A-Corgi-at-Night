@@ -1,0 +1,188 @@
+fileFormatVersion: 2
+guid: 6671c1c132dade64fadda9c817c254e9
+timeCreated: 1507608939
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DogCatcherRedLeftWalkwithLight_0
+    21300002: DogCatcherRedLeftWalkwithLight_1
+    21300004: DogCatcherRedLeftWalkwithLight_2
+    21300006: DogCatcherRedLeftWalkwithLight_3
+    21300008: DogCatcherRedLeftWalkwithLight_4
+    21300010: DogCatcherRedLeftWalkwithLight_5
+    21300012: DogCatcherRedLeftWalkwithLight_6
+    21300014: DogCatcherRedLeftWalkwithLight_7
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DogCatcherRedLeftWalkwithLight_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 700
+        width: 256
+        height: 100
+      alignment: 9
+      pivot: {x: 0.875, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DogCatcherRedLeftWalkwithLight_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 256
+        height: 100
+      alignment: 9
+      pivot: {x: 0.875, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DogCatcherRedLeftWalkwithLight_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 256
+        height: 100
+      alignment: 9
+      pivot: {x: 0.875, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DogCatcherRedLeftWalkwithLight_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 256
+        height: 100
+      alignment: 9
+      pivot: {x: 0.875, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DogCatcherRedLeftWalkwithLight_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 299
+        width: 256
+        height: 100
+      alignment: 9
+      pivot: {x: 0.875, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DogCatcherRedLeftWalkwithLight_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 191
+        width: 256
+        height: 100
+      alignment: 9
+      pivot: {x: 0.875, y: 0.59}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DogCatcherRedLeftWalkwithLight_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 91
+        width: 256
+        height: 100
+      alignment: 9
+      pivot: {x: 0.875, y: 0.585}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DogCatcherRedLeftWalkwithLight_7
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 254
+        height: 99
+      alignment: 9
+      pivot: {x: 0.875, y: 0.505}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

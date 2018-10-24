@@ -1,0 +1,1252 @@
+fileFormatVersion: 2
+guid: 6b1cd250b4f545e4a9ac876d8f4bb831
+timeCreated: 1507578240
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: QuinnSpritesheet36x36 (2)_0
+    21300002: QuinnSpritesheet36x36 (2)_1
+    21300004: QuinnSpritesheet36x36 (2)_2
+    21300006: QuinnSpritesheet36x36 (2)_3
+    21300008: QuinnSpritesheet36x36 (2)_4
+    21300010: QuinnSpritesheet36x36 (2)_5
+    21300012: QuinnSpritesheet36x36 (2)_6
+    21300014: QuinnSpritesheet36x36 (2)_7
+    21300016: QuinnSpritesheet36x36 (2)_8
+    21300018: QuinnSpritesheet36x36 (2)_9
+    21300020: QuinnSpritesheet36x36 (2)_10
+    21300022: QuinnSpritesheet36x36 (2)_11
+    21300024: QuinnSpritesheet36x36 (2)_12
+    21300026: QuinnSpritesheet36x36 (2)_13
+    21300028: QuinnSpritesheet36x36 (2)_14
+    21300030: QuinnSpritesheet36x36 (2)_15
+    21300032: QuinnSpritesheet36x36 (2)_16
+    21300034: QuinnSpritesheet36x36 (2)_17
+    21300036: QuinnSpritesheet36x36 (2)_18
+    21300038: QuinnSpritesheet36x36 (2)_19
+    21300040: QuinnSpritesheet36x36 (2)_20
+    21300042: QuinnSpritesheet36x36 (2)_21
+    21300044: QuinnSpritesheet36x36 (2)_22
+    21300046: QuinnSpritesheet36x36 (2)_23
+    21300048: QuinnSpritesheet36x36 (2)_24
+    21300050: QuinnSpritesheet36x36 (2)_25
+    21300052: QuinnSpritesheet36x36 (2)_26
+    21300054: QuinnSpritesheet36x36 (2)_27
+    21300056: QuinnSpritesheet36x36 (2)_28
+    21300058: QuinnSpritesheet36x36 (2)_29
+    21300060: QuinnSpritesheet36x36 (2)_30
+    21300062: QuinnSpritesheet36x36 (2)_31
+    21300064: QuinnSpritesheet36x36 (2)_32
+    21300066: QuinnSpritesheet36x36 (2)_33
+    21300068: QuinnSpritesheet36x36 (2)_34
+    21300070: QuinnSpritesheet36x36 (2)_35
+    21300072: QuinnSpritesheet36x36 (2)_36
+    21300074: QuinnSpritesheet36x36 (2)_37
+    21300076: QuinnSpritesheet36x36 (2)_38
+    21300078: QuinnSpritesheet36x36 (2)_39
+    21300080: QuinnSpritesheet36x36 (2)_40
+    21300082: QuinnSpritesheet36x36 (2)_41
+    21300084: QuinnSpritesheet36x36 (2)_42
+    21300086: QuinnSpritesheet36x36 (2)_43
+    21300088: QuinnSpritesheet36x36 (2)_44
+    21300090: QuinnSpritesheet36x36 (2)_45
+    21300092: QuinnSpritesheet36x36 (2)_46
+    21300094: QuinnSpritesheet36x36 (2)_47
+    21300096: QuinnSpritesheet36x36 (2)_48
+    21300098: QuinnSpritesheet36x36 (2)_49
+    21300100: QuinnSpritesheet36x36 (2)_50
+    21300102: QuinnSpritesheet36x36 (2)_51
+    21300104: QuinnSpritesheet36x36 (2)_52
+    21300106: QuinnSpritesheet36x36 (2)_53
+    21300108: QuinnSpritesheet36x36 (2)_54
+    21300110: QuinnSpritesheet36x36 (2)_55
+    21300112: QuinnSpritesheet36x36 (2)_56
+    21300114: QuinnSpritesheet36x36 (2)_57
+    21300116: QuinnSpritesheet36x36 (2)_58
+    21300118: QuinnSpritesheet36x36 (2)_59
+    21300120: QuinnSpritesheet36x36 (2)_60
+    21300122: QuinnSpritesheet36x36 (2)_61
+    21300124: QuinnSpritesheet36x36 (2)_62
+    21300126: QuinnSpritesheet36x36 (2)_63
+    21300128: QuinnSpritesheet36x36 (2)_64
+    21300130: QuinnSpritesheet36x36 (2)_65
+    21300132: QuinnSpritesheet36x36 (2)_66
+    21300134: QuinnSpritesheet36x36 (2)_67
+    21300136: QuinnSpritesheet36x36 (2)_68
+    21300138: QuinnSpritesheet36x36 (2)_69
+    21300140: QuinnSpritesheet36x36 (2)_70
+    21300142: QuinnSpritesheet36x36 (2)_72
+    21300144: QuinnSpritesheet36x36 (2)_73
+    21300146: QuinnSpritesheet36x36 (2)_74
+    21300148: QuinnSpritesheet36x36 (2)_75
+    21300150: QuinnSpritesheet36x36 (2)_76
+    21300152: QuinnSpritesheet36x36 (2)_78
+    21300154: QuinnSpritesheet36x36 (2)_79
+    21300156: QuinnSpritesheet36x36 (2)_80
+    21300158: QuinnSpritesheet36x36 (2)_81
+    21300160: QuinnSpritesheet36x36 (2)_82
+    21300162: QuinnSpritesheet36x36 (2)_83
+    21300164: QuinnSpritesheet36x36 (2)_84
+    21300166: QuinnSpritesheet36x36 (2)_85
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1968
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1936
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1904
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1904
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1904
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_5
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1904
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1872
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1872
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1872
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1872
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1840
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1840
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1840
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1808
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1808
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_15
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1808
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1776
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1776
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1776
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_19
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1776
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1744
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1744
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1744
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_23
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1744
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1712
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1712
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_26
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1712
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_27
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1712
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_28
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1712
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_29
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 1712
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_30
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1712
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_31
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 1712
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1680
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_33
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1680
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_34
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1680
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_35
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1680
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_36
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1680
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_37
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 1680
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.53}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_38
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1680
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_39
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 1680
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1648
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_41
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1648
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1616
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_43
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1616
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1584
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_45
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1584
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_46
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1584
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1552
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_48
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1552
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_49
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1552
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1520
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_51
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1520
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_52
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1520
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1488
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_54
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1488
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_55
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1488
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1456
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_57
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1424
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_58
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1392
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_59
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1360
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_60
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1360
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_61
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1328
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_62
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1296
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_63
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1296
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1264
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_65
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1232
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_66
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_67
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1200
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_68
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1200
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_69
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1200
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_70
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1200
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1168
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_73
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1168
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_74
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1168
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_75
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1168
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_76
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1168
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_78
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1136
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_79
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1136
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_80
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1136
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_81
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1136
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_82
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1104
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_83
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1104
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_84
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1104
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuinnSpritesheet36x36 (2)_85
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1104
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
