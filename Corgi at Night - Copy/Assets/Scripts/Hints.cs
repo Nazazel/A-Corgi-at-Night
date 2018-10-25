@@ -21,7 +21,7 @@ public class Hints : MonoBehaviour {
             DC = GameObject.Find("Dog Catcher");
             UFO = GameObject.Find("UFO (9)");
             BB = GameObject.Find("Birb (4)");
-            las = GameObject.Find("Laser (8)");
+            las = GameObject.Find("Laser (7)");
             wormhole = GameObject.Find("First Wormhole");
             doom = GameObject.Find("Doobma Fly V");
             rock = GameObject.Find("Asteroid");
