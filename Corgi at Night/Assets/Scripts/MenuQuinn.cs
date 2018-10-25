@@ -81,7 +81,7 @@ public class MenuQuinn : MonoBehaviour {
         release = true;
         barkQ = 0;
         cooldown = false;
-        GameObject.DontDestroyOnLoad(GameObject.Find("Corgo"));
+        //GameObject.DontDestroyOnLoad(GameObject.Find("Corgo"));
         attackBox = GameObject.Find("AttackBox");
         rb = gameObject.GetComponent<Rigidbody2D>();
         sr = gameObject.GetComponent<SpriteRenderer>();
