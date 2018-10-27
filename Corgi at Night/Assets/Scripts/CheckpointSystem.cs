@@ -11,7 +11,7 @@ public class CheckpointSystem : MonoBehaviour {
 		player = GameObject.Find ("QuinSpriteFinal_1");
 	}
 
-	void OnTriggerEnter2D(Collider2D coll)
+	void OnTriggerStay2D(Collider2D coll)
 	{
 		if (coll.gameObject.CompareTag ("Player")) {
 			if (player.GetComponent<Pibble> ().spawnpoint != gameObject.transform.position) {
@@ -23,5 +23,5 @@ public class CheckpointSystem : MonoBehaviour {
 			}
 		}
 	}
-		
+	
 }
